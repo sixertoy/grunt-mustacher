@@ -1,6 +1,6 @@
 /*
- * frontend
- * https://github.com/Matthieu/plugin
+ * Mustacher
+ * https://github.com/malas34/malas34
  *
  * Copyright (c) 2014 Matthieu Lassalvy
  * Licensed under the MIT license.
@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         },
 
         // Configuration to be run (and then tested).
-        frontend: {
+        mustacher: {
             single_files: {
                 options: {
                     data_ext:'.json',
@@ -92,9 +92,9 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    //    grunt.registerTask('test', ['clean', 'frontend', 'nodeunit']);
-    //    grunt.registerTask('test', ['clean', 'frontend']);
-    grunt.registerTask('test', ['clean', 'frontend:multiple_files', 'nodeunit']);
+    //    grunt.registerTask('test', ['clean', 'mustacher', 'nodeunit']);
+    //    grunt.registerTask('test', ['clean', 'mustacher']);
+    grunt.registerTask('test', ['clean', 'mustacher:multiple_files', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);

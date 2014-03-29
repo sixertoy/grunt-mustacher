@@ -1,8 +1,8 @@
 {
-    "name": "frontend",
+    "name": "mustacher",
     "description": "The best Grunt plugin ever.",
     "version": "0.1.0",
-    "homepage": "https://github.com/Matthieu/plugin",
+    "homepage": "https://github.com/malas34/mustacher",
     "author": {
         "name": "Matthieu Lassalvy",
         "email": "malas34.github@gmail.com",
@@ -10,15 +10,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/Matthieu/plugin.git"
+        "url": "git://github.com/malas34/mustacher.git"
     },
     "bugs": {
-        "url": "https://github.com/Matthieu/plugin/issues"
+        "url": "https://github.com/malas34/mustacher/issues"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/Matthieu/plugin/blob/master/LICENSE-MIT"
+            "url": "https://github.com/malas34/mustacher/blob/master/LICENSE-MIT"
     }
   ],
     "engines": {

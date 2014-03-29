@@ -1,6 +1,6 @@
 /*
- * frontend
- * https://github.com/Matthieu/plugin
+ * Mustacher
+ * https://github.com/malas34/mustacher
  *
  * Copyright (c) 2014 Matthieu Lassalvy
  * Licensed under the MIT license.
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('frontend', 'The best Grunt plugin ever.', function () {
+    grunt.registerMultiTask('mustacher', 'The best Grunt plugin ever.', function () {
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
             data_ext: '.json',

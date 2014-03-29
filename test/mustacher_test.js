@@ -42,7 +42,7 @@ var grunt = require('grunt');
   },
 */
 
-exports.frontend = {
+exports.mustacher = {
     setUp: function (done) {
         // setup here if necessary
         done();
