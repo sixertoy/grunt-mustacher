@@ -188,54 +188,48 @@ equals(
 
             // Simple boucle permettant la repetition d'element
             // index est en argument
+            // on accede
             _.registerHelper('repeat', function (context, options) {
-                var m, c,
+                var i = 0,
                     r = '',
-                    d = {};
+                    d = {},
+                    c = '';
                 if (arguments.length > 1) {
 
-                    if (!options) {
-                        options = context;
-                        context = this;
-                    }
-//                    var inverse = options.inverse;
+//                    console.log(options.data._parent);
 
-                    var contextPath;
                     if (options.data && options.ids) {
-                        contextPath = _.Utils.appendContextPath(options.data.contextPath, 'array') + '.';
+                        c = _.Utils.appendContextPath(options.data.contextPath, options.name) + '.';
                     }
-                    if (_.Utils.isFunction(context)) {
-                        context = context.call(this);
-                    }
+                    context = util.format('%d', context);
 
                     if (options.data) {
-                        d = _.createFrame(options.data);
-                    }
-                    c = util.format('%d', context);
-
-                    for ( var i = 0; i < c; i++) {
-                        d = _.Utils.extend(d,
-                        {
-                            index: i,
-                            first: (i === 0),
-                            last: (i === (c - 1))
-                        });
-                        if (contextPath)
-                        {
-                            d.contextPath = contextPath + i;
+                        var p = {
+                            repeat: []
+                        };
+                        for (i = 0; i < context; i++) {
+                            p.repeat.push({
+                                count: i
+                            });
                         }
+                        var o = _.Utils.extend(options.data, p);
+                        d = _.createFrame(o);
+                    }
+                    d.ids = ['repeat'];
 
-                        r += options.fn(this, { data: d });
+                    for (i = 0; i < context; i++) {
+                        d.count = i;
+                        d.first = (i === 0);
+                        d.last = (i === (context - 1));
+                        if (c) {
+                            d.contextPath = c + i;
+                        }
+//                        console.log(d);
+                        r += options.fn(this, {
+                            data: d
+                        });
                     }
                     return r;
-
-                    //                    console.log(d);
-                    /*
-                    if (options.data) {
-                        d = _.createFrame(options.data);
-                    }
-
-                    */
                 } else {
                     //                    m = "Handlebars Repeat helper a besoin d'un argument type string";
                     //                    grunt.log.error(m);
@@ -271,6 +265,7 @@ equals(
                     }
                 }).map(function (filepath) {
                     var d = {};
+                    var name = path.basename(filepath).split(options.extension).join('');
                     // si un fichier de data json
                     // est sette dans la config gruntfile
                     if (f.hasOwnProperty('context')) {
@@ -290,6 +285,11 @@ equals(
                             d = grunt.file.readJSON(temp);
                         }
                     }
+//                    d.ids = [];
+//                    d.ids.push( name);
+//                    d.data = {};
+//                    console.log(name);
+//                    d.data.contextPath = name;
                     return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath), {
                         trackIds: true
                     })(d));

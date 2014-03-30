@@ -11,13 +11,13 @@
         <h1>Repeat Helper</h1>
         <h2>Repeat 2</h2>
         <p>
-        {{#repeat '3'}}
-        <ul class="index{{@index}}">
         {{#each toto}}
-            <li>{{value}} {{@index}}</li>
-        {{/each}}
-        </ul>
+        <ul class="toto{{@index}}">
+        {{#repeat '4'}}
+            <li class="count{{@index}}">{{value}}/{{../value}}</li>
         {{/repeat}}
+        </ul>
+        {{/each}}
         </p>
     </body>
 </html>

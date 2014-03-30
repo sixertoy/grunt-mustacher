@@ -33,9 +33,9 @@
     "dependencies": {
         "twig": "~0.7.0",
         "digits": "~0.1.4",
+        "handlebars": "~1.3.0",
         "lorem-ipsum": "~1.0.1",
         "grunt-prettify": "~0.3.4",
-        "handlebars": "~2.0.0-alpha.2",
         "grunt-contrib-clean": "~0.4.0"
     },
     "devDependencies": {
