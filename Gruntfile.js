@@ -32,16 +32,18 @@ module.exports = function (grunt) {
         mustacher: {
             single_files: {
                 options: {
-                    data_ext:'.json',
-                    partials: 'test/fixtures/'},
+                    data_ext: '.json',
+                    partials: 'test/fixtures/'
+                },
                 files: {
                     'tmp/index.html': 'test/fixtures/index.mustache',
                 },
             },
             single_files_autocontext: {
                 options: {
-                    data_ext:'.json',
-                    partials: 'test/fixtures/'},
+                    data_ext: '.json',
+                    partials: 'test/fixtures/'
+                },
                 files: {
                     'tmp/autocontext.html': 'test/fixtures/autocontext.mustache',
                 },
@@ -60,7 +62,7 @@ module.exports = function (grunt) {
             },
             multiple_files: {
                 options: {
-                    data_ext:'.json',
+                    data_ext: '.json',
                     partials: 'test/fixtures/loops/'
                 },
                 files: [
@@ -72,6 +74,23 @@ module.exports = function (grunt) {
                         cwd: 'test/fixtures/'
                     },
                 ],
+            },
+            placehold: {
+                options: {
+                    data_src: 'data/'
+                },
+                files: {
+                    'tmp/placehold.html': 'test/fixtures/placehold.mustache'
+                }
+            },
+            imports: {
+                options: {
+                    data_src: 'data/',
+                    partials:'test/fixtures/loops/'
+                },
+                files: {
+                    'tmp/import.html': 'test/fixtures/import.mustache'
+                }
             },
         },
 
@@ -92,9 +111,8 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    //    grunt.registerTask('test', ['clean', 'mustacher', 'nodeunit']);
-    //    grunt.registerTask('test', ['clean', 'mustacher']);
-    grunt.registerTask('test', ['clean', 'mustacher:multiple_files', 'nodeunit']);
+    grunt.registerTask('test', ['clean', 'mustacher:imports']);
+    //    grunt.registerTask('test', ['clean', 'mustacher:multiple_files', 'nodeunit']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'test']);

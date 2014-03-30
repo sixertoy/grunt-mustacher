@@ -5,35 +5,7 @@
     <body>
         <h3>Variables</h3>
         <p>{{content}}</p>
-        <h3>Lorem</h3>
-        <p>{{$lorem 'w:10'}}</p>
         <h3>Include</h3>
-        {{$include 'partials'}}
-        <div>
-            {{#repeat '3'}}
-                {{$include 'other_partials'}}
-            {{/repeat}}
-        </div>
-        <h3>Repeay</h3>
-        <p>
-            {{#repeat '10'}}
-                <b>Repeated {{@index}}</b>
-            {{/repeat}}
-        </p>
-        <h3>Random</h3>
-        <p>{{$rand '10'}}</p>
-        <p>{{$rand '20+30'}}</p>
-        <p>{{$rand 'a'}}</p>
-        <p>{{$rand '30+a'}}</p>
-        <p>{{$rand}}</p>
-        <h3>Timestamp</h3>
-        <p>{{$timestamp}}</p>
-        <h3>Dummy</h3>
-        <p>{{$dummy '50'}}</p>
-        <p>{{$dummy}}</p>
-        <p>{{$dummy '320x100'}}</p>
-        <p>{{$dummy '320x100:placehold+image'}}</p>
-        <p>{{$dummy '320x100:ACE539:placehold+image'}}</p>
-        <p>{{$dummy '320x100:FF99EE:FFF:placehold+image'}}</p>
+            {{$include 'partials'}}
     </body>
 </html>

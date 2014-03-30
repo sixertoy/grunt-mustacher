@@ -47,6 +47,7 @@ exports.mustacher = {
         // setup here if necessary
         done();
     },
+    /*
     single_files: function (test) {
         // files{ 'fichier.html':'fichier.mustache'}
         // Pas de JSON
@@ -71,6 +72,21 @@ exports.mustacher = {
         test.expect();
         var actual = grunt.file.read('tmp/context.html');
         var expected = grunt.file.read('test/expected/context.html');
+        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
+        test.done();
+    },
+    placehold: function (test) {
+        test.expect();
+        var actual = grunt.file.read('tmp/placehold.html');
+        var expected = grunt.file.read('test/expected/placehold.html');
+        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
+        test.done();
+    },
+    */
+    imports: function (test) {
+        test.expect();
+        var actual = grunt.file.read('tmp/import.html');
+        var expected = grunt.file.read('test/expected/import.html');
         test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
         test.done();
     },

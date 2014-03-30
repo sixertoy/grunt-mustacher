@@ -26,8 +26,10 @@ module.exports = function (grunt) {
     // creation: http://gruntjs.com/creating-tasks
 
     grunt.registerMultiTask('mustacher', 'The best Grunt plugin ever.', function () {
+
         // Merge task-specific and/or target-specific options with these defaults.
         var options = this.options({
+            data_src: '',
             data_ext: '.json',
             partials: undefined,
             // @TODO changement de l'extension
@@ -88,7 +90,7 @@ module.exports = function (grunt) {
                     // taille par defaut
                     base += '/300';
                 }
-                s = '<img src="' + base + '" alt="" title=""/>';
+                s = '<img src="' + base + '" alt="" title="" />';
                 return new _.SafeString(s);
             });
 
@@ -127,32 +129,26 @@ module.exports = function (grunt) {
             _.registerHelper('$include', function (name, context) {
                 context = context || {};
                 if (name.length) {
-                    var d = {},
-                        projectpath = path.resolve();
+                    var f = '',
+                        d = {},
+                        o = task.options(),
+                        p = path.resolve();
 
-                    // console.log(name+'::');
-                    // console.log(context.data);
+                    d = _.createFrame(context.data);
+                    d = _.Utils.extend( d, this );
 
-                    if (context.data) {
-                       d = _.createFrame(context.data.root || {});
+
+                    console.log(d);
+                    console.log("--------------");
+
+
+                    f = o.partials + name + '.mustache';
+                    if (grunt.file.exists(f)) {
+                        return new _.SafeString(_.compile(grunt.file.read(f))(d));
+                    } else {
+                        return false;
                     }
-                    var options = task.options();
-                    // @TODO extension des templates parametrables
-                    var file = options.partials + name + '.mustache';
 
-                    if (grunt.file.exists(file)) {
-
-                        var source = grunt.file.read(file);
-                        var template = _.compile(source);
-                        // var html = template.fn(this, { data: d });
-                        var html = template(d);
-//                        var html = template(d);
-                        // console.log(context);
-                        // context.fn(template,{data:d});
-                        // console.log(context);
-                        return new _.SafeString(html);
-
-                    }
                 } else {
                     return false;
                 }
@@ -173,12 +169,16 @@ module.exports = function (grunt) {
                         d = {
                             index: i
                         };
+//                         console.log(context);
+//                         console.log(this);
+//                         console.log(d);
+//                         console.log("--------");
                         r += context.fn(this, {
                             data: d
-                        }).trim() + grunt.util.linefeed;
+                        });
                     }
                     // @TODO format end line
-                    return new _.SafeString(r.trim());
+                    return new _.SafeString(r);
                 } else {
                     return false;
                 }
@@ -210,29 +210,27 @@ module.exports = function (grunt) {
                         return true;
                     }
                 }).map(function (filepath) {
-                    var json = "",
-                        context = {};
+                    var d = {};
+                    // si un fichier de data json
+                    // est sette dans la config gruntfile
                     if (f.hasOwnProperty('context')) {
-                        json = f.context.trim();
-                        if (json !== "") {
-                            context = grunt.file.readJSON(json);
+                        if (f.context !== "" && grunt.file.exists(f.context)) {
+                            d = grunt.file.readJSON(f.context);
+                        } else {
+                            grunt.log.error("Impossible de charger le fichier " + f.context);
                         }
+                        // sinon on cherche un fichier
+                        // au mm niveau que le fichier mustache
+                        // ou si le data_src est sette dans le dossier
                     } else {
-                        var ext = path.extname(filepath);
-                        //                var dir = path.dirname(filepath);
-                        //                var fname = path.basename(filepath, ext);
-                        json = filepath.split(ext).join(".json");
-                        // Chargement du fichier JSON correspondant
-                        // Au fichier .mustache actuel
-                        if (grunt.file.exists(json)) {
-                            context = grunt.file.readJSON(json);
+                        var temp = path.dirname(filepath) + '/' + options.data_src + path.basename(filepath)
+                            .split(options.extension)
+                            .join(options.data_ext);
+                        if (grunt.file.exists(temp)) {
+                            d = grunt.file.readJSON(temp);
                         }
-
                     }
-                    var source = grunt.file.read(filepath);
-                    var template = handlebars.compile(source);
-                    var html = template(context);
-                    return html;
+                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath))(d));
                 })
                 // Normalize les fins de lignes
                 .join(grunt.util.normalizelf(grunt.util.linefeed));
