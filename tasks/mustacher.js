@@ -200,19 +200,14 @@ module.exports = function (grunt) {
             // Generate random number
             // if no min_max
             // generate random from 0 to 1 decimal
-            _.registerHelper('$rand', function (min_max, context) {
-                context = context || {};
-                if (min_max.length) {
-                    var s = min_max.split('+');
-                    s.push(0);
-                    var f = parseFloat(s[0]);
-                    var t = parseFloat(s[1]);
-                    if (!isNaN(f) && !isNaN(t)) {
-                        return Math.floor((Math.random() * (t - f) + f));
-                    } else {
-                        // @TODO add log error
-                        return false;
-                    }
+            _.registerHelper('$rand', function (context, options) {
+                if (typeof context === 'string') {
+                    context = context.split(':');
+                    var first = parseFloat(context[0]);
+                    console.log(first);
+                    var last = parseFloat(context[1]);
+                    console.log(last);
+                    return Math.floor((Math.random() * (last - first) ) + first);
                 } else {
                     return Math.random();
                 }
@@ -242,8 +237,9 @@ module.exports = function (grunt) {
                     var counts = [];
                     var length = parseFloat(context);
                     for (var j = 0; j < length; j++) {
+                        var is_odd = (j%2);
                         counts.push({
-                            count: (j+1), odd:(j%2), even:(!j%2)
+                            count: (j+1), odd:is_odd, even:!is_odd
                         });
                     }
                     for (var i = 0; i < length; i++) {
