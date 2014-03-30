@@ -60,7 +60,7 @@ module.exports = function (grunt) {
         for (var i = 1; i < arguments.length; i++) {
             for (var key in arguments[i]) {
                 if (obj.hasOwnProperty(key)) {
-                    console.log("Warning duplicate object property");
+//                    console.log("Warning duplicate object property -> "+key);
                 }
                 if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
                     obj[key] = arguments[i][key];
@@ -120,7 +120,7 @@ module.exports = function (grunt) {
                         // pour les variables @ mettre a la racine d' l'objet
                         var abs = { data:{ name: context } };
                         d = concat(d, task.options(), options, this, abs );
-                        console.log(d);
+//                        console.log(d);
 
                         if (!_.Utils.isFunction(_.partials[context])) {
                             f = task.options().partials + context + '.mustache';
@@ -231,15 +231,19 @@ module.exports = function (grunt) {
                         context = context.call(this);
                     }
 
+//                    console.log(options.data);
+
                     if (options.data) {
                         d = _.createFrame(options.data);
                     }
+
+//                    console.log(d);
 
                     var counts = [];
                     var length = parseFloat(context);
                     for (var j = 0; j < length; j++) {
                         counts.push({
-                            count: j
+                            count: (j+1), odd:(i%2), even:(!i%2)
                         });
                     }
                     for (var i = 0; i < length; i++) {
@@ -274,7 +278,7 @@ module.exports = function (grunt) {
         // l'API Grunt supprime les fichiers manquant dans la Gruntfile.js
         // Elles ne sont donc pas disponibles dans la boucle
         if (!this.filesSrc.length) {
-            grunt.log.error('Source file needed.');
+            console.log('Source file needed.');
             return false;
         } else {
             // Recuperation du contenu du fichier
@@ -289,6 +293,7 @@ module.exports = function (grunt) {
                 }).map(function (filepath) {
 
                     var d = {};
+//                    console.log(d);
                     // si un fichier de data json
                     // est sette dans la config gruntfile
                     if (f.hasOwnProperty('context')) {
