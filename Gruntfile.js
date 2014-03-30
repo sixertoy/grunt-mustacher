@@ -46,14 +46,17 @@ module.exports = function (grunt) {
 
         // Configuration to be run (and then tested).
         mustacher: {
+            options: {
+                data_src: 'data/',
+                partials: 'test/fixtures/loops/'
+            },
             repeat: {
-                option: {},
-                files: {
-                    'tmp/repeat.html': 'test/fixtures/repeat.mustache'
-                }
+                files: [{
+                    dest: 'tmp/repeat.html',
+                    src: 'test/fixtures/repeat.mustache'
+                }]
             },
             include: {
-                option: {},
                 files: {
                     'tmp/include.html': 'test/fixtures/include.mustache'
                 }
@@ -79,7 +82,7 @@ module.exports = function (grunt) {
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
     grunt.registerTask('test', ['nodeunit']);
-    grunt.registerTask('all', ['clean', 'mustacher', 'prettify']);
+    grunt.registerTask('all', ['clean', 'mustacher:repeat', 'prettify']);
 
     // By default, lint and run all tests.
     grunt.registerTask('default', ['jshint', 'all']);

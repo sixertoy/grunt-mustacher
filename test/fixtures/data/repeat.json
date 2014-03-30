@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "value": "item un",
+            "key": "entete"
+        }, {
+            "value": "item deux",
+            "key": "entete"
+        }, {
+            "value": "item trois",
+            "key": "entete"
+        }
+    ],
+    "toto": [
+        {
+            "value": "toto un",
+            "key": "entete"
+        }, {
+            "value": "toto deux",
+            "key": "entete"
+        }, {
+            "value": "toto trois",
+            "key": "entete"
+        }
+    ]
+}

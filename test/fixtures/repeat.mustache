@@ -9,27 +9,15 @@
     </head>
     <body>
         <h1>Repeat Helper</h1>
-        <h2>Repeat 4</h2>
+        <h2>Repeat 2</h2>
         <p>
-            {{#repeat '4'}}
-            <b>Hello - {{@index}}</b>
-            {{/repeat}}
-        </p>
-        <h2>Is First</h2>
-        <p>
-            {{#repeat '4'}}
-            {{#if @first}}
-            <b>Hello - first {{@index}}</b>
-            {{/if}}
-            {{/repeat}}
-        </p>
-        <h2>Is Last</h2>
-        <p>
-            {{#repeat '4'}}
-            {{#if @last}}
-            <b>Hello - last {{@index}}</b>
-            {{/if}}
-            {{/repeat}}
+        {{#repeat '3'}}
+        <ul class="index{{@index}}">
+        {{#each toto}}
+            <li>{{value}} {{@index}}</li>
+        {{/each}}
+        </ul>
+        {{/repeat}}
         </p>
     </body>
 </html>

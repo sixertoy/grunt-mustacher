@@ -132,85 +132,114 @@ module.exports = function (grunt) {
             });
 
             // Inclusion de partials de type handlebars
-            _.registerHelper('$include', function (context, options) {
-                var r = '',
-                    m, c, d;
+            // @see http://jsfiddle.net/dain/NRjUb/
+            _.registerHelper('$include', function (name, context) {
+                var f, m,
+                    d = name || {};
                 if (arguments.length > 1) {
-                    console.log(context);
-                    console.log(options);
-                }
-                else
-                {
-                    return false;
-                }
-                /*
-                context = context || {};
-                if (name.length) {
-                    var f = '',
-                        d = {},
-                        o = task.options(),
-                        p = path.resolve();
 
+                    d = {};
                     d = _.createFrame(context.data);
-                    d = _.Utils.extend(d, this);
+                    d = _.Utils.extend(d, {
+                        data: this
+                    });
+                    //                    console.log(d);
 
-
-                    console.log(d);
-                    console.log("--------------");
-
-
-                    f = o.partials + name + '.mustache';
+                    f = task.options().partials + name + '.mustache';
                     if (grunt.file.exists(f)) {
-                        return new _.SafeString(_.compile(grunt.file.read(f))(d));
+                        f = grunt.file.read(f);
+                        f = _.compile(f);
+                        return new _.SafeString(f(d));
                     } else {
+                        m = "Template '" + name + "'not found in '" + task.options().partials + "'";
+                        grunt.log.error(m);
                         return false;
                     }
-
+                    //                    console.log(d);
                 } else {
                     return false;
                 }
-                */
             });
+
+            /*
+equals(
+    template
+    (
+        {
+            array:
+            [
+                {name: 'foo'},
+                {name: 'bar'}
+            ]
+        },
+        {
+            helpers:
+            {
+                wycats: function(name, options)
+                {
+                    return name + ':' + options.data.contextPath + '\n';
+                }
+            }
+        }
+    ),
+    'foo:array.0\nbar:array.1\n'
+);
+*/
 
             // Simple boucle permettant la repetition d'element
             // index est en argument
             _.registerHelper('repeat', function (context, options) {
-                var r = '',
-                    m, c, d;
+                var m, c,
+                    r = '',
+                    d = {};
                 if (arguments.length > 1) {
 
-                    // @TODO context path pour heritage dans les templates
-                    // var contextPath;
-                    // if (options.data && options.ids) {
-                    // contextPath = _.Utils.appendContextPath(options.data.contextPath, options.ids[0] + '.');
-                    // console.log(contextPath);
-                    // }
-                    // console.log(_.Utils.isFunction(context));
-                    // if(_.Utils.isFunction(context)){ context = context.call(this);}
+                    if (!options) {
+                        options = context;
+                        context = this;
+                    }
+//                    var inverse = options.inverse;
+
+                    var contextPath;
+                    if (options.data && options.ids) {
+                        contextPath = _.Utils.appendContextPath(options.data.contextPath, 'array') + '.';
+                    }
+                    if (_.Utils.isFunction(context)) {
+                        context = context.call(this);
+                    }
 
                     if (options.data) {
                         d = _.createFrame(options.data);
                     }
-
                     c = util.format('%d', context);
-                    for (var i = 0; i < c; i++) {
-                        d = _.Utils.extend(d, {
+
+                    for ( var i = 0; i < c; i++) {
+                        d = _.Utils.extend(d,
+                        {
                             index: i,
                             first: (i === 0),
                             last: (i === (c - 1))
                         });
-                        var temp = options.fn(this, {
-                            data: d
-                        });
-                        r += temp;
+                        if (contextPath)
+                        {
+                            d.contextPath = contextPath + i;
+                        }
+
+                        r += options.fn(this, { data: d });
                     }
                     return r;
 
+                    //                    console.log(d);
+                    /*
+                    if (options.data) {
+                        d = _.createFrame(options.data);
+                    }
 
+                    */
                 } else {
-                    m = "Handlebars Repeat helper a besoin d'un argument type string";
-                    grunt.log.error(m);
-                    _debug(context, m);
+                    //                    m = "Handlebars Repeat helper a besoin d'un argument type string";
+                    //                    grunt.log.error(m);
+                    //                    _debug(context, m);
                     return false;
                 }
             });
@@ -261,7 +290,9 @@ module.exports = function (grunt) {
                             d = grunt.file.readJSON(temp);
                         }
                     }
-                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath))(d));
+                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath), {
+                        trackIds: true
+                    })(d));
                 })
                 // Normalize les fins de lignes
                 .join(grunt.util.normalizelf(grunt.util.linefeed));
