@@ -11,13 +11,22 @@
         <h1>Repeat Helper</h1>
         <h2>Repeat 2</h2>
         <p>
-        {{#each toto}}
-        <ul class="toto{{@index}}">
+        <ul class="">
         {{#repeat '4'}}
-            <li class="count{{@index}}">{{value}}/{{../value}}</li>
+            {{#if @last}}
+            <li>Group {{@index}} last</li>
+            {{else}}
+                {{#if @first}}
+                <li>Group {{@index}} first</li>
+                {{else}}
+                <li>Group {{@index}}</li>
+                {{/if}}
+            {{/if}}
+            {{#each ../items}}
+            <li class="item{{@index}} {{#if @last}}last{{else}}{{#if @first}}first{{/if}}{{/if}}">{{value}} - {{../count}}</li>
+            {{/each}}
         {{/repeat}}
         </ul>
-        {{/each}}
         </p>
     </body>
 </html>

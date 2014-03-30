@@ -161,73 +161,36 @@ module.exports = function (grunt) {
                 }
             });
 
-            /*
-equals(
-    template
-    (
-        {
-            array:
-            [
-                {name: 'foo'},
-                {name: 'bar'}
-            ]
-        },
-        {
-            helpers:
-            {
-                wycats: function(name, options)
-                {
-                    return name + ':' + options.data.contextPath + '\n';
-                }
-            }
-        }
-    ),
-    'foo:array.0\nbar:array.1\n'
-);
-*/
-
             // Simple boucle permettant la repetition d'element
             // index est en argument
             // on accede
             _.registerHelper('repeat', function (context, options) {
-                var i = 0,
-                    r = '',
-                    d = {},
-                    c = '';
+                var r = "", d = {};
+
                 if (arguments.length > 1) {
 
-//                    console.log(options.data._parent);
-
-                    if (options.data && options.ids) {
-                        c = _.Utils.appendContextPath(options.data.contextPath, options.name) + '.';
+                    if (_.Utils.isFunction(context)) {
+                        context = context.call(this);
                     }
-                    context = util.format('%d', context);
 
                     if (options.data) {
-                        var p = {
-                            repeat: []
-                        };
-                        for (i = 0; i < context; i++) {
-                            p.repeat.push({
-                                count: i
-                            });
-                        }
-                        var o = _.Utils.extend(options.data, p);
-                        d = _.createFrame(o);
+                        d = _.createFrame(options.data);
                     }
-                    d.ids = ['repeat'];
 
-                    for (i = 0; i < context; i++) {
-                        d.count = i;
-                        d.first = (i === 0);
-                        d.last = (i === (context - 1));
-                        if (c) {
-                            d.contextPath = c + i;
+                    var counts = [];
+                    var length = parseFloat(context);
+                    for( var j = 0; j < length; j++ )
+                    {
+                        counts.push( { count:j } );
+                    }
+                    for (var i = 0; i < length; i++) {
+                        if( d )
+                        {
+                            d.index=i;
+                            d.first=( i === 0 );
+                            d.last=( i === ( length - 1 ) );
                         }
-//                        console.log(d);
-                        r += options.fn(this, {
-                            data: d
-                        });
+                        r += options.fn( counts[i], { data:d } );
                     }
                     return r;
                 } else {
@@ -264,8 +227,8 @@ equals(
                         return true;
                     }
                 }).map(function (filepath) {
+
                     var d = {};
-                    var name = path.basename(filepath).split(options.extension).join('');
                     // si un fichier de data json
                     // est sette dans la config gruntfile
                     if (f.hasOwnProperty('context')) {
@@ -278,21 +241,12 @@ equals(
                         // au mm niveau que le fichier mustache
                         // ou si le data_src est sette dans le dossier
                     } else {
-                        var temp = path.dirname(filepath) + '/' + options.data_src + path.basename(filepath)
-                            .split(options.extension)
-                            .join(options.data_ext);
+                        var temp = path.dirname(filepath) + '/' + options.data_src + path.basename(filepath).split(options.extension).join(options.data_ext);
                         if (grunt.file.exists(temp)) {
                             d = grunt.file.readJSON(temp);
                         }
                     }
-//                    d.ids = [];
-//                    d.ids.push( name);
-//                    d.data = {};
-//                    console.log(name);
-//                    d.data.contextPath = name;
-                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath), {
-                        trackIds: true
-                    })(d));
+                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath), {})(d));
                 })
                 // Normalize les fins de lignes
                 .join(grunt.util.normalizelf(grunt.util.linefeed));
