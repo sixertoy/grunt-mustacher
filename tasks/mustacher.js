@@ -243,7 +243,7 @@ module.exports = function (grunt) {
                     var length = parseFloat(context);
                     for (var j = 0; j < length; j++) {
                         counts.push({
-                            count: (j+1), odd:(i%2), even:(!i%2)
+                            count: (j+1), odd:(j%2), even:(!j%2)
                         });
                     }
                     for (var i = 0; i < length; i++) {
