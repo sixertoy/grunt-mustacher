@@ -47,47 +47,11 @@ exports.mustacher = {
         // setup here if necessary
         done();
     },
-    /*
-    single_files: function (test) {
-        // files{ 'fichier.html':'fichier.mustache'}
-        // Pas de JSON
-        test.expect();
-        var actual = grunt.file.read('tmp/index.html');
-        var expected = grunt.file.read('test/expected/index.html');
-        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
-        test.done();
-    },
-    single_files_autocontext: function (test) {
-        // files{ 'fichier.html':'fichier.mustache'}
-        // Recuperation du JSON si existant
-        test.expect();
-        var actual = grunt.file.read('tmp/autocontext.html');
-        var expected = grunt.file.read('test/expected/autocontext.html');
-        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
-        test.done();
-    },
-    single_files_context: function (test) {
-        // files{ src:'fichier.html',dest:'fichier.mustache',context:'fichier.json'}
-        // JSON dans la config 'context'
-        test.expect();
-        var actual = grunt.file.read('tmp/context.html');
-        var expected = grunt.file.read('test/expected/context.html');
-        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
-        test.done();
-    },
-    placehold: function (test) {
-        test.expect();
-        var actual = grunt.file.read('tmp/placehold.html');
-        var expected = grunt.file.read('test/expected/placehold.html');
-        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
-        test.done();
-    },
-    */
-    imports: function (test) {
-        test.expect();
-        var actual = grunt.file.read('tmp/import.html');
-        var expected = grunt.file.read('test/expected/import.html');
-        test.equal(actual, expected, 'HTML has been parsed by mustache/handlebars and equal fail.');
+    repeat: function (test) {
+        test.expect(1);
+        var actual = grunt.file.read('tmp/p/repeat.html');
+        var expected = grunt.file.read('test/expected/repeat.html');
+        test.equal(actual, expected, 'Handlebars Repeat helper test fail.');
         test.done();
     },
 };

@@ -28,68 +28,34 @@ module.exports = function (grunt) {
             tests: ['tmp/*'],
         },
 
+        // Prettify HTML code
+        prettify: {
+            options: {
+                indent: 4
+            },
+            defaults: {
+                files: [{
+                    expand: true,
+                    cwd: 'tmp/',
+                    src: ['*.html'],
+                    dest: 'tmp/p/',
+                    ext: '.html'
+            }],
+            },
+        },
+
         // Configuration to be run (and then tested).
         mustacher: {
-            single_files: {
-                options: {
-                    data_ext: '.json',
-                    partials: 'test/fixtures/'
-                },
+            repeat: {
+                option: {},
                 files: {
-                    'tmp/index.html': 'test/fixtures/index.mustache',
-                },
-            },
-            single_files_autocontext: {
-                options: {
-                    data_ext: '.json',
-                    partials: 'test/fixtures/'
-                },
-                files: {
-                    'tmp/autocontext.html': 'test/fixtures/autocontext.mustache',
-                },
-            },
-            single_files_context: {
-                options: {
-                    partials: 'test/fixtures/loops'
-                },
-                files: [
-                    {
-                        dest: 'tmp/context.html',
-                        src: 'test/fixtures/context.mustache',
-                        context: 'test/fixtures/context.json'
-                    },
-                ],
-            },
-            multiple_files: {
-                options: {
-                    data_ext: '.json',
-                    partials: 'test/fixtures/loops/'
-                },
-                files: [
-                    {
-                        expand: true,
-                        dest: 'tmp/',
-                        ext: '.html',
-                        src: '*.mustache',
-                        cwd: 'test/fixtures/'
-                    },
-                ],
-            },
-            placehold: {
-                options: {
-                    data_src: 'data/'
-                },
-                files: {
-                    'tmp/placehold.html': 'test/fixtures/placehold.mustache'
+                    'tmp/repeat.html': 'test/fixtures/repeat.mustache'
                 }
             },
-            imports: {
-                options: {
-                    data_src: 'data/',
-                    partials:'test/fixtures/loops/'
-                },
+            include: {
+                option: {},
                 files: {
-                    'tmp/import.html': 'test/fixtures/import.mustache'
+                    'tmp/include.html': 'test/fixtures/include.mustache'
                 }
             },
         },
@@ -105,16 +71,17 @@ module.exports = function (grunt) {
     grunt.loadTasks('tasks');
 
     // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-prettify');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'mustacher:imports']);
-    //    grunt.registerTask('test', ['clean', 'mustacher:multiple_files', 'nodeunit']);
+    grunt.registerTask('test', ['nodeunit']);
+    grunt.registerTask('all', ['clean', 'mustacher', 'prettify']);
 
     // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'test']);
+    grunt.registerTask('default', ['jshint', 'all']);
 
 };

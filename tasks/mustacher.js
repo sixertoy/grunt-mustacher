@@ -18,9 +18,15 @@
 module.exports = function (grunt) {
 
     var path = require('path'),
+        util = require('util'),
         digits = require('digits'),
         lorem = require('lorem-ipsum'),
         handlebars = require('handlebars');
+
+    function _debug(context, msg) {
+        console.log(context); // @TODO ajout du nom du template au message d'erreur
+        grunt.log.debug('DEBUG :: ' + msg);
+    }
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
@@ -126,7 +132,18 @@ module.exports = function (grunt) {
             });
 
             // Inclusion de partials de type handlebars
-            _.registerHelper('$include', function (name, context) {
+            _.registerHelper('$include', function (context, options) {
+                var r = '',
+                    m, c, d;
+                if (arguments.length > 1) {
+                    console.log(context);
+                    console.log(options);
+                }
+                else
+                {
+                    return false;
+                }
+                /*
                 context = context || {};
                 if (name.length) {
                     var f = '',
@@ -135,7 +152,7 @@ module.exports = function (grunt) {
                         p = path.resolve();
 
                     d = _.createFrame(context.data);
-                    d = _.Utils.extend( d, this );
+                    d = _.Utils.extend(d, this);
 
 
                     console.log(d);
@@ -152,34 +169,48 @@ module.exports = function (grunt) {
                 } else {
                     return false;
                 }
+                */
             });
 
             // Simple boucle permettant la repetition d'element
             // index est en argument
-            _.registerHelper('repeat', function (count, context) {
-                context = context || {};
-                if (count.length) {
-                    var r = '',
-                        d = {},
-                        c = parseFloat(count);
-                    if (context.data) {
-                        d = _.createFrame(context.data);
+            _.registerHelper('repeat', function (context, options) {
+                var r = '',
+                    m, c, d;
+                if (arguments.length > 1) {
+
+                    // @TODO context path pour heritage dans les templates
+                    // var contextPath;
+                    // if (options.data && options.ids) {
+                    // contextPath = _.Utils.appendContextPath(options.data.contextPath, options.ids[0] + '.');
+                    // console.log(contextPath);
+                    // }
+                    // console.log(_.Utils.isFunction(context));
+                    // if(_.Utils.isFunction(context)){ context = context.call(this);}
+
+                    if (options.data) {
+                        d = _.createFrame(options.data);
                     }
+
+                    c = util.format('%d', context);
                     for (var i = 0; i < c; i++) {
-                        d = {
-                            index: i
-                        };
-//                         console.log(context);
-//                         console.log(this);
-//                         console.log(d);
-//                         console.log("--------");
-                        r += context.fn(this, {
+                        d = _.Utils.extend(d, {
+                            index: i,
+                            first: (i === 0),
+                            last: (i === (c - 1))
+                        });
+                        var temp = options.fn(this, {
                             data: d
                         });
+                        r += temp;
                     }
-                    // @TODO format end line
-                    return new _.SafeString(r);
+                    return r;
+
+
                 } else {
+                    m = "Handlebars Repeat helper a besoin d'un argument type string";
+                    grunt.log.error(m);
+                    _debug(context, m);
                     return false;
                 }
             });

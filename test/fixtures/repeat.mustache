@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <h1>Repeat Helper</h1>
+        <h2>Repeat 4</h2>
+        <p>
+            {{#repeat '4'}}
+            <b>Hello - {{@index}}</b>
+            {{/repeat}}
+        </p>
+        <h2>Is First</h2>
+        <p>
+            {{#repeat '4'}}
+            {{#if @first}}
+            <b>Hello - first {{@index}}</b>
+            {{/if}}
+            {{/repeat}}
+        </p>
+        <h2>Is Last</h2>
+        <p>
+            {{#repeat '4'}}
+            {{#if @last}}
+            <b>Hello - last {{@index}}</b>
+            {{/if}}
+            {{/repeat}}
+        </p>
+    </body>
+</html>
