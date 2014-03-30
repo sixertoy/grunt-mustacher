@@ -54,25 +54,45 @@ module.exports = function (grunt) {
         lorem = require('lorem-ipsum'),
         handlebars = require('handlebars');
 
+    var toString = Object.prototype.toString;
+
+    function concat(obj /* ... sources */ ) {
+        for (var i = 1; i < arguments.length; i++) {
+            for (var key in arguments[i]) {
+                if (obj.hasOwnProperty(key)) {
+                    console.log("Warning duplicate object property");
+                }
+                if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+                    obj[key] = arguments[i][key];
+                }
+            }
+        }
+        return obj;
+    }
+
+    /*
     function _debug(context, msg) {
         console.log(context); // @TODO ajout du nom du template au message d'erreur
         grunt.log.debug('DEBUG :: ' + msg);
     }
+    */
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
     grunt.registerMultiTask('mustacher', 'The best Grunt plugin ever.', function () {
 
-        // Merge task-specific and/or target-specific options with these defaults.
-        var options = this.options({
+        var defaults = {
             data_src: '',
             data_ext: '.json',
             partials: undefined,
             // @TODO changement de l'extension
             // des partials/templates
             extension: '.mustache'
-        });
+        };
+
+        // Merge task-specific and/or target-specific options with these defaults.
+        var options = this.options(defaults);
 
         /* *******************************
 
@@ -83,7 +103,43 @@ module.exports = function (grunt) {
 
             // on stocke la source des partials dans un array
             // pour optimisation
-            _.partials = [];
+            _.partials = {};
+
+            // Inclusion de partials de type handlebars
+            // @see http://jsfiddle.net/dain/NRjUb/
+            _.registerHelper('$include', function (context, options) {
+                var d, f, fn;
+
+                if (arguments.length > 1) {
+
+                    if (typeof context === 'string') {
+
+                        if (options.data) {
+                            d = _.createFrame(options.data);
+                        }
+                        // pour les variables @ mettre a la racine d' l'objet
+                        var abs = { data:{ name: context } };
+                        d = concat(d, task.options(), options, this, abs );
+                        console.log(d);
+
+                        if (!_.Utils.isFunction(_.partials[context])) {
+                            f = task.options().partials + context + '.mustache';
+                            fn = _.compile(grunt.file.read(f));
+                            _.partials[context] = fn;
+                        } else {
+                            fn = _.partials[context];
+                        }
+                        // @TODO Evite les infinite loops
+                        //                        _.partials[n].name = context;
+                        var output = fn(d).replace(/^\s+/, '');
+                        return new _.SafeString(output);
+                    } else {
+                        // @TODO chargement des objects
+                    }
+                } else {
+                    return false;
+                }
+            });
 
             // Generate random lorem ipsum
             // @see https://www.npmjs.org/package/lorem-ipsum
@@ -162,41 +218,12 @@ module.exports = function (grunt) {
                 }
             });
 
-            // Inclusion de partials de type handlebars
-            // @see http://jsfiddle.net/dain/NRjUb/
-            _.registerHelper('$include', function (name, context) {
-                var f, m,
-                    d = name || {};
-                if (arguments.length > 1) {
-
-                    d = {};
-                    d = _.createFrame(context.data);
-                    d = _.Utils.extend(d, {
-                        data: this
-                    });
-                    //                    console.log(d);
-
-                    f = task.options().partials + name + '.mustache';
-                    if (grunt.file.exists(f)) {
-                        f = grunt.file.read(f);
-                        f = _.compile(f);
-                        return new _.SafeString(f(d));
-                    } else {
-                        m = "Template '" + name + "'not found in '" + task.options().partials + "'";
-                        grunt.log.error(m);
-                        return false;
-                    }
-                    //                    console.log(d);
-                } else {
-                    return false;
-                }
-            });
-
             // Simple boucle permettant la repetition d'element
             // index est en argument
             // on accede
             _.registerHelper('repeat', function (context, options) {
-                var r = "", d = {};
+                var r = "",
+                    d = {};
 
                 if (arguments.length > 1) {
 
@@ -210,18 +237,20 @@ module.exports = function (grunt) {
 
                     var counts = [];
                     var length = parseFloat(context);
-                    for( var j = 0; j < length; j++ )
-                    {
-                        counts.push( { count:j } );
+                    for (var j = 0; j < length; j++) {
+                        counts.push({
+                            count: j
+                        });
                     }
                     for (var i = 0; i < length; i++) {
-                        if( d )
-                        {
-                            d.index=i;
-                            d.first=( i === 0 );
-                            d.last=( i === ( length - 1 ) );
+                        if (d) {
+                            d.index = i;
+                            d.first = (i === 0);
+                            d.last = (i === (length - 1));
                         }
-                        r += options.fn( counts[i], { data:d } );
+                        r += options.fn(counts[i], {
+                            data: d
+                        });
                     }
                     return r;
                 } else {

@@ -8,6 +8,11 @@
 <meta name="viewport" content="width=device-width">
 </head>
 <body>
+    <ul>
+    {{#each items}}
+        <li class="item{{@index}}">{{value}}</li>
+    {{/each}}
+    </ul>
     <h1>Include</h1>
     {{$include 'included'}}
 </body>

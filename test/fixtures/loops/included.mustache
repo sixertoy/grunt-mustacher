@@ -1,6 +1,6 @@
 <h2>Sous level</h2>
-<ul>
-{{#each @items}}
-<li>{{value}}</li>
+<ul class="{{@name}}">
+{{#each items}}
+    <li class="item{{@index}}">{{value}}</li>
 {{/each}}
 </ul>
