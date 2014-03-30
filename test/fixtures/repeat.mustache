@@ -23,7 +23,7 @@
                 {{/if}}
             {{/if}}
             {{#each ../items}}
-            <li class="item{{@index}} {{#if @last}}last{{else}}{{#if @first}}first{{/if}}{{/if}}">{{value}} - {{../count}}</li>
+            <li class="item{{@index}} {{#if @last}}last{{/if}}{{#if @first}}first{{/if}}">{{value}} - {{../count}}</li>
             {{/each}}
         {{/repeat}}
         </ul>
