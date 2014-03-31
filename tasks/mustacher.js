@@ -88,7 +88,7 @@ module.exports = function (grunt) {
             partials: undefined,
             // @TODO changement de l'extension
             // des partials/templates
-            extension: '.mustache'
+            extension: '.hbs'
         };
 
         // Merge task-specific and/or target-specific options with these defaults.
@@ -123,9 +123,17 @@ module.exports = function (grunt) {
 //                        console.log(d);
 
                         if (!_.Utils.isFunction(_.partials[context])) {
-                            f = task.options().partials + context + '.mustache';
-                            fn = _.compile(grunt.file.read(f));
-                            _.partials[context] = fn;
+                            f = task.options().partials + context + task.options().extension;
+                            if( !grunt.file.exists(f) )
+                            {
+                                grunt.log.error( "Unable to find source " + f );
+                                return false;
+                            }
+                            else
+                            {
+                                fn = _.compile(grunt.file.read(f));
+                                _.partials[context] = fn;
+                            }
                         } else {
                             fn = _.partials[context];
                         }
@@ -204,9 +212,9 @@ module.exports = function (grunt) {
                 if (typeof context === 'string') {
                     context = context.split(':');
                     var first = parseFloat(context[0]);
-                    console.log(first);
+//                    console.log(first);
                     var last = parseFloat(context[1]);
-                    console.log(last);
+//                    console.log(last);
                     return Math.floor((Math.random() * (last - first) ) + first);
                 } else {
                     return Math.random();
