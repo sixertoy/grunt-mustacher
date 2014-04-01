@@ -57,26 +57,19 @@ module.exports = function (grunt) {
     var toString = Object.prototype.toString;
 
 
-    function isJSONContext(context)
-    {
+    function isJSONContext(context) {
         var length = context.length;
         return (
-            ( typeof(context) === 'string')
-            && ( context.indexOf('{') === 0 )
-            && ( context.lastIndexOf('}') === (length-1) )
+            (typeof (context) === 'string') && (context.indexOf('{') === 0) && (context.lastIndexOf('}') === (length - 1))
         );
     }
 
-    function parseContext(extras)
-    {
-        if(isJSONContext(extras))
-        {
+    function parseContext(extras) {
+        if (isJSONContext(extras)) {
             var msg = "ERROR :: mustacher.parseJSONContext() :: L'argument attendu de type JSON";
-            try
-            {
+            try {
                 return (JSON.parse(extras));
-            }catch(e)
-            {
+            } catch (e) {
                 throw new Error(msg);
             }
         }
@@ -87,7 +80,7 @@ module.exports = function (grunt) {
         for (var i = 1; i < arguments.length; i++) {
             for (var key in arguments[i]) {
                 if (obj.hasOwnProperty(key)) {
-                    grunt.log.debug("Warning duplicate object property -> "+key);
+                    grunt.log.debug("Warning duplicate object property -> " + key);
                 }
                 if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
                     obj[key] = arguments[i][key];
@@ -134,8 +127,7 @@ module.exports = function (grunt) {
 
                 if (arguments.length > 1) {
 
-                    if (arguments.length <= 2)
-                    {
+                    if (arguments.length <= 2) {
                         context = context;
                         options = extras;
                         extras = {};
@@ -143,34 +135,34 @@ module.exports = function (grunt) {
 
                     extras = parseContext(extras);
 
-                    if(
+                    if (
                         typeof context === 'string'
-                    ){
+                    ) {
 
                         if (options.data) {
                             d = _.createFrame(options.data);
                         }
 
                         // pour les variables @ mettre a la racine d' l'objet
-                        var abs = { data:{ name:context }, name:context };
+                        var abs = {
+                            data: {
+                                name: context
+                            },
+                            name: context
+                        };
                         abs.data = concat(abs.data, extras);
-                        abs = concat( abs, extras );
+                        abs = concat(abs, extras);
 
-                        d = concat(d, task.options(), options, this, abs );
+                        d = concat(d, task.options(), options, this, abs);
 
-                        if(
-                            ( typeof _.partials[context] !== 'object' )
-                            || !_.Utils.isFunction(_.partials[context].fn)
-                        )
-                        {
+                        if (
+                            (typeof _.partials[context] !== 'object') || !_.Utils.isFunction(_.partials[context].fn)
+                        ) {
                             f = task.options().partials + context + task.options().extension;
-                            if( !grunt.file.exists(f) )
-                            {
-                                grunt.log.error( "Unable to find source " + f );
+                            if (!grunt.file.exists(f)) {
+                                grunt.log.error("Unable to find source " + f);
                                 return false;
-                            }
-                            else
-                            {
+                            } else {
                                 fn = _.compile(grunt.file.read(f));
                                 _.partials[context] = {};
                                 _.partials[context].fn = fn;
@@ -181,10 +173,10 @@ module.exports = function (grunt) {
                             fn = _.partials[context].fn;
                         }
                         // @TODO Evite les infinite loops
-                        var after = "<!-- endof "+f+"-->";
-                        var before = "<!-- "+f+"-->";
+                        var after = "<!-- endof " + f + "-->";
+                        var before = "<!-- " + f + "-->";
                         var output = fn(d).replace(/^\s+/, '').replace(/^\t+/, '');
-                        output = ( before + output + after );
+                        output = (before + output + after);
                         return new _.SafeString(output);
                     } else {
                         // @TODO chargement des objects
@@ -258,7 +250,7 @@ module.exports = function (grunt) {
                     context = context.split(':');
                     var first = parseFloat(context[0]);
                     var last = parseFloat(context[1]);
-                    return Math.floor((Math.random() * (last - first) ) + first);
+                    return Math.floor((Math.random() * (last - first)) + first);
                 } else {
                     return Math.random();
                 }
@@ -267,33 +259,48 @@ module.exports = function (grunt) {
             // Simple boucle permettant la repetition d'element
             // index est en argument
             // on accede
-            _.registerHelper('repeat', function (context, options) {
+            _.registerHelper('repeat', function (context, extras, options) {
                 var r = "",
                     d = {};
 
                 if (arguments.length > 1) {
 
-                    context = parseContext(context);
+                    if (arguments.length <= 2) {
+                        context = context;
+                        options = extras;
+                        extras = {};
+                    }
+
+                    extras = parseContext(extras);
 
                     if (_.Utils.isFunction(context)) {
                         context = context.call(this);
                     }
 
-                    if (typeof context === 'string' )
-                    {
-                        // pour les variables @ mettre a la racine d' l'objet
-                        var abs = { data:{ name: context } };
-                    }
-                    else
-                    {
+                    // pour les variables @ mettre a la racine d' l'objet
+                    /*
+                    var abs = { data: { name: context } };
+                    abs.data = concat(abs.data, extras);
+                    abs = concat(abs, extras);
+                    */
+
+//                    d = concat(d, task.options(), options, this, abs);
+
+                    /*
+                    if (typeof context === 'string') {} else {
                         // pour les variables @ mettre a la racine d' l'objet
                         //var abs = concat( {}, context.context, { data:context } );
-                        var abs = { data:context.context };
+                        var abs = {
+                            data: context.context
+                        };
                         abs.name = context.name;
                         abs = concat(abs, context.context);
-                        abs.data = concat(abs.data, {name:context.name} );
+                        abs.data = concat(abs.data, {
+                            name: context.name
+                        });
                         context = context.name;
                     }
+                    */
 
                     if (options.data) {
                         d = _.createFrame(options.data);
@@ -302,9 +309,11 @@ module.exports = function (grunt) {
                     var counts = [];
                     var length = parseFloat(context);
                     for (var j = 0; j < length; j++) {
-                        var is_odd = (j%2);
+                        var is_odd = (j % 2);
                         counts.push({
-                            count: (j+1), odd:is_odd, even:!is_odd
+                            count: (j + 1),
+                            odd: is_odd,
+                            even: !is_odd
                         });
                     }
                     for (var i = 0; i < length; i++) {
