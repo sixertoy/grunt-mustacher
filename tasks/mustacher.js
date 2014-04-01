@@ -139,14 +139,31 @@ module.exports = function (grunt) {
 
                     context = parseContext(context);
 
-                    if (typeof context === 'string') {
+                    if(
+                        typeof context === 'string'
+                        || typeof context === 'object'
+                    ){
 
                         if (options.data) {
                             d = _.createFrame(options.data);
                         }
 
-                        // pour les variables @ mettre a la racine d' l'objet
-                        var abs = { data:{ name: context } };
+                        if (typeof context === 'string' )
+                        {
+                            // pour les variables @ mettre a la racine d' l'objet
+                            var abs = { data:{ name: context } };
+                        }
+                        else
+                        {
+                            // pour les variables @ mettre a la racine d' l'objet
+                            //var abs = concat( {}, context.context, { data:context } );
+                            var abs = { data:context.context };
+                            abs.name = context.name;
+                            abs = concat(abs, context.context);
+                            abs.data = concat(abs.data, {name:context.name} );
+                            context = context.name;
+                        }
+
                         d = concat(d, task.options(), options, this, abs );
 
                         if(
@@ -264,7 +281,7 @@ module.exports = function (grunt) {
 
                 if (arguments.length > 1) {
 
-
+                    context = parseContext(context);
 
                     if (_.Utils.isFunction(context)) {
                         context = context.call(this);
