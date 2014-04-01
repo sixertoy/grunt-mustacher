@@ -67,23 +67,20 @@ module.exports = function (grunt) {
         );
     }
 
-    function parseContext(context)
+    function parseContext(extras)
     {
-        if(isJSONContext(context))
+        if(isJSONContext(extras))
         {
             var msg = "ERROR :: mustacher.parseJSONContext() :: L'argument attendu de type JSON";
             try
             {
-                return (JSON.parse(context));
+                return (JSON.parse(extras));
             }catch(e)
             {
                 throw new Error(msg);
             }
         }
-        else
-        {
-            return context;
-        }
+        return extras;
     }
 
     function concat(obj /* ... sources */ ) {
@@ -132,37 +129,32 @@ module.exports = function (grunt) {
 
             // Inclusion de partials de type handlebars
             // @see http://jsfiddle.net/dain/NRjUb/
-            _.registerHelper('$include', function (context, options) {
+            _.registerHelper('$include', function (context, extras, options) {
                 var a, d, f, fn;
 
                 if (arguments.length > 1) {
 
-                    context = parseContext(context);
+                    if (arguments.length <= 2)
+                    {
+                        context = context;
+                        options = extras;
+                        extras = {};
+                    }
+
+                    extras = parseContext(extras);
 
                     if(
                         typeof context === 'string'
-                        || typeof context === 'object'
                     ){
 
                         if (options.data) {
                             d = _.createFrame(options.data);
                         }
 
-                        if (typeof context === 'string' )
-                        {
-                            // pour les variables @ mettre a la racine d' l'objet
-                            var abs = { data:{ name: context } };
-                        }
-                        else
-                        {
-                            // pour les variables @ mettre a la racine d' l'objet
-                            //var abs = concat( {}, context.context, { data:context } );
-                            var abs = { data:context.context };
-                            abs.name = context.name;
-                            abs = concat(abs, context.context);
-                            abs.data = concat(abs.data, {name:context.name} );
-                            context = context.name;
-                        }
+                        // pour les variables @ mettre a la racine d' l'objet
+                        var abs = { data:{ name:context }, name:context };
+                        abs.data = concat(abs.data, extras);
+                        abs = concat( abs, extras );
 
                         d = concat(d, task.options(), options, this, abs );
 
@@ -285,6 +277,22 @@ module.exports = function (grunt) {
 
                     if (_.Utils.isFunction(context)) {
                         context = context.call(this);
+                    }
+
+                    if (typeof context === 'string' )
+                    {
+                        // pour les variables @ mettre a la racine d' l'objet
+                        var abs = { data:{ name: context } };
+                    }
+                    else
+                    {
+                        // pour les variables @ mettre a la racine d' l'objet
+                        //var abs = concat( {}, context.context, { data:context } );
+                        var abs = { data:context.context };
+                        abs.name = context.name;
+                        abs = concat(abs, context.context);
+                        abs.data = concat(abs.data, {name:context.name} );
+                        context = context.name;
                     }
 
                     if (options.data) {
