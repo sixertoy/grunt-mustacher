@@ -56,6 +56,36 @@ module.exports = function (grunt) {
 
     var toString = Object.prototype.toString;
 
+
+    function isJSONContext(context)
+    {
+        var length = context.length;
+        return (
+            ( typeof(context) === 'string')
+            && ( context.indexOf('{') === 0 )
+            && ( context.lastIndexOf('}') === (length-1) )
+        );
+    }
+
+    function parseContext(context)
+    {
+        if(isJSONContext(context))
+        {
+            var msg = "ERROR :: mustacher.parseJSONContext() :: L'argument attendu de type JSON";
+            try
+            {
+                return (JSON.parse(context));
+            }catch(e)
+            {
+                throw new Error(msg);
+            }
+        }
+        else
+        {
+            return context;
+        }
+    }
+
     function concat(obj /* ... sources */ ) {
         for (var i = 1; i < arguments.length; i++) {
             for (var key in arguments[i]) {
@@ -103,24 +133,17 @@ module.exports = function (grunt) {
             // Inclusion de partials de type handlebars
             // @see http://jsfiddle.net/dain/NRjUb/
             _.registerHelper('$include', function (context, options) {
-                var d, f, fn;
-
-//                var temp = eval(context);
-                console.log(typeof context);
-
-                /*
-                console.log(_.Utils.isFunction(context) );
-                */
+                var a, d, f, fn;
 
                 if (arguments.length > 1) {
+
+                    context = parseContext(context);
 
                     if (typeof context === 'string') {
 
                         if (options.data) {
                             d = _.createFrame(options.data);
                         }
-
-                        // console.log( this );
 
                         // pour les variables @ mettre a la racine d' l'objet
                         var abs = { data:{ name: context } };
