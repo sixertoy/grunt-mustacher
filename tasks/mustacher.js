@@ -60,7 +60,7 @@ module.exports = function (grunt) {
         for (var i = 1; i < arguments.length; i++) {
             for (var key in arguments[i]) {
                 if (obj.hasOwnProperty(key)) {
-//                    console.log("Warning duplicate object property -> "+key);
+                    grunt.log.debug("Warning duplicate object property -> "+key);
                 }
                 if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
                     obj[key] = arguments[i][key];
@@ -69,13 +69,6 @@ module.exports = function (grunt) {
         }
         return obj;
     }
-
-    /*
-    function _debug(context, msg) {
-        console.log(context); // @TODO ajout du nom du template au message d'erreur
-        grunt.log.debug('DEBUG :: ' + msg);
-    }
-    */
 
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
@@ -101,6 +94,8 @@ module.exports = function (grunt) {
 ******************************* */
         (function (_, grunt, task, options) {
 
+            var debug = grunt.log.debug;
+
             // on stocke la source des partials dans un array
             // pour optimisation
             _.partials = {};
@@ -110,6 +105,13 @@ module.exports = function (grunt) {
             _.registerHelper('$include', function (context, options) {
                 var d, f, fn;
 
+//                var temp = eval(context);
+                console.log(typeof context);
+
+                /*
+                console.log(_.Utils.isFunction(context) );
+                */
+
                 if (arguments.length > 1) {
 
                     if (typeof context === 'string') {
@@ -117,12 +119,18 @@ module.exports = function (grunt) {
                         if (options.data) {
                             d = _.createFrame(options.data);
                         }
+
+                        // console.log( this );
+
                         // pour les variables @ mettre a la racine d' l'objet
                         var abs = { data:{ name: context } };
                         d = concat(d, task.options(), options, this, abs );
-//                        console.log(d);
 
-                        if (!_.Utils.isFunction(_.partials[context])) {
+                        if(
+                            ( typeof _.partials[context] !== 'object' )
+                            || !_.Utils.isFunction(_.partials[context].fn)
+                        )
+                        {
                             f = task.options().partials + context + task.options().extension;
                             if( !grunt.file.exists(f) )
                             {
@@ -132,14 +140,19 @@ module.exports = function (grunt) {
                             else
                             {
                                 fn = _.compile(grunt.file.read(f));
-                                _.partials[context] = fn;
+                                _.partials[context] = {};
+                                _.partials[context].fn = fn;
+                                _.partials[context].f = f;
                             }
                         } else {
-                            fn = _.partials[context];
+                            f = _.partials[context].f;
+                            fn = _.partials[context].fn;
                         }
                         // @TODO Evite les infinite loops
-                        //                        _.partials[n].name = context;
-                        var output = fn(d).replace(/^\s+/, '');
+                        var after = "<!-- endof "+f+"-->";
+                        var before = "<!-- "+f+"-->";
+                        var output = fn(d).replace(/^\s+/, '').replace(/^\t+/, '');
+                        output = ( before + output + after );
                         return new _.SafeString(output);
                     } else {
                         // @TODO chargement des objects
@@ -212,9 +225,7 @@ module.exports = function (grunt) {
                 if (typeof context === 'string') {
                     context = context.split(':');
                     var first = parseFloat(context[0]);
-//                    console.log(first);
                     var last = parseFloat(context[1]);
-//                    console.log(last);
                     return Math.floor((Math.random() * (last - first) ) + first);
                 } else {
                     return Math.random();
@@ -230,17 +241,15 @@ module.exports = function (grunt) {
 
                 if (arguments.length > 1) {
 
+
+
                     if (_.Utils.isFunction(context)) {
                         context = context.call(this);
                     }
 
-//                    console.log(options.data);
-
                     if (options.data) {
                         d = _.createFrame(options.data);
                     }
-
-//                    console.log(d);
 
                     var counts = [];
                     var length = parseFloat(context);
@@ -262,9 +271,6 @@ module.exports = function (grunt) {
                     }
                     return r;
                 } else {
-                    //                    m = "Handlebars Repeat helper a besoin d'un argument type string";
-                    //                    grunt.log.error(m);
-                    //                    _debug(context, m);
                     return false;
                 }
             });
@@ -282,7 +288,7 @@ module.exports = function (grunt) {
         // l'API Grunt supprime les fichiers manquant dans la Gruntfile.js
         // Elles ne sont donc pas disponibles dans la boucle
         if (!this.filesSrc.length) {
-            console.log('Source file needed.');
+            grunt.log.error('Source file needed.');
             return false;
         } else {
             // Recuperation du contenu du fichier
@@ -297,7 +303,6 @@ module.exports = function (grunt) {
                 }).map(function (filepath) {
 
                     var d = {};
-//                    console.log(d);
                     // si un fichier de data json
                     // est sette dans la config gruntfile
                     if (f.hasOwnProperty('context')) {
