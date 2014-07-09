@@ -145,9 +145,7 @@ module.exports = function (grunt) {
 
                         // pour les variables @ mettre a la racine d' l'objet
                         var abs = {
-                            data: {
-                                name: context
-                            },
+                            data: {name: context},
                             name: context
                         };
                         abs.data = concat(abs.data, extras);
@@ -235,11 +233,8 @@ module.exports = function (grunt) {
             // Generate a timestamp
             _.registerHelper('$timestamp', function (context) {
                 context = context || {};
-                if (!Date.now) {
-                    return new Date().getTime();
-                } else {
-                    return Date.now();
-                }
+                if (!Date.now) return new Date().getTime();
+                else return Date.now();
             });
 
             // Generate random number

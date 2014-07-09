@@ -1,6 +1,6 @@
 # Mustacher
 
-> The best Grunt plugin ever. For sure!
+> Handlebars Helpers!
 
 ## Getting Started
 This plugin requires Grunt `~0.4.4`
@@ -33,9 +33,26 @@ grunt.initConfig({
     },
   },
 });
+
+{{repeat}{{#repeat}
+{{$rand '8:32'}}
+{{$timestamp}}
+{{$dummy}}
+{{$lorem "w10"}} (w=word,p=paragrapg,s=sentence)
+{{$include "path/file_noextension"}}
 ```
 
 ### Options
+
+{{$lorem 'w:40'}}
+{{$lorem 'p:20'}}
+{{$lorem 's:10'}}
+
+{{#repeat '5'}}
+<li>
+    <a href=""><span>Periode bleue</span></a>
+</li>
+{{/repeat}}
 
 #### options.separator
 Type: `String`
