@@ -1,8 +1,8 @@
 {
     "name": "grunt-mustacher",
     "description": "Mustache Template Helpers",
-    "version": "0.1.0",
-    "homepage": "https://github.com/malas34/grunt-mustacher",
+    "version": "0.1.1",
+    "homepage": "http://malas34.github.io/grunt-mustacher/",
     "author": {
         "name": "Matthieu Lassalvy",
         "email": "malas34.github@gmail.com",
@@ -18,7 +18,7 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/malas34/grunt-mustacher/blob/master/LICENSE-MIT"
+            "url": "http://opensource.org/licenses/MIT"
     }
   ],
     "engines": {
