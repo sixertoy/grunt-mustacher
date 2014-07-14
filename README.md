@@ -32,16 +32,23 @@ grunt.initConfig({
 {{$lorem 'p:20'}}
 {{$lorem 's:10'}}
 ```
-
+### Loops
 ```html
 <ul>
 {{#repeat '5'}}
 <li>
-    <a href=""><span>Periode bleue</span></a>
+    <a href="" class="item_{{index}}"><span>Periode bleue</span></a>
 </li>
 {{/repeat}}
 </ul>
 ```
+> <ul>
+>   <li><a href="" class="item_0"><span>Periode bleue 0</span></a></li>
+>   <li><a href="" class="item_1"><span>Periode bleue 1</span></a></li>
+>   <li><a href="" class="item_2"><span>Periode bleue 2</span></a></li>
+>   <li><a href="" class="item_3"><span>Periode bleue 3</span></a></li>
+>   <li><a href="" class="item_4"><span>Periode bleue 4</span></a></li>
+> </ul>
 
 ## Getting Started
 
