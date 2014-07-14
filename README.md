@@ -1,7 +1,6 @@
 # Mustacher
 
 > Handlebars template (.tpl, .hbs) Helpers!
-```
 
 ## The "mustacher" task
 In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
