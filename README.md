@@ -21,33 +21,38 @@ grunt.initConfig({
 ## Usage Examples
 
 ```html
-{{repeat}{{#repeat}
 {{$rand '8:32'}}
 {{$timestamp}}
 {{$dummy}}
-{{$lorem "w10"}} (w=word,p=paragrapg,s=sentence)
 {{$include "path/file_noextension"}}
-
-{{$lorem 'w:40'}}
-{{$lorem 'p:20'}}
-{{$lorem 's:10'}}
 ```
+### Lorem Ipsum
+```html
+<p>{{$lorem 'w:10'}}</p>
+```
+> <p>et laborum ullamco incididunt adipisicing excepteur sit ea et est</p>
+
+```html
+<p>{{$lorem 'p:2'}}</p>
+```
+> <p>Cillum nostrud elit culpa laboris. Qui est id ad ad aute eiusmod ipsum reprehenderit commodo id. Ullamco nulla culpa sint enim tempor velit. Consectetur aliqua non sint commodo consequat duis ex quis. Et culpa proident nulla do cillum nisi tempor ad irure id ea. Quis nostrud nisi officia laborum laboris ullamco nulla. Velit id occaecat anim labore aute qui elit. Nulla aute nisi quis elit proident ut proident duis aute. Consequat aliqua nisi Lorem minim officia magna dolore ad do nisi reprehenderit non do. Aliqua quis sunt enim cupidatat do minim occaecat est velit nostrud consequat officia nostrud esse.</p>
+
 ### Loops
 ```html
 <ul>
 {{#repeat '5'}}
 <li>
-    <a href="" class="item_{{index}}"><span>Periode bleue</span></a>
+    <a href="" class="item_{{@index}}"><span>Lorem Ipsum</span></a>
 </li>
 {{/repeat}}
 </ul>
 ```
 > <ul>
->   <li><a href="" class="item_0"><span>Periode bleue 0</span></a></li>
->   <li><a href="" class="item_1"><span>Periode bleue 1</span></a></li>
->   <li><a href="" class="item_2"><span>Periode bleue 2</span></a></li>
->   <li><a href="" class="item_3"><span>Periode bleue 3</span></a></li>
->   <li><a href="" class="item_4"><span>Periode bleue 4</span></a></li>
+>   <li><a href="#" class="item_0"><span>Lorem Ipsum</span></a></li>
+>   <li><a href="#" class="item_1"><span>Lorem Ipsum</span></a></li>
+>   <li><a href="#" class="item_2"><span>Lorem Ipsum</span></a></li>
+>   <li><a href="#" class="item_3"><span>Lorem Ipsum</span></a></li>
+>   <li><a href="#" class="item_4"><span>Lorem Ipsum</span></a></li>
 > </ul>
 
 ## Getting Started
