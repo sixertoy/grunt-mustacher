@@ -20,7 +20,7 @@ grunt.initConfig({
 
 ## Usage Examples
 
-```hbs
+```html
 {{repeat}{{#repeat}
 {{$rand '8:32'}}
 {{$timestamp}}
@@ -31,12 +31,16 @@ grunt.initConfig({
 {{$lorem 'w:40'}}
 {{$lorem 'p:20'}}
 {{$lorem 's:10'}}
+```
 
+```html
+<ul>
 {{#repeat '5'}}
 <li>
     <a href=""><span>Periode bleue</span></a>
 </li>
 {{/repeat}}
+</ul>
 ```
 
 ## Getting Started
