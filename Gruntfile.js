@@ -1,5 +1,5 @@
 /*
- * Mustacher
+ * Grunt Mustacher
  * https://github.com/malas34/malas34
  *
  * Copyright (c) 2014 Matthieu Lassalvy

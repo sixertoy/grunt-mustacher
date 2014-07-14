@@ -1,8 +1,8 @@
 {
-    "name": "mustacher",
-    "description": "The best Grunt plugin ever.",
+    "name": "grunt-mustacher",
+    "description": "Mustache Template Helpers",
     "version": "0.1.0",
-    "homepage": "https://github.com/malas34/mustacher",
+    "homepage": "https://github.com/malas34/grunt-mustacher",
     "author": {
         "name": "Matthieu Lassalvy",
         "email": "malas34.github@gmail.com",
@@ -10,15 +10,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/malas34/mustacher.git"
+        "url": "git://github.com/malas34/grunt-mustacher.git"
     },
     "bugs": {
-        "url": "https://github.com/malas34/mustacher/issues"
+        "url": "https://github.com/malas34/grunt-mustacher/issues"
     },
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/malas34/mustacher/blob/master/LICENSE-MIT"
+            "url": "https://github.com/malas34/grunt-mustacher/blob/master/LICENSE-MIT"
     }
   ],
     "engines": {
@@ -34,16 +34,16 @@
         "twig": "~0.7.0",
         "digits": "~0.1.4",
         "handlebars": "~1.3.0",
-        "lorem-ipsum": "~1.0.1",
-        "grunt-prettify": "~0.3.4",
-        "grunt-contrib-clean": "~0.4.0"
+        "lorem-ipsum": "~1.0.1"
     },
     "devDependencies": {
+        "grunt-prettify": "~0.3.4",
+        "grunt-contrib-clean": "~0.4.0",
         "grunt-contrib-jshint": "~0.6.0",
         "grunt-contrib-nodeunit": "~0.2.0",
         "grunt": "~0.4.4"
     },
     "keywords": [
-    "handlebars", "multiple", "files", "include", "repeat"
+    "handlebars", "loops", "files", "include", "repeat", "lorem ipsum", "mustache", "helpers"
   ]
 }

@@ -1,6 +1,6 @@
 /*
- * Mustacher
- * https://github.com/malas34/mustacher
+ * Grunt Mustacher
+ * https://github.com/malas34/grunt-mustacher
  *
  * Copyright (c) 2014 Matthieu Lassalvy
  * Licensed under the MIT license.
@@ -8,42 +8,7 @@
  * HANDLEBARS
  * @see http://handlebarsjs.com/
  *
- * TWIG
- * @see https://github.com/adamdicarlo/grunt-twig/blob/master/tasks/twig.js
- *
  */
-/*
-"use strict";
-var Handlebars = require("./handlebars.runtime")["default"];
-// Compiler imports
-var AST = require("./handlebars/compiler/ast")["default"];
-var Parser = require("./handlebars/compiler/base").parser;
-var parse = require("./handlebars/compiler/base").parse;
-var Compiler = require("./handlebars/compiler/compiler").Compiler;
-var compile = require("./handlebars/compiler/compiler").compile;
-var precompile = require("./handlebars/compiler/compiler").precompile;
-var JavaScriptCompiler = require("./handlebars/compiler/javascript-compiler")["default"];
-var _create = Handlebars.create;
-var create = function() {
-  var hb = _create();
-  hb.compile = function(input, options) {
-    return compile(input, options, hb);
-  };
-  hb.precompile = function (input, options) {
-    return precompile(input, options, hb);
-  };
-  hb.AST = AST;
-  hb.Compiler = Compiler;
-  hb.JavaScriptCompiler = JavaScriptCompiler;
-  hb.Parser = Parser;
-  hb.parse = parse;
-  return hb;
-};
-Handlebars = create();
-Handlebars.create = create;
-exports["default"] = Handlebars;
-*/
-
 'use strict';
 
 module.exports = function (grunt) {
@@ -66,7 +31,7 @@ module.exports = function (grunt) {
 
     function parseContext(extras) {
         if (isJSONContext(extras)) {
-            var msg = "ERROR :: mustacher.parseJSONContext() :: L'argument attendu de type JSON";
+            var msg = "ERROR :: grunt-mustacher.parseJSONContext() :: L'argument attendu de type JSON";
             try {
                 return (JSON.parse(extras));
             } catch (e) {
@@ -93,7 +58,7 @@ module.exports = function (grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('mustacher', 'The best Grunt plugin ever.', function () {
+    grunt.registerMultiTask('grunt-mustacher', 'Handlebars Template Helpers.', function () {
 
         var defaults = {
             data_src: '',
