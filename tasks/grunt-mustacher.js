@@ -31,7 +31,7 @@ module.exports = function (grunt) {
 
     function parseContext(extras) {
         if (isJSONContext(extras)) {
-            var msg = "ERROR :: grunt-mustacher.parseJSONContext() :: L'argument attendu de type JSON";
+            var msg = "ERROR :: mustacher.parseJSONContext() :: L'argument attendu de type JSON";
             try {
                 return (JSON.parse(extras));
             } catch (e) {
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
     // Please see the Grunt documentation for more information regarding task
     // creation: http://gruntjs.com/creating-tasks
 
-    grunt.registerMultiTask('grunt-mustacher', 'Handlebars Template Helpers.', function () {
+    grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
 
         var defaults = {
             data_src: '',
