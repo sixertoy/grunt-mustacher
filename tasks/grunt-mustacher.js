@@ -62,8 +62,8 @@ module.exports = function (grunt) {
 
         var defaults = {
             data_src: '',
+            partials: '',
             data_ext: '.json',
-            partials: undefined,
             // @TODO changement de l'extension
             // des partials/templates
             extension: '.hbs'
