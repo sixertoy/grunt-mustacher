@@ -70,14 +70,14 @@ module.exports = function (grunt) {
         };
 
         // Merge task-specific and/or target-specific options with these defaults.
-        var options = this.options(defaults);
+        var grunt_opts = this.options(defaults);
 
         /* *******************************
 
  Handlebars Helpers
 
 ******************************* */
-        (function (_, grunt, task, options) {
+        (function (_, grunt, task, opts) {
 
             var debug = grunt.log.debug;
 
@@ -98,17 +98,7 @@ module.exports = function (grunt) {
                         extras = {};
                     }
 
-                    /*grunt.log.error( options.cwd );*/
-                    /*
-                    for( var prop in task.data.files[0] )
-                        grunt.log.error( prop + " => "+ );
-                    */
-
-                    extras = parseContext(extras);
-
-                    var partials = task.options().partials;
-                    if( partials == undefined )
-                        partials = task.data.files[0][ "cwd" ];
+                    extras = parseContext( opts );
 
                     if (
                         typeof context === 'string'
@@ -126,12 +116,12 @@ module.exports = function (grunt) {
                         abs.data = concat(abs.data, extras);
                         abs = concat(abs, extras);
 
-                        d = concat(d, task.options(), options, this, abs);
+                        d = concat( d, extras, options, this, abs );
 
                         if (
                             (typeof _.partials[context] !== 'object') || !_.Utils.isFunction(_.partials[context].fn)
                         ) {
-                            f = partials + context + task.options().extension;
+                            f = extras.partials + '/' + context + extras.extension;
                             if (!grunt.file.exists(f)) {
                                 grunt.log.error("Unable to find source " + f);
                                 return false;
@@ -302,7 +292,7 @@ module.exports = function (grunt) {
                 }
             });
 
-        })(handlebars, grunt, this);
+        })(handlebars, grunt, this, grunt_opts );
 
 
         /* *******************************
@@ -319,6 +309,7 @@ module.exports = function (grunt) {
             return false;
         } else {
             // Recuperation du contenu du fichier
+            var $this = this;
             this.files.forEach(function (f) {
                 var dest_content = f.src.filter(function (filepath) {
                     if (!grunt.file.exists(filepath)) {
@@ -328,6 +319,9 @@ module.exports = function (grunt) {
                         return true;
                     }
                 }).map(function (filepath) {
+
+                    if( grunt_opts.partials == '' )
+                        grunt_opts.partials = path.dirname(filepath);
 
                     var d = {};
                     // si un fichier de data json
@@ -342,12 +336,16 @@ module.exports = function (grunt) {
                         // au mm niveau que le fichier mustache
                         // ou si le data_src est sette dans le dossier
                     } else {
-                        var temp = path.dirname(filepath) + '/' + options.data_src + path.basename(filepath).split(options.extension).join(options.data_ext);
+                        var temp = path.dirname(filepath) + '/' + grunt_opts.data_src + path.basename(filepath).split(grunt_opts.extension).join(grunt_opts.data_ext);
                         if (grunt.file.exists(temp)) {
                             d = grunt.file.readJSON(temp);
                         }
                     }
-                    return new handlebars.SafeString(handlebars.compile(grunt.file.read(filepath), {})(d));
+
+                    var stream = grunt.file.read(filepath);
+                    var func = handlebars.compile( stream, {} );
+                    var result = new handlebars.SafeString( func( d ) );
+                    return result;
                 })
                 // Normalize les fins de lignes
                 .join(grunt.util.normalizelf(grunt.util.linefeed));
