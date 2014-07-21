@@ -98,7 +98,17 @@ module.exports = function (grunt) {
                         extras = {};
                     }
 
+                    /*grunt.log.error( options.cwd );*/
+                    /*
+                    for( var prop in task.data.files[0] )
+                        grunt.log.error( prop + " => "+ );
+                    */
+
                     extras = parseContext(extras);
+
+                    var partials = task.options().partials;
+                    if( partials == undefined )
+                        partials = task.data.files[0][ "cwd" ];
 
                     if (
                         typeof context === 'string'
@@ -121,7 +131,7 @@ module.exports = function (grunt) {
                         if (
                             (typeof _.partials[context] !== 'object') || !_.Utils.isFunction(_.partials[context].fn)
                         ) {
-                            f = task.options().partials + context + task.options().extension;
+                            f = partials + context + task.options().extension;
                             if (!grunt.file.exists(f)) {
                                 grunt.log.error("Unable to find source " + f);
                                 return false;

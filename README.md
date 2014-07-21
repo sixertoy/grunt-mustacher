@@ -2,6 +2,10 @@
 
 > Handlebars template (.tpl, .hbs) Helpers!
 
+@TODO @FIX
+Ds bugs resident dans le passage du path
+Tous les templates sont copies dans le dossier final
+
 ## The "mustacher" task
 In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
 
