@@ -8,12 +8,14 @@ In your project's Gruntfile, add a section named `mustacher` to the data object 
 ```js
 grunt.initConfig({
   mustacher: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
+        templates:
+        {
+            options:{ extension:'.hbs'},
+            files: [{
+                expand: true, cwd: 'bin/html/', src: '**/*.hbs',
+                dest: 'dev/html/', ext: '.tpl'
+            }]
+        }
   },
 });
 ```
@@ -69,3 +71,4 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 
 ```js
 grunt.loadNpmTasks('mustacher');
+```
