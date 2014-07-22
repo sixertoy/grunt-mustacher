@@ -1,7 +1,7 @@
 {
     "name": "grunt-mustacher",
     "description": "Mustache Template Helpers",
-    "version": "0.1.6",
+    "version": "1.0.0a",
     "homepage": "http://malas34.github.io/grunt-mustacher/",
     "author": {
         "name": "Matthieu Lassalvy",
