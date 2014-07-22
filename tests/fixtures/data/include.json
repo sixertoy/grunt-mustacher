@@ -1,0 +1,14 @@
+{
+    "items": [
+        {
+            "value": "item un",
+            "key": "entete"
+        }, {
+            "value": "item deux",
+            "key": "entete"
+        }, {
+            "value": "item trois",
+            "key": "entete"
+        }
+    ]
+}
