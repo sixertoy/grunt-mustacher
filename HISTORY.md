@@ -1,8 +1,7 @@
 # History
 
-## V1.0.0a
-> Alpha version not to be used
+## v0.1.9
+> Usable but not stable
 
-## V0.1.9
-> Usable version but not stable
-
+## v1.0.0a
+> Unusable, refactored alpha version
