@@ -1,10 +1,7 @@
 # Mustacher
 
 > Handlebars template (.tpl, .hbs) Helpers!
-
-@TODO @FIX
-Ds bugs resident dans le passage du path
-Tous les templates sont copies dans le dossier final
+> [Home] (http://malas34.github.io/grunt-mustacher/)
 
 ## The "mustacher" task
 In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
@@ -76,3 +73,13 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ```js
 grunt.loadNpmTasks('mustacher');
 ```
+
+## History
+
+
+> please see [HISTORY.md](https://github.com/malas34/grunt-mustacher/blob/v1.0.0a/HISTORY.md)
+
+
+## Todo
+
+> please see [TODO.md](https://github.com/malas34/grunt-mustacher/blob/v1.0.0a/TODO.md)
