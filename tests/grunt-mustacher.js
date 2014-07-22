@@ -1,7 +1,5 @@
 'use strict';
 
-var grunt = require('grunt');
-
 /*
   ======== A Handy Little Nodeunit Reference ========
   https://github.com/caolan/nodeunit
@@ -41,8 +39,11 @@ var grunt = require('grunt');
     test.done();
   },
 */
-
+/*
 exports.mustacher = {
+
+    var grunt = require('grunt');
+
     setUp: function (done) {
         // setup here if necessary
         done();
@@ -55,3 +56,4 @@ exports.mustacher = {
         test.done();
     },
 };
+*/

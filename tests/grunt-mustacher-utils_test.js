@@ -7,6 +7,10 @@ exports.MustacherUtilsTest = {
         this.utils = new MustacherUtils();
         return done();
     },
+    /*
+    concat: function (test) {
+    },
+    */
     isJSONContext: function (test) {
         test.expect(5);
         var expected;

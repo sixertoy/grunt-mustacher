@@ -10,6 +10,8 @@
 
 module.exports = function (grunt) {
 
+
+
     grunt.initConfig({
         jshint: {
             options: {
@@ -29,6 +31,20 @@ module.exports = function (grunt) {
             tests: ['tests/*_test.js'],
         },
 
+        mustacher: {
+            compile: {
+                files: [
+                    {
+                        options: {
+                            extension: '.tpl'
+                        },
+                        src: 'html/repeat.hbs',
+                        dest: 'html/repeat.html'
+                    }
+                ]
+            }
+        }
+
     });
     /* -----------------------------------------------------------------------------
 
@@ -42,6 +58,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
+    grunt.registerTask('compile', ['mustacher:compile']);
     grunt.registerTask('default', ['jshint', 'nodeunit']);
 
 };
