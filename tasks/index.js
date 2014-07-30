@@ -13,7 +13,7 @@
 
 var handlebarsHelpers = [
     'equal',
-    // 'image',
+    'image',
     // 'include',
     'lorem',
     'random'

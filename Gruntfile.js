@@ -31,9 +31,6 @@ module.exports = function (grunt) {
             tests: ['tests/**/*_test.js'],
         },
 
-        coffee:{
-        },
-
         mustacher: {
             compile: {
                 files: [
@@ -63,6 +60,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     grunt.registerTask('test', ['jshint', 'nodeunit']);
-    grunt.registerTask('default', ['coffee','mustacher']);
+    grunt.registerTask('default', ['mustacher']);
 
 };

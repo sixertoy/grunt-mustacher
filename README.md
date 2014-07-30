@@ -33,6 +33,14 @@ grunt.initConfig({
 ```
 > <p>is not equal</p>
 
+### Image
+```html
+{{$image 300}}
+{{$image 400 300}}
+```
+> <p><img src="http://placehold.it/300" alt="" title="" /></p>
+> <p><img src="http://placehold.it/400x300" alt="" title="" /></p>
+
 ### Random
 ```html
 {{$random}}
