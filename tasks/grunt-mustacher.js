@@ -98,7 +98,7 @@ module.exports = function (grunt) {
                         extras = {};
                     }
 
-                    extras = parseContext( opts );
+                    extras = parseContext(opts);
 
                     if (
                         typeof context === 'string'
@@ -110,13 +110,15 @@ module.exports = function (grunt) {
 
                         // pour les variables @ mettre a la racine d' l'objet
                         var abs = {
-                            data: {name: context},
+                            data: {
+                                name: context
+                            },
                             name: context
                         };
                         abs.data = concat(abs.data, extras);
                         abs = concat(abs, extras);
 
-                        d = concat( d, extras, options, this, abs );
+                        d = concat(d, extras, options, this, abs);
 
                         if (
                             (typeof _.partials[context] !== 'object') || !_.Utils.isFunction(_.partials[context].fn)
@@ -146,6 +148,17 @@ module.exports = function (grunt) {
                     }
                 } else {
                     return false;
+                }
+            });
+
+            _.registerHelper('equal', function (lvalue, rvalue, options) {
+                if (arguments.length < 3) {
+                    throw new Error('Handlebars Helper equal needs 2 parameters');
+                }
+                if (lvalue !== rvalue) {
+                    return options.inverse(this);
+                } else {
+                    return options.fn(this);
                 }
             });
 
@@ -198,8 +211,11 @@ module.exports = function (grunt) {
             // Generate a timestamp
             _.registerHelper('$timestamp', function (context) {
                 context = context || {};
-                if (!Date.now) return new Date().getTime();
-                else return Date.now();
+                if (!Date.now) {
+                    return new Date().getTime();
+                } else {
+                    return Date.now();
+                }
             });
 
             // Generate random number
@@ -244,7 +260,7 @@ module.exports = function (grunt) {
                     abs = concat(abs, extras);
                     */
 
-//                    d = concat(d, task.options(), options, this, abs);
+                    //                    d = concat(d, task.options(), options, this, abs);
 
                     /*
                     if (typeof context === 'string') {} else {
@@ -292,7 +308,7 @@ module.exports = function (grunt) {
                 }
             });
 
-        })(handlebars, grunt, this, grunt_opts );
+        })(handlebars, grunt, this, grunt_opts);
 
 
         /* *******************************
@@ -312,43 +328,44 @@ module.exports = function (grunt) {
             var $this = this;
             this.files.forEach(function (f) {
                 var dest_content = f.src.filter(function (filepath) {
-                    if (!grunt.file.exists(filepath)) {
-                        grunt.log.error('Source file "' + filepath + '" not found.');
-                        return false;
-                    } else {
-                        return true;
-                    }
-                }).map(function (filepath) {
-
-                    if( grunt_opts.partials == '' )
-                        grunt_opts.partials = path.dirname(filepath);
-
-                    var d = {};
-                    // si un fichier de data json
-                    // est sette dans la config gruntfile
-                    if (f.hasOwnProperty('context')) {
-                        if (f.context !== "" && grunt.file.exists(f.context)) {
-                            d = grunt.file.readJSON(f.context);
+                        if (!grunt.file.exists(filepath)) {
+                            grunt.log.error('Source file "' + filepath + '" not found.');
+                            return false;
                         } else {
-                            grunt.log.error("Impossible de charger le fichier " + f.context);
+                            return true;
                         }
-                        // sinon on cherche un fichier
-                        // au mm niveau que le fichier mustache
-                        // ou si le data_src est sette dans le dossier
-                    } else {
-                        var temp = path.dirname(filepath) + '/' + grunt_opts.data_src + path.basename(filepath).split(grunt_opts.extension).join(grunt_opts.data_ext);
-                        if (grunt.file.exists(temp)) {
-                            d = grunt.file.readJSON(temp);
-                        }
-                    }
+                    }).map(function (filepath) {
 
-                    var stream = grunt.file.read(filepath);
-                    var func = handlebars.compile( stream, {} );
-                    var result = new handlebars.SafeString( func( d ) );
-                    return result;
-                })
-                // Normalize les fins de lignes
-                .join(grunt.util.normalizelf(grunt.util.linefeed));
+                        if (grunt_opts.partials === '') {
+                            grunt_opts.partials = path.dirname(filepath);
+                        }
+
+                        var d = {};
+                        // si un fichier de data json
+                        // est sette dans la config gruntfile
+                        if (f.hasOwnProperty('context')) {
+                            if (f.context !== "" && grunt.file.exists(f.context)) {
+                                d = grunt.file.readJSON(f.context);
+                            } else {
+                                grunt.log.error("Impossible de charger le fichier " + f.context);
+                            }
+                            // sinon on cherche un fichier
+                            // au mm niveau que le fichier mustache
+                            // ou si le data_src est sette dans le dossier
+                        } else {
+                            var temp = path.dirname(filepath) + '/' + grunt_opts.data_src + path.basename(filepath).split(grunt_opts.extension).join(grunt_opts.data_ext);
+                            if (grunt.file.exists(temp)) {
+                                d = grunt.file.readJSON(temp);
+                            }
+                        }
+
+                        var stream = grunt.file.read(filepath);
+                        var func = handlebars.compile(stream, {});
+                        var result = new handlebars.SafeString(func(d));
+                        return result;
+                    })
+                    // Normalize les fins de lignes
+                    .join(grunt.util.normalizelf(grunt.util.linefeed));
                 // Si le fichier existe deja
                 // on le supprime
                 if (grunt.file.exists(f.dest)) {
