@@ -1,12 +1,12 @@
 'use strict';
 
 var MustacherUtils = require('../../../lib/utils'),
-    MustacherHelperRandom = require('../../../lib/helpers/random');
+    MustacherRandomHelper = require('../../../lib/helpers/random');
 
 exports.MustacherRandomTest = {
     setUp: function (done) {
         this.utils = MustacherUtils;
-        this.inst = MustacherHelperRandom;
+        this.inst = MustacherRandomHelper;
         this._nofloat = function (res) {
             return (('' + res).indexOf('.') < 0);
         };
@@ -19,7 +19,7 @@ exports.MustacherRandomTest = {
     compileNoArguments: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compile() test failed.';
+            msg = 'MustacherRandomTest.compile() test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -38,7 +38,7 @@ exports.MustacherRandomTest = {
     compileFalseArguments: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFalseArguments(false) test failed.';
+            msg = 'MustacherRandomTest.compileFalseArguments(false) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -57,7 +57,7 @@ exports.MustacherRandomTest = {
     compileTrueArguments: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileTrueArguments(true) test failed.';
+            msg = 'MustacherRandomTest.compileTrueArguments(true) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -76,7 +76,7 @@ exports.MustacherRandomTest = {
     compileFirstArgNum: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArgNum(10) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArgNum(10) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -95,7 +95,7 @@ exports.MustacherRandomTest = {
     compileTwoArgsNum: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileTwoArgsNum(5,10) test failed.';
+            msg = 'MustacherRandomTest.compileTwoArgsNum(5,10) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -114,7 +114,7 @@ exports.MustacherRandomTest = {
     compileFirstArgZero: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArgZero(0) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArgZero(0) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -133,7 +133,7 @@ exports.MustacherRandomTest = {
     compileTwoArgsZeroFloor: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArgZero(true,0) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArgZero(true,0) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -152,7 +152,7 @@ exports.MustacherRandomTest = {
     compileTwoArgsZero: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArgZero(false,0) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArgZero(false,0) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -171,7 +171,7 @@ exports.MustacherRandomTest = {
     compileFirstArgFloor: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArgFloor(true,5) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArgFloor(true,5) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -190,7 +190,7 @@ exports.MustacherRandomTest = {
     compileFirstArg: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileFirstArg(false,5) test failed.';
+            msg = 'MustacherRandomTest.compileFirstArg(false,5) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -209,7 +209,7 @@ exports.MustacherRandomTest = {
     compileThreeArgsFloor: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileThreeArgsFloor(true,5,10) test failed.';
+            msg = 'MustacherRandomTest.compileThreeArgsFloor(true,5,10) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded
@@ -228,7 +228,7 @@ exports.MustacherRandomTest = {
     compileThreeArgs: function (test) {
         var result,
             expected = true,
-            msg = 'MustacherRandom.compileThreeArgs(false,5,10) test failed.';
+            msg = 'MustacherRandomTest.compileThreeArgs(false,5,10) test failed.';
         test.expect(2);
         // no arguments
         // return random max infinite no rounded

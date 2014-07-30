@@ -13,3 +13,13 @@
 
 <h1>Image Helper</h1>
 <p>{{$image 300}}</p>
+
+<h1>Timestamp Helper</h1>
+<p>{{$timestamp}}</p>
+
+<h1>Repeat Helper</h1>
+<ul>
+    {{#repeat 4}}
+    <li class="{{@classes}}">Repeat {{@index}} {{@odd}} {{@even}} {{@first}} {{@last}}</li>
+    {{/repeat}}
+</ul>

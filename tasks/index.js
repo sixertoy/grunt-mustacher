@@ -16,9 +16,9 @@ var handlebarsHelpers = [
     'image',
     // 'include',
     'lorem',
-    'random'
-    // 'repeat',
-    // 'timestamp'
+    'random',
+    'repeat',
+    'timestamp'
 ];
 
 module.exports = function (grunt) {

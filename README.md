@@ -23,6 +23,21 @@ grunt.initConfig({
 
 ## Usage Examples
 
+### Repeat
+```html
+<ul>
+{{#repeat 4}}
+<li>repeat {{@index}}</li>
+{{/repeat}}
+</ul>
+```
+> <ul>
+> <li>repeat 0</li>
+> <li>repeat 1</li>
+> <li>repeat 2</li>
+> <li>repeat 3</li>
+> </ul>
+
 ### Equal
 ```html
 {{#equal 0 10}}
@@ -32,6 +47,12 @@ grunt.initConfig({
 {{/equal}}
 ```
 > <p>is not equal</p>
+
+### Timestamp
+```html
+{{$timestamp}}
+```
+> <p><img src="http://placehold.it/300?[n(13)]" alt="" title="" /></p>
 
 ### Image
 ```html
