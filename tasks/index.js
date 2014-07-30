@@ -15,7 +15,7 @@ var handlebarsHelpers = [
     'equal',
     // 'image',
     // 'include',
-    // 'lorem',
+    'lorem',
     'random'
     // 'repeat',
     // 'timestamp'

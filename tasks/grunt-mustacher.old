@@ -115,28 +115,6 @@ module.exports = function (grunt) {
                 }
             });
 
-            // Generate random lorem ipsum
-            // @see https://www.npmjs.org/package/lorem-ipsum
-            // @usage {{$lorem 'w:20'}}
-            // Options
-            //      w: words
-            //      s: sentences
-            //      p: paragraphs
-            _.registerHelper('$lorem', function (config, context) {
-                context = context || {};
-                var s = config.split(':');
-                if (s.length) {
-                    var u = s[0];
-                    return new _.SafeString(lorem({
-                        count: parseFloat(s[1]),
-                        units: (u === 'p') ? 'paragraphs' : ((u === 's') ? "sentences" : "words")
-                    }));
-                } else {
-                    // @TODO
-                    return false;
-                }
-            });
-
             // Generate a dummy image
             // @see http://placehold.it
             _.registerHelper('$dummy', function (config, context) {

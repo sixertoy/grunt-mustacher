@@ -50,6 +50,12 @@ grunt.initConfig({
 > <p>n [0,5]</p>
 > <p>n,nnn... [5,10]</p>
 
+### Lorem
+``` html
+{{$lorem 10}}
+```
+> <p>ullamco Lorem eiusmod sint veniam officia proident dolore adipisicing eu</p>
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.4`
