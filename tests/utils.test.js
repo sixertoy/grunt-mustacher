@@ -1,6 +1,6 @@
 'use strict';
 
-var MustacherUtils = require('../lib/grunt-mustacher-utils');
+var MustacherUtils = require('../lib/utils');
 
 exports.MustacherUtilsTest = {
     setUp: function (done) {

@@ -23,40 +23,32 @@ grunt.initConfig({
 
 ## Usage Examples
 
+### Equal
 ```html
-{{$rand '8:32'}}
-{{$timestamp}}
-{{$dummy}}
-{{$include "path/file_noextension"}}
+{{#equal 0 10}}
+<p>is equal</p>
+{{else}}
+<p>is not equal</p>
+{{/equal}}
 ```
-### Lorem Ipsum
-```html
-<p>{{$lorem 'w:10'}}</p>
-```
-> <p>et laborum ullamco incididunt adipisicing excepteur sit ea et est</p>
+> <p>is not equal</p>
 
+### Random
 ```html
-<p>{{$lorem 'p:2'}}</p>
+{{$random}}
+{{$random O}}
+{{$random true}}
+{{$random 10}}
+{{$random true 5}}
+{{$random false 5 10}}
 ```
-> <p>Cillum nostrud elit culpa laboris. Qui est id ad ad aute eiusmod ipsum reprehenderit commodo id. Ullamco nulla culpa sint enim tempor velit. Consectetur aliqua non sint commodo consequat duis ex quis. Et culpa proident nulla do cillum nisi tempor ad irure id ea. Quis nostrud nisi officia laborum laboris ullamco nulla. Velit id occaecat anim labore aute qui elit. Nulla aute nisi quis elit proident ut proident duis aute. Consequat aliqua nisi Lorem minim officia magna dolore ad do nisi reprehenderit non do. Aliqua quis sunt enim cupidatat do minim occaecat est velit nostrud consequat officia nostrud esse.</p>
-
-### Loops
-```html
-<ul>
-{{#repeat '5'}}
-<li>
-    <a href="" class="item_{{@index}}"><span>Lorem Ipsum</span></a>
-</li>
-{{/repeat}}
-</ul>
-```
-> <ul>
->   <li><a href="#" class="item_0"><span>Lorem Ipsum</span></a></li>
->   <li><a href="#" class="item_1"><span>Lorem Ipsum</span></a></li>
->   <li><a href="#" class="item_2"><span>Lorem Ipsum</span></a></li>
->   <li><a href="#" class="item_3"><span>Lorem Ipsum</span></a></li>
->   <li><a href="#" class="item_4"><span>Lorem Ipsum</span></a></li>
-> </ul>
+> <p>n,nnn... [0,x]</p>
+> <p>0</p>
+> <p>0</p>
+> <p>n [0,x]</p>
+> <p>n,nnn... [0,10]</p>
+> <p>n [0,5]</p>
+> <p>n,nnn... [5,10]</p>
 
 ## Getting Started
 

@@ -28,7 +28,7 @@ module.exports = function (grunt) {
         },
 
         nodeunit: {
-            tests: ['tests/*_test.js'],
+            tests: ['tests/**/*_test.js'],
         },
 
         mustacher: {
@@ -38,8 +38,8 @@ module.exports = function (grunt) {
                         options: {
                             extension: '.tpl'
                         },
-                        src: 'html/repeat.hbs',
-                        dest: 'html/repeat.html'
+                        src: 'html/index.hbs',
+                        dest: 'html/index.html'
                     }
                 ]
             }
@@ -58,7 +58,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-    grunt.registerTask('compile', ['mustacher:compile']);
-    grunt.registerTask('default', ['jshint', 'nodeunit']);
+    grunt.registerTask('test', ['jshint', 'nodeunit']);
+    grunt.registerTask('default', ['mustacher']);
 
 };
