@@ -1,6 +1,6 @@
 # Mustacher
 
-> V1.0.0 is in currently in developpment un der a github branch
+> V1.0.0 is currently in developpment un der a github branch
 > $include helper still not implemented yet in V1.0.0
 
 > Handlebars template (.tpl, .hbs) Helpers!
