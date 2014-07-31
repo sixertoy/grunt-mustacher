@@ -3,8 +3,9 @@
 > V1.0.0 is currently in developpment un der a github branch
 > $include helper still not implemented yet in V1.0.0
 
+> Please give me some feedback and feel free to contribute, cheers :)
+
 > Handlebars template (.tpl, .hbs) Helpers!
-> [Home] (http://malas34.github.io/grunt-mustacher/)
 
 ## The "mustacher" task
 In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
