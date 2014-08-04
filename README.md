@@ -8,16 +8,38 @@ In your project's Gruntfile, add a section named `mustacher` to the data object 
 
 ```js
 grunt.initConfig({
-  mustacher: {
-        templates:
-        {
-            options:{ extension:'.hbs'},
+    mustacher: {
+        compile: {
+            files: [
+                {
+                    src: 'output/mustache/index.hbs',
+                    dest: 'output/html/index.html'
+                }
+            ]
+        },
+        templates:{
+            options: {
+                output: '.tpl'
+            },
             files: [{
-                expand: true, cwd: 'bin/html/', src: '**/*.hbs',
-                dest: 'dev/html/', ext: '.tpl'
+                expand: true,
+                cwd: 'output/mustache/commons/',
+                src: '**/*.hbs',
+                dest: 'output/tpl/commons/',
+            }]
+        },
+        html:{
+            options: {
+                output: '.html'
+            },
+            files: [{
+                expand: true,
+                cwd: 'html/tpl/',
+                src: '*.tpl',
+                dest: 'html/html/',
             }]
         }
-  },
+    },
 });
 ```
 

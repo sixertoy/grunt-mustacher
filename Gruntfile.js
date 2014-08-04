@@ -31,57 +31,37 @@ module.exports = function (grunt) {
             tests: ['tests/**/*_test.js'],
         },
 
-        /*
-        mustacher: {
-            templates: {
-                files: [{
-                    expand: true,
-                    cwd: 'bin/html/',
-                    src: '** *.hbs',
-                    dest: 'dev/html/',
-                    ext: '.tpl'
-                }]
-            },
-            html: {
-                options: {
-                    extension: '.tpl'
-                },
-                files: [{
-                    expand: true,
-                    cwd: 'dev/html/',
-                    src: '*.tpl',
-                    dest: 'prod/html/',
-                    ext: '.html'
-                }]
-            }
-        },
-        */
-
         mustacher: {
             compile: {
                 files: [
                     {
-                        options: {
-                            extension: '.tpl'
-                        },
-                        src: 'html/index.hbs',
-                        dest: 'html/index.html'
+                        src: 'output/mustache/index.hbs',
+                        dest: 'output/html/index.html'
                     }
                 ]
             },
-            /*
             templates:{
                 options: {
-                    extension: '.tpl'
+                    outputExtension: '.tpl'
                 },
                 files: [{
-                    src: '*.hbs',
-                    cwd: 'html/',
                     expand: true,
-                    dest: 'html/',
+                    cwd: 'output/mustache/commons/',
+                    src: '**/*.hbs',
+                    dest: 'output/tpl/commons/',
+                }]
+            },
+            html:{
+                options: {
+                    outputExtension: '.html'
+                },
+                files: [{
+                    expand: true,
+                    cwd: 'html/tpl/',
+                    src: '*.tpl',
+                    dest: 'html/html/',
                 }]
             }
-            */
         }
 
     });
@@ -99,6 +79,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
     grunt.registerTask('test', ['jshint', 'nodeunit']);
+    grunt.registerTask('html', ['mustacher:html']);
     grunt.registerTask('templates', ['mustacher:templates']);
     grunt.registerTask('default', ['mustacher:compile']);
 
