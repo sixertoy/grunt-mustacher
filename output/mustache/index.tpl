@@ -1,4 +1,4 @@
-{{$include 'commons/head'}}
+{{$include 'commons/head' class="homepage"}}
 
 <h1>Equal Helper</h1>
 {{#equal 10 0}}
@@ -6,12 +6,6 @@
 {{else}}
 <p>not egale</p>
 {{/equal}}
-
-
-
-
-{{@outputExtension}}
-
 
 <h1>Random Helper</h1>
 <p>{{$random 0}}</p>

@@ -35,31 +35,27 @@ module.exports = function (grunt) {
             compile: {
                 files: [
                     {
-                        src: 'output/mustache/index.hbs',
+                        src: 'output/mustache/index.tpl',
                         dest: 'output/html/index.html'
                     }
                 ]
             },
             templates:{
-                options: {
-                    outputExtension: '.tpl'
-                },
                 files: [{
                     expand: true,
                     cwd: 'output/mustache/commons/',
                     src: '**/*.hbs',
                     dest: 'output/tpl/commons/',
+                    ext:'.tpl'
                 }]
             },
             html:{
-                options: {
-                    outputExtension: '.html'
-                },
                 files: [{
                     expand: true,
                     cwd: 'html/tpl/',
                     src: '*.tpl',
                     dest: 'html/html/',
+                    ext:'.html'
                 }]
             }
         }
