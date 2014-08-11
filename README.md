@@ -31,6 +31,7 @@ grunt.initConfig({
 {{$rand '8:32'}}
 {{$timestamp}}
 {{$dummy}}
+{{#repeat '4'}}{{/repeat}}
 {{$include "path/file_noextension"}}
 ```
 ### Lorem Ipsum
