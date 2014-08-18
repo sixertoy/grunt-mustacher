@@ -28,6 +28,7 @@ grunt.initConfig({
 ## Usage Examples
 
 ```html
+{{#equal 0 10}}{{/equal}}
 {{$rand '8:32'}}
 {{$timestamp}}
 {{$dummy}}
