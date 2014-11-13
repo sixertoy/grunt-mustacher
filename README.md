@@ -1,7 +1,6 @@
 # Mustacher [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Handlebars template (.tpl, .hbs) Helpers!
-> [Home] (http://malas34.github.io/grunt-mustacher/)
 
 ## Availables helpers
 
