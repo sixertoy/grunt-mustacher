@@ -39,7 +39,13 @@
                     match: '.',
                     forceExit: false,
                     extensions: 'js',
-                    specNameMatcher: 'test'
+                    specNameMatcher: 'test',
+                    jUnit: {
+                        report: true,
+                        savePath: './build/reports/jasmine/',
+                        useDotNotation: true,
+                        consolidate: true
+                    }
                 },
                 all: ['specs/']
             },

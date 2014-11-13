@@ -1,4 +1,4 @@
-# Mustacher
+# Mustacher [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Handlebars template (.tpl, .hbs) Helpers!
 > [Home] (http://malas34.github.io/grunt-mustacher/)
@@ -40,7 +40,7 @@
 
 ### Requirements
 
-#### [Grunt](http://gruntjs.com/) `~0.4.5`
+#### Grunt `~0.4.5`
 
 If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 

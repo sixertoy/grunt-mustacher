@@ -92,50 +92,50 @@
             it('Should be equal', function () {
                 var html = '{{#repeat 4}}item{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item' + lf + 'item' + lf + 'item' + lf + 'item');
+                expect(template()).toEqual('item' + lf + 'item' + lf + 'item' + lf + 'item' + lf);
             });
 
             it('Should be equal with zindex', function () {
                 var html = '{{#repeat 4}}item {{@zindex}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0' + lf + 'item 1' + lf + 'item 2' + lf + 'item 3');
+                expect(template()).toEqual('item 0' + lf + 'item 1' + lf + 'item 2' + lf + 'item 3' + lf);
             });
 
             it('Should be equal with zindex and first', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@first}}{{/repeat}}',
                     template = Handlebars.compile(html),
                     result = template();
-                expect(result).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 false');
+                expect(result).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 false' + lf);
             });
 
             it('Should be equal with zindex and last', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@last}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0 false' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 true');
+                expect(template()).toEqual('item 0 false' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 true' + lf);
             });
 
             it('Should be equal with zindex and even', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@even}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0 false' + lf + 'item 1 true' + lf + 'item 2 false' + lf + 'item 3 true');
+                expect(template()).toEqual('item 0 false' + lf + 'item 1 true' + lf + 'item 2 false' + lf + 'item 3 true' + lf);
             });
 
             it('Should be equal with zindex and odd', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@odd}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 true' + lf + 'item 3 false');
+                expect(template()).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 true' + lf + 'item 3 false' + lf);
             });
 
             it('Should be equal with zindex and of', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} of {{@of}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0 of 4' + lf + 'item 1 of 4' + lf + 'item 2 of 4' + lf + 'item 3 of 4');
+                expect(template()).toEqual('item 0 of 4' + lf + 'item 1 of 4' + lf + 'item 2 of 4' + lf + 'item 3 of 4' + lf);
             });
 
             it('Should be equal with index and of', function () {
                 var html = '{{#repeat 4}}item {{@index}} of {{@of}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 1 of 4' + lf + 'item 2 of 4' + lf + 'item 3 of 4' + lf + 'item 4 of 4');
+                expect(template()).toEqual('item 1 of 4' + lf + 'item 2 of 4' + lf + 'item 3 of 4' + lf + 'item 4 of 4' + lf);
             });
 
             it('Should be equal to expected content', function (done) {
@@ -143,7 +143,7 @@
                 setTimeout(function () {
                     var html = '{{#repeat 4}}<span class="{{@class}}">Hello - {{@zindex}}</span>{{/repeat}}',
                         template = Handlebars.compile(html);
-                    expect(template()).toEqual(content.trim());
+                    expect(template()).toEqual(content);
                     done();
                 }, 2000);
             });
