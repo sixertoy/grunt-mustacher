@@ -1,17 +1,18 @@
-'use strict';
+/*global module, require */
+(function () {
 
-var MustacherUtils,
-    Grunt = require('grunt');
+    'use strict';
 
-MustacherUtils = (function (Grunt) {
+    function TaskUtils() {}
 
-    function MustacherUtils() {}
-
-    MustacherUtils.prototype.removeEmptyChars = function(val){
-        return val.trim().replace( /^\s+/, '' ).replace( /^\t+/, '' );
+    TaskUtils.prototype.removeEmptyChars = function (str) {
+        return str.trim().replace(/^\s+/, '').replace(/^\t+/, '');
     };
 
+    module.exports = new TaskUtils();
+
     // @TODO unittest
+    /*
     MustacherUtils.prototype.isFunction = function (func) {
         return Grunt.util.kindOf(func) == 'function';
     };
@@ -73,12 +74,6 @@ MustacherUtils = (function (Grunt) {
         return false;
     };
 
-    // @TODO Tests Unitaires
-    MustacherUtils.prototype.arguments = function(args)
-    {
-        return Array.prototype.slice.call(args);
-    };
-
     MustacherUtils.prototype.parseContext = function (context) {
         if (this.isJSONContext(context)) {
             try {
@@ -106,9 +101,6 @@ MustacherUtils = (function (Grunt) {
         }
         return obj;
     };
+    */
 
-    return MustacherUtils;
-
-})(Grunt);
-
-module.exports = new MustacherUtils();
+}());

@@ -1,114 +1,83 @@
-'use strict';
+/*global module, require, process */
+(function () {
 
-var Mustacher,
-    Path = require('path'),
-    Grunt = require('grunt'),
-    Handlebars = require('handlebars');
+    'use strict';
 
-var _utils = require('../lib/utils');
+    /**
+     * Imports
+     */
+    var Mustacher, LF, Defaults,
+        Q = require('q'),
+        Path = require('path'),
+        Grunt = require('grunt'),
+        Lodash = require('lodash'),
+        Handlebars = require('handlebars'),
+        TaskUtils = require('./task-utils');
 
-Mustacher = (function (_, Grunt) {
-
-    var _name,
-        _files,
-        _instance,
-        _options ={},
-        _cwd = process.cwd(),
-        _defaults_options = {
-            src: '',
-            dataExtension: '.json',
-            partialsExtension:'.hbs'
-        };
-
-    function Mustacher() {
-        _instance = this;
-    }
-
-    Mustacher.prototype.init = function (helpers) {
-        var name,
-            helper,
-            done = this.async();
-
-        _name = this.name;
-        _files = this.files;
-        _options = this.options(_defaults_options);
-
-        setTimeout(function () {
-            for (var i = 0; i < helpers.length; i++) {
-                name = helpers[i];
-                helper = require('../lib/helpers/' +name );
-                helper.register();
-            }
-            done(true);
-        }, 200);
-
+    /**
+     * Variables
+     */
+    Defaults = {
+        src: '',
+        dataExtension: '.json',
+        partialsExtension: '.hbs'
     };
+    LF = Grunt.util.linefeed;
 
-    Mustacher.prototype.render = function () {
-        var func,
-            dest,
-            ouput,
-            result,
-            stream,
-            taskIndex,
-            taskConfig,
+    Mustacher = function () {};
+
+    /**
+     *
+     * Render template files
+     *
+     */
+    Mustacher.prototype.render = function (task, helpers) {
+        var file, content, html,
             context = {},
-            // done = this.async(),
-            lf = Grunt.util.linefeed,
-            data = Handlebars.createFrame( _options || {} );
+            deferred = Q.defer(),
+            opts = task.options(Defaults),
+            data = Handlebars.createFrame(opts || {});
+        helpers.map(function (name) {
+            var helper = require('./helpers/' + name);
+            helper.register();
+        });
+        if (!task.files.length) {
+            deferred.reject('Files argument is needed');
+        } else {
+            task.files.forEach(function (ptask, index, config) {
+                if (!ptask.src.length) {
+                    deferred.reject('No Mustache files parse to parse');
+                } else {
 
-        setTimeout(function () {
-            if (!_files.length) {
-                throw new Error('Config source files needed');
-            } else {
-                // file -> object
-                _files.forEach(function (task, index, config) {
-                    taskIndex = index;
-                    taskConfig = config;
-                    if (!task.src.length) {
-                        throw new Error('Config source files empty or non existent.');
-                    } else {
-                        var content = task.src
-                            .filter(function (filepath) {
-                                if (!Grunt.file.exists(filepath)) {
-                                    Grunt.log.warn('Source file "' + filepath + '" not found.');
-                                    return false;
-                                } else {
-                                    return true;
-                                }
-                            })
-                            .map(function (filepath) {
-
-                                // console.log( data );
-
-                                stream = Grunt.file.read(filepath);
-                                Grunt.file.setBase( Path.dirname( filepath ) );
-                                func = _.compile(stream );
-                                result = func( context, { data:data, hash:{} } );
-                                result = _utils.removeEmptyChars( result );
-                                Grunt.file.setBase( _cwd );
-                                return new _.SafeString(result);
-
-                            })
-                            .join(Grunt.util.normalizelf(lf));
-
-                        // Ecriture du fichier html
-                        ouput = '';
-                            ouput += content + lf;
-                        var outputFile = task.dest;
-                        Grunt.file.write(outputFile, ouput);
-                        // Print a success message.
-                        Grunt.log.ok('File "' + outputFile + '" created.');
-
-                    }
-                    // done(true);
-                });
-            }
-        }, 200);
+                    content = ptask.src.filter(function (filepath) {
+                        if (!Grunt.file.exists(filepath)) {
+                            Grunt.log.warn('Source file not found: ' + filepath);
+                            return false;
+                        } else {
+                            return filepath;
+                        }
+                    }).map(function (filepath, index) {
+                        var stream = Grunt.file.read(filepath),
+                            result = Handlebars.compile(stream)(context, {
+                                data: data,
+                                hash: {}
+                            });
+                        result = TaskUtils.removeEmptyChars(result);
+                        Grunt.file.setBase(process.cwd());
+                        return new Handlebars.SafeString(result);
+                    }).join(Grunt.util.normalizelf(LF));
+                    // Ecriture du fichier html
+                    file = ptask.dest;
+                    html = content + LF;
+                    Grunt.file.write(file, html);
+                    Grunt.log.ok('File "' + file + '" created.');
+                    deferred.resolve(true);
+                }
+            });
+        }
+        return deferred.promise;
     };
 
-    return Mustacher;
+    module.exports = Mustacher;
 
-})(Handlebars, Grunt);
-
-module.exports = new Mustacher();
+}());

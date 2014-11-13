@@ -31,7 +31,7 @@
             jasmine: {
                 all: {
                     options: {
-                        specs: 'specs/*-spec.js'
+                        specs: 'specs/*.test.js'
                     },
                     src: ['tasks/**/*.js']
                 }
@@ -52,8 +52,11 @@
             mustacher: {
                 compile: {
                     files: [{
-                        src: 'output/tpl/index.tpl',
-                        dest: 'output/html/index.html'
+                        src: 'templates/commons/head.tpl',
+                        dest: 'html/commons/head.html'
+                    }, {
+                        src: 'templates/index.tpl',
+                        dest: 'html/index.html'
                     }]
                 }
                 /*

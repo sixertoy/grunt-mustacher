@@ -30,22 +30,21 @@
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
     THE SOFTWARE.
  */
-'use strict';
+/*global module, require */
+(function () {
 
-var MustacherTimestampHelper,
-    Handlebars = require('handlebars');
+    'use strict';
 
-var _utils = require('../utils');
-
-MustacherTimestampHelper = (function (_) {
+    var Lodash = require('lodash'),
+        Handlebars = require('handlebars');
 
     function MustacherTimestampHelper() {}
 
     MustacherTimestampHelper.prototype.register = function () {
         var args,
             $this = this;
-        _.registerHelper('$timestamp', function () {
-            args = _utils.arguments(arguments);
+        Handlebars.registerHelper('$timestamp', function () {
+            args = Lodash.toArray(arguments);
             return $this.compile.apply($this, args);
         });
     };
@@ -55,8 +54,6 @@ MustacherTimestampHelper = (function (_) {
         return (!Date.now) ? new Date().getTime() : Date.now();
     };
 
-    return MustacherTimestampHelper;
+    module.exports = new MustacherTimestampHelper();
 
-})(Handlebars);
-
-module.exports = new MustacherTimestampHelper();
+}());

@@ -1,45 +1,47 @@
 {
-    "name": "grunt-mustacher",
-    "description": "Mustache Template Helpers",
-    "version": "1.1.0",
-    "homepage": "http://malas34.github.io/grunt-mustacher/",
-    "author": {
-        "name": "Matthieu Lassalvy",
-        "email": "malas34.github@gmail.com",
-        "url": "https://github.com/malas34"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/malas34/grunt-mustacher.git"
-    },
-    "bugs": {
-        "url": "https://github.com/malas34/grunt-mustacher/issues"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://opensource.org/licenses/MIT"
+  "name": "grunt-mustacher",
+  "description": "Mustache Template Helpers",
+  "version": "1.1.0",
+  "homepage": "http://malas34.github.io/grunt-mustacher/",
+  "author": {
+    "name": "Matthieu Lassalvy",
+    "email": "malas34.github@gmail.com",
+    "url": "https://github.com/malas34"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/malas34/grunt-mustacher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/malas34/grunt-mustacher/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "scripts": {
-        "test": "grunt tests"
-    },
-    "dependencies": {
-        "digits": "~0.1.4",
-        "handlebars": "~1.3.0",
-        "lorem-ipsum": "~1.0.1"
-    },
-    "devDependencies": {
-        "grunt": "~0.4.4",
-        "grunt-contrib-clean": "~0.4.0",
-        "grunt-contrib-htmlmin": "~0.3.0",
-        "grunt-contrib-jasmine": "^0.8.1",
-        "grunt-contrib-jshint": "~0.6.0"
-    },
-    "keywords": [
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt tests"
+  },
+  "dependencies": {
+    "digits": "~0.1.4",
+    "handlebars": "~1.3.0",
+    "lodash": "^2.4.1",
+    "lorem-ipsum": "~1.0.1",
+    "q": "^1.1.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-htmlmin": "~0.3.0",
+    "grunt-contrib-jasmine": "^0.8.1",
+    "grunt-contrib-jshint": "~0.6.0"
+  },
+  "keywords": [
     "handlebars",
     "loops",
     "files",

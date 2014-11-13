@@ -11,27 +11,35 @@
  */
 /*global module, require */
 (function () {
-
     'use strict';
-
-    var Mustacher = require('lib/mustacher'),
-        Helpers = [
+    var Mustacher = require('./lib/mustacher'),
+        helpers = [
+            'timestamp'
+        ];
+        /*
+         *
             'equal',
             'image',
             'include',
             'lorem',
             'random',
             'repeat',
-            'timestamp'
-        ];
-
+         */
+    /**
+     *
+     *
+     *
+     */
     module.exports = function (grunt) {
-
         grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
-            /*
-            Mustacher.init.call(this, handlebarsHelpers);
-            Mustacher.render.call(this);
-            */
+            var done = this.async(),
+                mustacher = new Mustacher();
+            mustacher.render(this, helpers).then(function () {
+                done(true);
+            }, function (err) {
+                done(new Error(err));
+            });
         });
     };
+
 }());
