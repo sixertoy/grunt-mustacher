@@ -1,3 +1,15 @@
+/**
+ * Grunt Mustacher
+ * https://github.com/malas34/grunt-mustacher
+ *
+ * Copyright (c) 2014 Matthieu Lassalvy
+ * Licensed under the MIT license.
+ *
+ * HANDLEBARS
+ * @see http://handlebarsjs.com/
+ *
+ */
+/*jslint plusplus: true, indent: 4 */
 /*global module, require, process */
 (function () {
 
@@ -38,8 +50,9 @@
             opts = task.options(Defaults),
             data = Handlebars.createFrame(opts || {});
         helpers.map(function (name) {
-            var helper = require('./helpers/' + name);
-            helper.register();
+            var Helper = require('./helpers/' + name),
+                instance = new Helper();
+            instance.register();
         });
         if (!task.files.length) {
             deferred.reject('Files argument is needed');

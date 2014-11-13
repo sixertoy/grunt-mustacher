@@ -8,18 +8,39 @@
 
     describe('Timestamp helper', function () {
 
+        var helper;
+
+        beforeEach(function () {
+            helper = new Helper();
+        });
+
         describe('compile', function () {
 
-            it('should be sup to now', function () {
-                var now = Date.now(),
-                    result = Helper.compile();
-                expect(now < result).toBe(true);
+            it('should not toEqual sup to now', function (done) {
+                var now = Date.now();
+                setTimeout(function () {
+                    var result = helper.compile();
+                    expect(now).not.toEqual(result);
+                    done();
+                }, 1000);
             });
 
-            it('should be inf to now', function () {
-                var result = Helper.compile(),
-                    now = Date.now();
-                expect(now > result).toBe(true);
+            it('should not toBeGreaterThan sup to now', function (done) {
+                var now = Date.now();
+                setTimeout(function () {
+                    var result = helper.compile();
+                    expect(now).not.toBeGreaterThan(result);
+                    done();
+                }, 1000);
+            });
+
+            it('should toBeGreaterThan to now', function (done) {
+                var result = helper.compile();
+                setTimeout(function () {
+                    var now = Date.now();
+                    expect(now).toBeGreaterThan(result);
+                    done();
+                }, 1000);
             });
 
         });

@@ -9,6 +9,7 @@
  * @see http://handlebarsjs.com/
  *
  */
+/*jslint plusplus: true, indent: 4 */
 /*global module, require */
 (function () {
     'use strict';
