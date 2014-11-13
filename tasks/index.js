@@ -1,4 +1,4 @@
-/*
+/**
  * Grunt Mustacher
  * https://github.com/malas34/grunt-mustacher
  *
@@ -9,22 +9,29 @@
  * @see http://handlebarsjs.com/
  *
  */
-'use strict';
+/*global module, require */
+(function () {
 
-var handlebarsHelpers = [
-    'equal',
-    'image',
-    'include',
-    'lorem',
-    'random',
-    'repeat',
-    'timestamp'
-];
+    'use strict';
 
-module.exports = function (grunt) {
-    var _mustacher = require('../lib/mustacher');
-    grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
-        _mustacher.init.call(this,handlebarsHelpers);
-        _mustacher.render.call(this);
-    });
-};
+    var Mustacher = require('lib/mustacher'),
+        Helpers = [
+            'equal',
+            'image',
+            'include',
+            'lorem',
+            'random',
+            'repeat',
+            'timestamp'
+        ];
+
+    module.exports = function (grunt) {
+
+        grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
+            /*
+            Mustacher.init.call(this, handlebarsHelpers);
+            Mustacher.render.call(this);
+            */
+        });
+    };
+}());

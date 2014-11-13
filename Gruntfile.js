@@ -1,82 +1,99 @@
-/*
+/**
  * Grunt Mustacher
- * https://github.com/malas34/malas34
  *
  * Copyright (c) 2014 Matthieu Lassalvy
  * Licensed under the MIT license.
  */
+/*global module */
+(function () {
 
-'use strict';
+    'use strict';
 
-module.exports = function (grunt) {
+    module.exports = function (grunt) {
 
+        grunt.initConfig({
+            /** ------------------------------------
 
+ JSHint task
 
-    grunt.initConfig({
-        jshint: {
-            options: {
-                jshintrc: '.jshintrc',
+ */
+            jshint: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                all: ['Gruntfile.js', 'specs/*.js']
             },
-            all: [
-                'Gruntfile.js',
-                'tests/*.js'
-            ],
-        },
+            /** ------------------------------------
 
-        clean: {
-            tests: ['tmp/*'],
-        },
+ Jasmine task
 
-        nodeunit: {
-            tests: ['tests/**/*_test.js'],
-        },
+ */
+            jasmine: {
+                all: {
+                    options: {
+                        specs: 'specs/*-spec.js'
+                    },
+                    src: ['tasks/**/*.js']
+                }
+            },
+            /** ------------------------------------
 
-        mustacher: {
-            compile: {
-                files: [
-                    {
-                        src: 'output/mustache/index.tpl',
+ Clean task
+
+ */
+            clean: {
+                tests: ['tmp/*']
+            },
+            /** ------------------------------------
+
+ Mustacher task
+
+ */
+            mustacher: {
+                compile: {
+                    files: [{
+                        src: 'output/tpl/index.tpl',
                         dest: 'output/html/index.html'
-                    }
-                ]
-            },
-            templates:{
-                files: [{
-                    expand: true,
-                    cwd: 'output/mustache/commons/',
-                    src: '**/*.hbs',
-                    dest: 'output/tpl/commons/',
-                    ext:'.tpl'
+                    }]
+                }
+                /*
+                templates: {
+                    files: [{
+                        expand: true,
+                        cwd: 'output/hbs/commons/',
+                        src: '.hbs',
+                        dest: 'output/tpl/commons/',
+                        ext: '.tpl'
                 }]
-            },
-            html:{
-                files: [{
-                    expand: true,
-                    cwd: 'html/tpl/',
-                    src: '*.tpl',
-                    dest: 'html/html/',
-                    ext:'.html'
-                }]
-            }
-        }
+                },
 
-    });
-    /* -----------------------------------------------------------------------------
+                html: {
+                    files: [{
+                        expand: true,
+                        cwd: 'html/tpl/',
+                        src: '*.tpl',
+                        dest: 'html/html/',
+                        ext: '.html'
+                }]
+                }
+                */
+            }
+
+        });
+        /* -----------------------------------------------------------------------------
 
  Tasks
 
 ----------------------------------------------------------------------------- */
-    grunt.loadTasks('tasks');
+        grunt.loadTasks('tasks');
 
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-coffee');
-    grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-contrib-nodeunit');
+        grunt.loadNpmTasks('grunt-contrib-clean');
+        grunt.loadNpmTasks('grunt-contrib-jshint');
+        grunt.loadNpmTasks('grunt-contrib-htmlmin');
+        grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-    grunt.registerTask('test', ['jshint', 'nodeunit']);
-    grunt.registerTask('html', ['mustacher:html']);
-    grunt.registerTask('templates', ['mustacher:templates']);
-    grunt.registerTask('default', ['mustacher:compile']);
+        grunt.registerTask('tests', ['jshint', 'jasmine']);
+        grunt.registerTask('default', ['jshint', 'mustacher:compile']);
 
-};
+    };
+}());
