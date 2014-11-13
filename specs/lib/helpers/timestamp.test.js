@@ -10,15 +10,15 @@
 
         describe('compile', function () {
 
-            it ('should be sup to now', function(){
-                var now = Date.now();
-                var result = Helper.compile();
+            it('should be sup to now', function () {
+                var now = Date.now(),
+                    result = Helper.compile();
                 expect(now < result).toBe(true);
             });
 
-            it ('should be inf to now', function(){
-                var result = Helper.compile();
-                var now = Date.now();
+            it('should be inf to now', function () {
+                var result = Helper.compile(),
+                    now = Date.now();
                 expect(now > result).toBe(true);
             });
 
