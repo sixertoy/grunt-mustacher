@@ -28,13 +28,14 @@
  Jasmine task
 
  */
-            jasmine: {
-                all: {
-                    options: {
-                        specs: 'specs/*.test.js'
-                    },
-                    src: ['tasks/**/*.js']
-                }
+            jasmine_node: {
+                options: {
+                    match: '.',
+                    forceExit: true,
+                    extensions: 'js',
+                    specNameMatcher: 'test'
+                },
+                all: ['specs/']
             },
             /** ------------------------------------
 
@@ -90,12 +91,12 @@
 ----------------------------------------------------------------------------- */
         grunt.loadTasks('tasks');
 
+        grunt.loadNpmTasks('grunt-jasmine-node');
         grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-jshint');
         grunt.loadNpmTasks('grunt-contrib-htmlmin');
-        grunt.loadNpmTasks('grunt-contrib-jasmine');
 
-        grunt.registerTask('tests', ['jshint', 'jasmine']);
+        grunt.registerTask('tests', ['jshint', 'jasmine_node']);
         grunt.registerTask('default', ['jshint', 'mustacher:compile']);
 
     };

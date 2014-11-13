@@ -38,9 +38,9 @@
     var Lodash = require('lodash'),
         Handlebars = require('handlebars');
 
-    function MustacherTimestampHelper() {}
+    function TimestampHelper() {}
 
-    MustacherTimestampHelper.prototype.register = function () {
+    TimestampHelper.prototype.register = function () {
         var args,
             $this = this;
         Handlebars.registerHelper('$timestamp', function () {
@@ -49,11 +49,11 @@
         });
     };
 
-    MustacherTimestampHelper.prototype.compile = function (options) {
+    TimestampHelper.prototype.compile = function (options) {
         var context = options || {};
         return (!Date.now) ? new Date().getTime() : Date.now();
     };
 
-    module.exports = new MustacherTimestampHelper();
+    module.exports = new TimestampHelper();
 
 }());

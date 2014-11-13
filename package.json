@@ -38,8 +38,8 @@
     "grunt": "~0.4.4",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-htmlmin": "~0.3.0",
-    "grunt-contrib-jasmine": "^0.8.1",
-    "grunt-contrib-jshint": "~0.6.0"
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-jasmine-node": "https://github.com/malas34/grunt-jasmine-node/archive/jasmine-node_v1.14.tar.gz"
   },
   "keywords": [
     "handlebars",
