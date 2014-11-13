@@ -10,7 +10,7 @@
  *
  */
 /*jslint plusplus: true, indent: 4 */
-/*global module, require */
+/*global module */
 (function () {
 
     'use strict';
@@ -25,35 +25,6 @@
 
     // @TODO unittest
     /*
-    MustacherUtils.prototype.isFunction = function (func) {
-        return Grunt.util.kindOf(func) == 'function';
-    };
-
-    // @TODO unittest
-    MustacherUtils.prototype.isBoolean = function (bool) {
-        return Grunt.util.kindOf(bool) == 'boolean';
-    };
-
-    // @TODO unittest
-    MustacherUtils.prototype.isArray = function (arr) {
-        return Grunt.util.kindOf(arr) == 'array';
-    };
-
-    // @TODO unittest
-    MustacherUtils.prototype.isNumber = function (num) {
-        return Grunt.util.kindOf(num) == 'number';
-    };
-
-    // @TODO unittest
-    MustacherUtils.prototype.isString = function (str) {
-        return Grunt.util.kindOf(str) == 'string';
-    };
-
-    // @TODO unittest
-    MustacherUtils.prototype.isObject = function (obj) {
-        return Grunt.util.kindOf(obj) == 'object';
-    };
-
     MustacherUtils.prototype.isEmpty = function (obj) {
         if (this.isObject(obj)) {
             return (Object.keys(obj).length === 0);

@@ -13,7 +13,7 @@
     "eqeqeq": true,
     "esnext": true,
     "newcap": true,
-    "unused": true,
+    "unused": false,
     "regexp": true,
     "noempty": true,
     "bitwise": true,

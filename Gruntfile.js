@@ -27,7 +27,7 @@
                 options: {
                     jshintrc: '.jshintrc'
                 },
-                all: ['Gruntfile.js', 'specs/*.js']
+                all: ['Gruntfile.js', 'specs/**/*.js', 'tasks/**/*.js']
             },
             /** ------------------------------------
 
@@ -42,14 +42,6 @@
                     specNameMatcher: 'test'
                 },
                 all: ['specs/']
-            },
-            /** ------------------------------------
-
- Clean task
-
- */
-            clean: {
-                tests: ['tmp/*']
             },
             /** ------------------------------------
 
@@ -98,9 +90,7 @@
         grunt.loadTasks('tasks');
 
         grunt.loadNpmTasks('grunt-jasmine-node');
-        grunt.loadNpmTasks('grunt-contrib-clean');
         grunt.loadNpmTasks('grunt-contrib-jshint');
-        grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
         grunt.registerTask('default', ['jshint', 'jasmine_node']);
         grunt.registerTask('compile', ['jshint', 'mustacher:compile']);

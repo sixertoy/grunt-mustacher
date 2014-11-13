@@ -46,38 +46,39 @@
         if (arguments.length > 1) {
             //
             context = options || {};
-            if (Lodash.isFunction(context.fn)) {
-                //
-                this.count = parseFloat(count);
-                if (!Lodash.isNaN(this.count)) {
-                    //hash = Handlebars.createFrame(context.data || {});
-                    // Lodash.merge(hash, options.hash);
-                    opts = {
-                        hash:{}
-                    };
-                    for (i = 0; i < this.count; i++) {
-                        opts.data = {
-                            zindex: i,
-                            index: (i + 1),
-                            odd: ((i % 2) ? false : true), // pair
-                            even: ((i % 2) ? true : false), // impair
-                            of: this.count,
-                            first: (i === 0),
-                            last: (i === (this.count - 1))
-                        };
-                        opts.data.class = (opts.data.odd ? 'odd' : 'even');
-                        opts.data.class += (opts.data.last ? ' last' : '');
-                        opts.data.class += (opts.data.first ? ' first' : '');
-                        result.push((context.fn(this, opts) || '').trim());
-                    }
-                    return result.join(this.lf);
-
-                } else {
-                    throw new Error('Repeat arguments is not valid');
-                }
-            } else {
+            if (!Lodash.isFunction(context.fn)) {
                 throw new Error('Repeat arguments is not an handlebars context');
             }
+            //
+            this.count = parseFloat(count);
+            if (Lodash.isNaN(this.count)) {
+                throw new Error('Repeat arguments is not valid');
+            }
+            var data = Handlebars.createFrame(options.data);
+            // opts.data = Handlebars.createFrame(context.data || {});
+            // data.foo = 'bar';
+            // options.data = data;
+            //hash = Handlebars.createFrame(context.data || {});
+            // Lodash.merge(hash, options.hash);
+            opts = {
+                hash: {}
+            };
+            for (i = 0; i < this.count; i++) {
+                opts.data = {
+                    zindex: i,
+                    index: (i + 1),
+                    of: this.count,
+                    odd: ((i % 2) ? false : true), // pair
+                    even: ((i % 2) ? true : false), // impair
+                    first: (i === 0),
+                    last: (i === (this.count - 1))
+                };
+                opts.data.class = (opts.data.odd ? 'odd' : 'even');
+                opts.data.class += (opts.data.last ? ' last' : '');
+                opts.data.class += (opts.data.first ? ' first' : '');
+                result.push((context.fn(this, opts) || '').trim());
+            }
+            return result.join(this.lf) + this.lf;
         } else {
             throw new Error('Repeat arguments is missing');
         }

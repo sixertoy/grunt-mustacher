@@ -55,37 +55,37 @@
 
             it('Should toThrow with no arguments', function () {
                 expect(function () {
-                    var result = helper.compile();
+                    helper.compile();
                 }).toThrow(new Error('Repeat arguments is missing'));
             });
 
             it('Should toThrow with one argument', function () {
                 expect(function () {
-                    var result = helper.compile({});
+                    helper.compile({});
                 }).toThrow(new Error('Repeat arguments is missing'));
             });
 
             it('Should toThrow with a word argument', function () {
                 expect(function () {
-                    var result = helper.compile('word', options);
+                    helper.compile('word', options);
                 }).toThrow(new Error('Repeat arguments is not valid'));
             });
 
             it('Should toThrow with a blank spaced string argument', function () {
                 expect(function () {
-                    var result = helper.compile(' ', options);
+                    helper.compile(' ', options);
                 }).toThrow(new Error('Repeat arguments is not valid'));
             });
 
             it('Should toThrow with a empty string argument', function () {
                 expect(function () {
-                    var result = helper.compile('', options);
+                    helper.compile('', options);
                 }).toThrow(new Error('Repeat arguments is not valid'));
             });
 
             it('Should toThrow with a second argument in not a handlebars context', function () {
                 expect(function () {
-                    var result = helper.compile(4, 4);
+                    helper.compile(4, 4);
                 }).toThrow(new Error('Repeat arguments is not an handlebars context'));
             });
 
@@ -101,22 +101,29 @@
                 expect(template()).toEqual('item 0' + lf + 'item 1' + lf + 'item 2' + lf + 'item 3');
             });
 
+            it('Should be equal with zindex and first', function () {
+                var html = '{{#repeat 4}}item {{@zindex}} {{@first}}{{/repeat}}',
+                    template = Handlebars.compile(html),
+                    result = template();
+                expect(result).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 false');
+            });
+
             it('Should be equal with zindex and last', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@last}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0' + lf + 'item 1' + lf + 'item 2' + lf + 'item 3 true');
+                expect(template()).toEqual('item 0 false' + lf + 'item 1 false' + lf + 'item 2 false' + lf + 'item 3 true');
             });
 
             it('Should be equal with zindex and even', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@even}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0' + lf + 'item 1 true' + lf + 'item 2' + lf + 'item 3 true');
+                expect(template()).toEqual('item 0 false' + lf + 'item 1 true' + lf + 'item 2 false' + lf + 'item 3 true');
             });
 
             it('Should be equal with zindex and odd', function () {
                 var html = '{{#repeat 4}}item {{@zindex}} {{@odd}}{{/repeat}}',
                     template = Handlebars.compile(html);
-                expect(template()).toEqual('item 0 true' + lf + 'item 1' + lf + 'item 2 true' + lf + 'item 3');
+                expect(template()).toEqual('item 0 true' + lf + 'item 1 false' + lf + 'item 2 true' + lf + 'item 3 false');
             });
 
             it('Should be equal with zindex and of', function () {

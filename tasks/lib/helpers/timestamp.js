@@ -30,7 +30,7 @@
         });
     };
 
-    TimestampHelper.prototype.compile = function (options) {
+        TimestampHelper.prototype.compile = function (options) {
         var context = options || {};
         return (!Date.now) ? new Date().getTime() : Date.now();
     };

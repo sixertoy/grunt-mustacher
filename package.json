@@ -28,17 +28,13 @@
     "test": "grunt jasmine_node"
   },
   "dependencies": {
-    "digits": "~0.1.4",
-    "handlebars": "~1.3.0",
+    "q": "^1.1.1",
     "lodash": "^2.4.1",
-    "lorem-ipsum": "~1.0.1",
-    "q": "^1.1.1"
+    "handlebars": "^2.0.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.4",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-contrib-htmlmin": "~0.3.0",
-    "grunt-contrib-jshint": "~0.6.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
     "grunt-jasmine-node": "https://github.com/malas34/grunt-jasmine-node/archive/jasmine-node_v1.14.tar.gz"
   },
   "keywords": [

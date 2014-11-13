@@ -20,9 +20,7 @@
      */
     var Mustacher, LF, Defaults,
         Q = require('q'),
-        Path = require('path'),
         Grunt = require('grunt'),
-        Lodash = require('lodash'),
         Handlebars = require('handlebars'),
         TaskUtils = require('./task-utils');
 
