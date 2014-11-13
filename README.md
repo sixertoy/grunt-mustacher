@@ -4,7 +4,7 @@
 
 ## Availables helpers
 
-### Repeat
+### #Repeat
 ```html
 <ul>
 {{#repeat 4}}
@@ -24,7 +24,7 @@
 </ul>
 ```
 
-### Timestamp
+### $Timestamp
 ```html
 <p><img src="http://placehold.it/300?{{$timestamp}}" alt="" title="" /></p>
 ```
