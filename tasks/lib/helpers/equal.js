@@ -39,9 +39,9 @@
             throw new Error('Equal needs two parameters');
         }
         if (lvalue !== rvalue) {
-            return options.inverse(this, { data: data });
+            return options.inverse({}, { data: data });
         } else {
-            return options.fn(this, { data: data });
+            return options.fn({}, { data: data });
         }
     };
 

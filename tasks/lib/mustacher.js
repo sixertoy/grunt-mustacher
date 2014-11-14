@@ -75,8 +75,8 @@
                         // opts may contains output path
                         // for includes
                         var stream = Grunt.file.read(filepath),
-                            template = Handlebars.compile(stream),
-                            result = template(context, {data: data});
+                            template = Handlebars.compile(stream, {trackIds: true}),
+                            result = template(context, {data:false});
 
                         result = TaskUtils.removeEmptyChars(result);
                         Grunt.file.setBase(process.cwd());

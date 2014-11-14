@@ -1,6 +1,5 @@
-{{!--
 <ul>
-    {{#repeat 3}}
+    {{#repeat 2}}
     <li>
         <b>{{@zindex}}</b>
         <ul>
@@ -9,13 +8,6 @@
             {{/repeat}}
         </ul>
     </li>
-    {{/repeat}}
-</ul>
---}}
-
-<ul>
-    {{#repeat 4}}
-    <li class="{{@class}}">item {{@../zindex}} {{@zindex}} {{@index}} of {{@of}} - {{@first}} {{@last}}</li>
     {{/repeat}}
 </ul>
 

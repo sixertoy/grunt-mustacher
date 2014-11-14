@@ -31,17 +31,25 @@
     RepeatHelper.prototype.register = function () {
         var args,
             $this = this;
+        /*
         Handlebars.registerHelper('repeat', function () {
+
+            console.log(arguments);
+            console.log(this);
+
             args = Lodash.toArray(arguments);
             return $this.compile.apply($this, args);
         });
+        */
+        Handlebars.registerHelper('repeat', $this.render.bind($this));
+
     };
 
     /**
      * @TODO ajout d'un string comme arg pour parametrage custom
      * @see htt://placehold.it
      */
-    RepeatHelper.prototype.compile = function (count, options) {
+    RepeatHelper.prototype.render = function (count, options) {
 
         console.log(options);
 
@@ -72,7 +80,7 @@
                     data.class += (data.last ? ' last' : '');
                     data.class += (data.first ? ' first' : '');
                 }
-                result.push((options.fn(this, {data:data}) || '').trim());
+                result.push((options.fn({}, {data:data, trackIds: true}) || '').trim());
             }
             return result.join(this.lf) + this.lf;
         } else {
