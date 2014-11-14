@@ -27,7 +27,7 @@
                 options: {
                     jshintrc: '.jshintrc'
                 },
-                all: ['Gruntfile.js', 'specs/**/*.js', 'tasks/**/*.js']
+                all: ['Gruntfile.js', 'tests/**/*.js', 'tasks/**/*.js']
             },
             /** ------------------------------------
 
@@ -48,7 +48,7 @@
                         consolidate: true
                     }
                 },
-                all: ['specs/']
+                all: ['tests/']
             },
             /** ------------------------------------
 
