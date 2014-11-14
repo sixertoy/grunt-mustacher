@@ -31,17 +31,17 @@
     };
 
     EqualHelper.prototype.compile = function (lvalue, rvalue, options) {
-        var data;
-        if (options.data) {
-            data = Handlebars.createFrame(options.data || {});
-        }
         if (arguments.length < 3) {
             throw new Error('Equal needs two parameters');
         }
+        var data, context = {};
+        if (options.data) {
+            data = Handlebars.createFrame(options.data || {});
+        }
         if (lvalue !== rvalue) {
-            return options.inverse({}, { data: data });
+            return options.inverse(context, { data: data });
         } else {
-            return options.fn({}, { data: data });
+            return options.fn(context, { data: data });
         }
     };
 

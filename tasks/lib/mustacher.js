@@ -48,8 +48,9 @@
             deferred = Q.defer(),
             opts = task.options(Defaults);
 
+
         data = Handlebars.createFrame({});
-        data.extensions = opts;
+
 
         helpers.map(function (name) {
             var Helper = require('./helpers/' + name),
@@ -76,7 +77,7 @@
                         // for includes
                         var stream = Grunt.file.read(filepath),
                             template = Handlebars.compile(stream, {trackIds: true}),
-                            result = template(context, {data:false});
+                            result = template(context, {data: data});
 
                         result = TaskUtils.removeEmptyChars(result);
                         Grunt.file.setBase(process.cwd());

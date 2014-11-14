@@ -40,6 +40,7 @@
                     forceExit: false,
                     extensions: 'js',
                     specNameMatcher: 'test',
+                    includeStackTrace: false,
                     jUnit: {
                         report: true,
                         savePath: './build/reports/jasmine/',

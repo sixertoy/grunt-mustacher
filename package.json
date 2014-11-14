@@ -24,9 +24,6 @@
     "engines": {
         "node": ">= 0.8.0"
     },
-    "scripts": {
-        "test": "grunt jasmine_node"
-    },
     "dependencies": {
         "q": "^1.1.1",
         "lodash": "^2.4.1",

@@ -26,11 +26,11 @@
             $this = this;
         Handlebars.registerHelper('$timestamp', function () {
             args = Lodash.toArray(arguments);
-            return $this.compile.apply($this, args);
+            return $this.render.apply($this, args);
         });
     };
 
-    TimestampHelper.prototype.compile = function (options) {
+    TimestampHelper.prototype.render = function (options) {
         var data;
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});

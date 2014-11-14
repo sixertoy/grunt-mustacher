@@ -1,4 +1,4 @@
-/*global process, require, define, describe, it, xit, expect, beforeEach, afterEach, afterLast, Class */
+/*global jasmine, process, require, define, describe, it, xit, expect, beforeEach, afterEach, afterLast, Class */
 (function () {
 
     'use strict';
@@ -14,33 +14,38 @@
             helper = new Helper();
         });
 
-        describe('compile', function () {
+        describe('render', function () {
 
-            it('should not toEqual sup to now', function (done) {
+            it('Should not toEqual sup to now', function (done) {
                 var now = Date.now();
                 setTimeout(function () {
-                    var result = helper.compile();
+                    var result = helper.render({});
                     expect(now).not.toEqual(result);
                     done();
                 }, 1000);
             });
 
-            it('should not toBeGreaterThan sup to now', function (done) {
+            it('Should not toBeGreaterThan sup to now', function (done) {
                 var now = Date.now();
                 setTimeout(function () {
-                    var result = helper.compile();
+                    var result = helper.render({});
                     expect(now).not.toBeGreaterThan(result);
                     done();
                 }, 1000);
             });
 
-            it('should toBeGreaterThan to now', function (done) {
-                var result = helper.compile();
+            it('Should toBeGreaterThan to now', function (done) {
+                var result = helper.render({});
                 setTimeout(function () {
                     var now = Date.now();
                     expect(now).toBeGreaterThan(result);
                     done();
                 }, 1000);
+            });
+
+            it('Should be a number', function () {
+                var result = helper.render({});
+                expect(result).toEqual(jasmine.any(Number));
             });
 
         });
