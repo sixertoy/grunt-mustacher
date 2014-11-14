@@ -24,15 +24,25 @@
     EqualHelper.prototype.register = function () {
         var args,
             $this = this;
-        Handlebars.registerHelper('$equal', function () {
+        Handlebars.registerHelper('equal', function () {
             args = Lodash.toArray(arguments);
             return $this.compile.apply($this, args);
         });
     };
 
-        EqualHelper.prototype.compile = function (options) {
-        var context = options || {};
-        return (!Date.now) ? new Date().getTime() : Date.now();
+    EqualHelper.prototype.compile = function (lvalue, rvalue, options) {
+        var data;
+        if (options.data) {
+            data = Handlebars.createFrame(options.data || {});
+        }
+        if (arguments.length < 3) {
+            throw new Error('Equal needs two parameters');
+        }
+        if (lvalue !== rvalue) {
+            return options.inverse(this, { data: data });
+        } else {
+            return options.fn(this, { data: data });
+        }
     };
 
     module.exports = EqualHelper;

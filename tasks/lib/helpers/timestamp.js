@@ -30,8 +30,11 @@
         });
     };
 
-        TimestampHelper.prototype.compile = function (options) {
-        var context = options || {};
+    TimestampHelper.prototype.compile = function (options) {
+        var data;
+        if (options.data) {
+            data = Handlebars.createFrame(options.data || {});
+        }
         return (!Date.now) ? new Date().getTime() : Date.now();
     };
 

@@ -42,11 +42,12 @@
      * @see htt://placehold.it
      */
     RepeatHelper.prototype.compile = function (count, options) {
-        var i, opts, context, result = [];
+
+        console.log(options);
+
+        var i, data, result = [];
         if (arguments.length > 1) {
-            //
-            context = options || {};
-            if (!Lodash.isFunction(context.fn)) {
+            if (!Lodash.isFunction(options.fn)) {
                 throw new Error('Repeat arguments is not an handlebars context');
             }
             //
@@ -54,29 +55,24 @@
             if (Lodash.isNaN(this.count)) {
                 throw new Error('Repeat arguments is not valid');
             }
-            var data = Handlebars.createFrame(options.data);
-            // opts.data = Handlebars.createFrame(context.data || {});
-            // data.foo = 'bar';
-            // options.data = data;
-            //hash = Handlebars.createFrame(context.data || {});
-            // Lodash.merge(hash, options.hash);
-            opts = {
-                hash: {}
-            };
             for (i = 0; i < this.count; i++) {
-                opts.data = {
-                    zindex: i,
-                    index: (i + 1),
-                    of: this.count,
-                    odd: ((i % 2) ? false : true), // pair
-                    even: ((i % 2) ? true : false), // impair
-                    first: (i === 0),
-                    last: (i === (this.count - 1))
-                };
-                opts.data.class = (opts.data.odd ? 'odd' : 'even');
-                opts.data.class += (opts.data.last ? ' last' : '');
-                opts.data.class += (opts.data.first ? ' first' : '');
-                result.push((context.fn(this, opts) || '').trim());
+                // @TODO
+                // create an object
+                // and merge with existant
+                if (options.data) {
+                    data = Handlebars.createFrame(options.data || {});
+                    data.zindex = i;
+                    data.index = (i + 1);
+                    data.of = this.count;
+                    data.odd = ((i % 2) ? false : true); // pair
+                    data.even = ((i % 2) ? true : false); // impair
+                    data.first = (i === 0);
+                    data.last = (i === (this.count - 1));
+                    data.class = (data.odd ? 'odd' : 'even');
+                    data.class += (data.last ? ' last' : '');
+                    data.class += (data.first ? ' first' : '');
+                }
+                result.push((options.fn(this, {data:data}) || '').trim());
             }
             return result.join(this.lf) + this.lf;
         } else {

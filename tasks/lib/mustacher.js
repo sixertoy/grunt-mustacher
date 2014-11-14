@@ -21,6 +21,7 @@
     var Mustacher, LF, Defaults,
         Q = require('q'),
         Grunt = require('grunt'),
+        Lodash = require('lodash'),
         Handlebars = require('handlebars'),
         TaskUtils = require('./task-utils');
 
@@ -42,11 +43,14 @@
      *
      */
     Mustacher.prototype.render = function (task, helpers) {
-        var file, content, html,
+        var file, content, html, data,
             context = {},
             deferred = Q.defer(),
-            opts = task.options(Defaults),
-            data = Handlebars.createFrame(opts || {});
+            opts = task.options(Defaults);
+
+        data = Handlebars.createFrame({});
+        data.extensions = opts;
+
         helpers.map(function (name) {
             var Helper = require('./helpers/' + name),
                 instance = new Helper();
@@ -59,7 +63,6 @@
                 if (!ptask.src.length) {
                     deferred.reject('No Mustache files parse to parse');
                 } else {
-
                     content = ptask.src.filter(function (filepath) {
                         if (!Grunt.file.exists(filepath)) {
                             Grunt.log.warn('Source file not found: ' + filepath);
@@ -68,11 +71,13 @@
                             return filepath;
                         }
                     }).map(function (filepath, index) {
+                        // @TODO
+                        // opts may contains output path
+                        // for includes
                         var stream = Grunt.file.read(filepath),
-                            result = Handlebars.compile(stream)(context, {
-                                data: data,
-                                hash: {}
-                            });
+                            template = Handlebars.compile(stream),
+                            result = template(context, {data: data});
+
                         result = TaskUtils.removeEmptyChars(result);
                         Grunt.file.setBase(process.cwd());
                         return new Handlebars.SafeString(result);
