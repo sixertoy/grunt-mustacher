@@ -24,10 +24,7 @@
     TimestampHelper.prototype.register = function () {
         var args,
             $this = this;
-        Handlebars.registerHelper('$timestamp', function () {
-            args = Lodash.toArray(arguments);
-            return $this.render.apply($this, args);
-        });
+        Handlebars.registerHelper('$timestamp', this.render.bind(this));
     };
 
     TimestampHelper.prototype.render = function (options) {

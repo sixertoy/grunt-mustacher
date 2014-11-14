@@ -24,13 +24,10 @@
     EqualHelper.prototype.register = function () {
         var args,
             $this = this;
-        Handlebars.registerHelper('equal', function () {
-            args = Lodash.toArray(arguments);
-            return $this.compile.apply($this, args);
-        });
+        Handlebars.registerHelper('equal', this.render.bind(this));
     };
 
-    EqualHelper.prototype.compile = function (lvalue, rvalue, options) {
+    EqualHelper.prototype.render = function (lvalue, rvalue, options) {
         if (arguments.length < 3) {
             throw new Error('Equal needs two parameters');
         }
