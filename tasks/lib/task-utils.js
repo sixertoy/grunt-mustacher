@@ -15,7 +15,24 @@
 
     'use strict';
 
+    var lodash = require('lodash');
+
     function TaskUtils() {}
+
+    TaskUtils.prototype.containsOptions = function (args) {
+        if(args.length < 1){
+            return false;
+        }
+        var i,
+            result = false,
+            a = lodash.toArray(args);
+        for(i = 0; i< a.length; i++){
+            if(!result){
+                result = lodash.isPlainObject(a[i]);
+            }
+        }
+        return result;
+    };
 
     TaskUtils.prototype.removeEmptyChars = function (str) {
         return str.trim().replace(/^\s+/, '').replace(/^\t+/, '');
