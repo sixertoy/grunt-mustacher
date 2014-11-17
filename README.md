@@ -1,4 +1,4 @@
-# Mustacher [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/malas34/grunt-mustacher.svg?branch=master)](https://travis-ci.org/malas34/grunt-mustacher)
+# Mustacher [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/malas34/grunt-mustacher.svg?branch=dev)](https://travis-ci.org/malas34/grunt-mustacher)
 
 > Handlebars template (.tpl, .hbs) Helpers!
 
