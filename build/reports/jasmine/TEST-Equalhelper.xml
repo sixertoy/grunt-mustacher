@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Equal helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T22:24:09">
+</testsuite>
+<testsuite name="Equal helper.render" errors="0" tests="12" failures="0" time="0.003" timestamp="2014-11-17T22:24:09">
+  <testcase classname="Equal helper.render" name="Should be false (number)" time="0.002"></testcase>
+  <testcase classname="Equal helper.render" name="Should be true (number)" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false (number)" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be true string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be true string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false object" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false object" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false array" time="0.001"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false array" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="Should be false function" time="0"></testcase>
+</testsuite>
+</testsuites>

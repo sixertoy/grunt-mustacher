@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+<testsuite name="Randomw helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with no arguments" errors="0" tests="3" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+  <testcase classname="Randomw helper.render with no arguments" name="Should throw with no arguments" time="0"></testcase>
+  <testcase classname="Randomw helper.render with no arguments" name="Should throw null arguments" time="0"></testcase>
+  <testcase classname="Randomw helper.render with no arguments" name="Should throw undefined arguments" time="0"></testcase>
+</testsuite>
+<testsuite name="Randomw helper.render with min args as boolean" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with options arguments only" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with one arguments" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with two arguments" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with three arguments" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+<testsuite name="Randomw helper.render with floating values" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T20:43:51">
+</testsuite>
+</testsuites>
