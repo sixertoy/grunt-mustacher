@@ -1,43 +1,44 @@
 {
-    "name": "grunt-mustacher",
-    "description": "Mustache Template Helpers",
-    "version": "1.1.0",
-    "homepage": "http://malas34.github.io/grunt-mustacher/",
-    "author": {
-        "name": "Matthieu Lassalvy",
-        "email": "malas34.github@gmail.com",
-        "url": "https://github.com/malas34"
-    },
-    "scripts": {
-        "test": "grunt tests --verbose"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/malas34/grunt-mustacher.git"
-    },
-    "bugs": {
-        "url": "https://github.com/malas34/grunt-mustacher/issues"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://opensource.org/licenses/MIT"
+  "name": "grunt-mustacher",
+  "description": "Mustache Template Helpers",
+  "version": "1.1.0",
+  "homepage": "http://malas34.github.io/grunt-mustacher/",
+  "author": {
+    "name": "Matthieu Lassalvy",
+    "email": "malas34.github@gmail.com",
+    "url": "https://github.com/malas34"
+  },
+  "scripts": {
+    "test": "grunt tests --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/malas34/grunt-mustacher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/malas34/grunt-mustacher/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "dependencies": {
-        "q": "^1.1.1",
-        "lodash": "^2.4.1",
-        "handlebars": "^2.0.0"
-    },
-    "devDependencies": {
-        "grunt": "^0.4.5",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-jasmine-node": "git://github.com/malas34/grunt-jasmine-node"
-    },
-    "keywords": [
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "q": "^1.1.1",
+    "lodash": "^2.4.1",
+    "handlebars": "^2.0.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bump": "0.0.16",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jasmine-node": "git://github.com/malas34/grunt-jasmine-node"
+  },
+  "keywords": [
     "handlebars",
     "loops",
     "files",
