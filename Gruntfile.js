@@ -99,6 +99,7 @@
         grunt.loadNpmTasks('grunt-jasmine-node');
         grunt.loadNpmTasks('grunt-contrib-jshint');
 
+        grunt.registerTask('tests', ['jshint', 'jasmine_node']);
         grunt.registerTask('default', ['jshint', 'jasmine_node']);
         grunt.registerTask('compile', ['jshint', 'mustacher:compile']);
 

@@ -8,6 +8,9 @@
         "email": "malas34.github@gmail.com",
         "url": "https://github.com/malas34"
     },
+    "scripts": {
+        "test": "grunt tests --verbose"
+    },
     "repository": {
         "type": "git",
         "url": "git://github.com/malas34/grunt-mustacher.git"
@@ -32,7 +35,7 @@
     "devDependencies": {
         "grunt": "^0.4.5",
         "grunt-contrib-jshint": "^0.10.0",
-        "grunt-jasmine-node": "https://github.com/malas34/grunt-jasmine-node/archive/jasmine-node_v1.14.tar.gz"
+        "grunt-jasmine-node": "git://github.com/malas34/grunt-jasmine-node"
     },
     "keywords": [
     "handlebars",
