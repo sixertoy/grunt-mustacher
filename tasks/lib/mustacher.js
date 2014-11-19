@@ -9,6 +9,7 @@
  * @see http://handlebarsjs.com/
  *
  */
+/*jshint unused: false */
 /*jslint plusplus: true, indent: 4 */
 /*global module, require, process */
 (function () {
@@ -20,18 +21,43 @@
      */
     var Mustacher, LF, Defaults,
         Q = require('q'),
+        Path = require('path'),
         Grunt = require('grunt'),
-        Lodash = require('lodash'),
+        LoDash = require('lodash'),
         Handlebars = require('handlebars'),
         TaskUtils = require('./task-utils');
 
     /**
      * Variables
+     * @see http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
      */
+    /*
+    all: {
+        options:{
+            partials: 'examples/partials/'
+        },
+        files: [{
+            expand: true,
+            cwd: 'examples/templates/', // relative src path
+            src: '*.tpl',
+            dest: 'examples/html',
+            ext: '.html', // compiled file extension
+            extDot: 'first', // Extensions in filenames begin after the first dot
+            flatten: true // Remove all path parts from generated dest paths.
+        }]
+    },
+    */
     Defaults = {
-        src: '',
-        dataExtension: '.json',
-        partialsExtension: '.hbs'
+        cwd: '',
+        src: null,
+        dest: null,
+        ext: '.hbs',
+        expand: false,
+        flatten: false,
+        extDot: 'first',
+        //
+        contexts: null,
+        partials: null,
     };
     LF = Grunt.util.linefeed;
 
@@ -43,14 +69,16 @@
      *
      */
     Mustacher.prototype.render = function (task, helpers) {
-        var file, content, html, data,
+        var opts, file, content, html, data,
             context = {},
-            deferred = Q.defer(),
-            opts = task.options(Defaults);
+            deferred = Q.defer();
 
+        /*
+        var requires = this.requiresConfig('mysqldumper.local', 'mysqldumper.local.database', 'mysqldumper.distant', 'mysqldumper.distant.database', 'mysqldumper.distant.host');
+        if(!requires){}
+        */
 
-        data = Handlebars.createFrame({});
-
+        opts = task.options(Defaults);
 
         helpers.map(function (name) {
             var Helper = require('./helpers/' + name),
@@ -60,7 +88,7 @@
         if (!task.files.length) {
             deferred.reject('Files argument is needed');
         } else {
-            task.files.forEach(function (ptask, index, config) {
+            task.files.forEach(function (ptask) {
                 if (!ptask.src.length) {
                     deferred.reject('No Mustache files parse to parse');
                 } else {
@@ -71,14 +99,21 @@
                         } else {
                             return filepath;
                         }
-                    }).map(function (filepath, index) {
+                    }).map(function (filepath) {
                         // @TODO
                         // opts may contains output path
                         // for includes
                         var stream = Grunt.file.read(filepath),
-                            template = Handlebars.compile(stream, {trackIds: true}),
-                            result = template(context, {data: data});
-
+                            // compilation du contenu
+                            template = Handlebars.compile(stream, {
+                                trackIds: false
+                            }),
+                            // rendu du contenu
+                            result = template(context, {
+                                data: Handlebars.createFrame({
+                                    root: opts
+                                })
+                            });
                         result = TaskUtils.removeEmptyChars(result);
                         Grunt.file.setBase(process.cwd());
                         return new Handlebars.SafeString(result);

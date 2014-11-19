@@ -15,7 +15,7 @@
 
     'use strict';
 
-    var lodash = require('lodash');
+    var LoDash = require('lodash');
 
     function TaskUtils() {}
 
@@ -25,10 +25,10 @@
         }
         var i,
             result = false,
-            a = lodash.toArray(args);
+            a = LoDash.toArray(args);
         for(i = 0; i< a.length; i++){
             if(!result){
-                result = lodash.isPlainObject(a[i]);
+                result = LoDash.isPlainObject(a[i]);
             }
         }
         return result;

@@ -9,17 +9,25 @@
 <body>
     <h1 id="repeat-helper">Repeat Helper</h1>
 <h2 id="available-properties">Available properties</h2>
-<pre><code class="lang-html">{{@zindex}}
-{{@index}}
-{{@of}}
+<blockquote>
+<p>locales</p>
+</blockquote>
+<pre><code class="lang-html">{{of}}
+{{count}}
+{{class}}</code></pre>
+<blockquote>
+<p>globales</p>
+</blockquote>
+<pre><code class="lang-html">{{@index}}
 {{@first}}
 {{@last}}
-{{@class}}</code></pre>
+{{@odd}}
+{{@even}}</code></pre>
 <h2 id="usage">Usage</h2>
 <h3 id="loop">Loop</h3>
 <pre><code class="lang-html">&lt;ul&gt;
     {{#repeat 4}}
-    &lt;li class=&quot;{{@class}}&quot;&gt;item {{@zindex}} {{@index}} of {{@of}} - {{@first}} {{@last}}&lt;/li&gt;
+    &lt;li class=&quot;{{class}}&quot;&gt;item {{@index}} {{count}} of {{of}} - {{@first}} {{@last}}&lt;/li&gt;
     {{/repeat}}
 &lt;/ul&gt;</code></pre>
 <blockquote>
@@ -34,12 +42,12 @@
 <h3 id="nested-loop">Nested loop</h3>
 <pre><code class="lang-html">&lt;ul&gt;
     {{#repeat 2}}
-    &lt;li class=&quot;{{#if @first}}first{{/if}}{{#if @last}}last{{/if}}&quot;&gt;
-        &lt;b&gt;Parent {{@zindex}}&lt;/b&gt;
+    &lt;li class=&quot;{{#if @first}}default{{/if}}&quot;&gt;
+        &lt;b&gt;Parent {{@index}}&lt;/b&gt;
         &lt;ul&gt;
         {{#repeat 4}}
-        &lt;li class=&quot;{{@class}}&quot;&gt;
-            &lt;i&gt;Child {{@../zindex}}-{{@index}} of {{@of}}&lt;/i&gt;
+        &lt;li class=&quot;{{class}} {{#if @../first}}default{{/if}}&quot;&gt;
+            &lt;i&gt;Child {{@../index}}-{{count}} of {{of}}&lt;/i&gt;
         &lt;/li&gt;
         {{/repeat}}
         &lt;/ul&gt;
@@ -50,10 +58,10 @@
 <p>render</p>
 </blockquote>
 <pre><code class="lang-html">&lt;ul&gt;
-    &lt;li class=&quot;first&quot;&gt;
+    &lt;li class=&quot;default&quot;&gt;
         &lt;b&gt;Parent 0&lt;/b&gt;
         &lt;ul&gt;
-            &lt;li class=&quot;odd first&quot;&gt;
+            &lt;li class=&quot;odd first default&quot;&gt;
                 &lt;i&gt;Child 0-1 of 4&lt;/i&gt;
             &lt;/li&gt;
             &lt;li class=&quot;even&quot;&gt;
@@ -67,7 +75,7 @@
             &lt;/li&gt;
         &lt;/ul&gt;
     &lt;/li&gt;
-    &lt;li class=&quot;last&quot;&gt;
+    &lt;li class=&quot;&quot;&gt;
         &lt;b&gt;Parent 1&lt;/b&gt;
         &lt;ul&gt;
             &lt;li class=&quot;odd first&quot;&gt;

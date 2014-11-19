@@ -1,13 +1,23 @@
 # Repeat Helper
 
 ## Available properties
+
+> locales
+
 ```html
-{{@zindex}}
+{{of}}
+{{count}}
+{{class}}
+```
+
+> globales
+
+```html
 {{@index}}
-{{@of}}
 {{@first}}
 {{@last}}
-{{@class}}
+{{@odd}}
+{{@even}}
 ```
 
 ## Usage
@@ -17,7 +27,7 @@
 ```html
 <ul>
     {{#repeat 4}}
-    <li class="{{@class}}">item {{@zindex}} {{@index}} of {{@of}} - {{@first}} {{@last}}</li>
+    <li class="{{class}}">item {{@index}} {{count}} of {{of}} - {{@first}} {{@last}}</li>
     {{/repeat}}
 </ul>
 ```
@@ -38,12 +48,12 @@
 ```html
 <ul>
     {{#repeat 2}}
-    <li class="{{#if @first}}first{{/if}}{{#if @last}}last{{/if}}">
-        <b>Parent {{@zindex}}</b>
+    <li class="{{#if @first}}default{{/if}}">
+        <b>Parent {{@index}}</b>
         <ul>
         {{#repeat 4}}
-        <li class="{{@class}}">
-            <i>Child {{@../zindex}}-{{@index}} of {{@of}}</i>
+        <li class="{{class}} {{#if @../first}}default{{/if}}">
+            <i>Child {{@../index}}-{{count}} of {{of}}</i>
         </li>
         {{/repeat}}
         </ul>
@@ -56,10 +66,10 @@
 
 ```html
 <ul>
-    <li class="first">
+    <li class="default">
         <b>Parent 0</b>
         <ul>
-            <li class="odd first">
+            <li class="odd first default">
                 <i>Child 0-1 of 4</i>
             </li>
             <li class="even">
@@ -73,7 +83,7 @@
             </li>
         </ul>
     </li>
-    <li class="last">
+    <li class="">
         <b>Parent 1</b>
         <ul>
             <li class="odd first">

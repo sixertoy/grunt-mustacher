@@ -1,4 +1,5 @@
-/*jslint plusplus: true, indent: 4 */
+/*jshint unused: false */
+/*jslint indent: 4 */
 /*global jasmine, process, require, define, describe, it, xit, expect, beforeEach, afterEach, afterLast, Class */
 (function () {
 

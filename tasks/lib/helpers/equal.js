@@ -9,21 +9,18 @@
  * @see http://handlebarsjs.com/
  *
  */
-/*jslint plusplus: true, indent: 4 */
+/*jslint indent: 4 */
 /*global module, require */
 (function () {
 
     'use strict';
 
     var EqualHelper,
-        Lodash = require('lodash'),
         Handlebars = require('handlebars');
 
     EqualHelper = function () {};
 
     EqualHelper.prototype.register = function () {
-        var args,
-            $this = this;
         Handlebars.registerHelper('equal', this.render.bind(this));
     };
 

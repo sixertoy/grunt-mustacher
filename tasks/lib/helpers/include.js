@@ -14,32 +14,72 @@
 (function () {
     'use strict';
     var IncludeHelper,
-        Lodash = require('lodash'),
+        // Grunt = require('grunt'),
+        LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
     IncludeHelper = function () {};
 
     IncludeHelper.prototype.register = function () {
-        var args,
-            $this = this;
         Handlebars.registerHelper('$include', this.render.bind(this));
     };
 
-    IncludeHelper.prototype.render = function (path, context, options) {
+    IncludeHelper.prototype.render = function (path, options) {
+
         if (arguments.length < 2) {
             throw new Error('Include needs one parameters at least');
         }
-        /*
-        var data, context = {};
-        if (options.data) {
-            data = Handlebars.createFrame(options.data || {});
+
+        if (!LoDash.isString(path)) {
+            throw new Error('Include arguments is not a string');
         }
-        if (lvalue !== rvalue) {
-            return options.inverse(context, { data: data });
-        } else {
-            return options.fn(context, { data: data });
+        options = null;
+
+        // console.log(options);
+
+        // if (!LoDash.isFunction(options.data.partials)) {
+
+        /*
+        if (!LoDash.isFunction(options.fn)) {
+            throw new Error('Include arguments is not in an handlebars context');
         }
         */
+
+
+        /*
+        if( Grunt.file.exists() ){
+            console.logh
+        }
+        */
+
+        /*
+        }
+        */
+
+        /*
+        var i, data, context, pf = '',
+            output = '';
+        for (i = 0; i < count; i++) {
+            if (options.data) {
+                data = Handlebars.createFrame(options.data || {});
+                data.index = i;
+                data.first = (i === 0);
+                data.last = (i === (count - 1));
+                data.odd = ((i % 2) ? false : true); // pair
+                data.even = ((i % 2) ? true : false); // impair
+            }
+            context = {
+                of: count,
+                count: (i + 1),
+                class: (data.odd ? 'odd' : 'even') + (data.last ? ' last' : '') + (data.first ? ' first' : '')
+            };
+            output += options.fn(context, {
+                data: data
+            });
+        }
+        return output;
+        */
+
     };
 
     module.exports = IncludeHelper;

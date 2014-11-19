@@ -16,10 +16,11 @@
     var Mustacher = require('./lib/mustacher'),
         helpers = [
             'timestamp',
+            'include',
             'repeat',
             'equal'
         ];
-        /*'image', 'include', 'lorem', 'random' */
+        /*'image', 'lorem', 'random' */
 
     module.exports = function (grunt) {
         grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {

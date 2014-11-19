@@ -16,14 +16,11 @@
     'use strict';
 
     var TimestampHelper,
-        Lodash = require('lodash'),
         Handlebars = require('handlebars');
 
     TimestampHelper = function () {};
 
     TimestampHelper.prototype.register = function () {
-        var args,
-            $this = this;
         Handlebars.registerHelper('$timestamp', this.render.bind(this));
     };
 

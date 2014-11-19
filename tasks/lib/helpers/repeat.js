@@ -15,8 +15,7 @@
     'use strict';
 
     var RepeatHelper,
-        Grunt = require('grunt'),
-        Lodash = require('lodash'),
+        LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
     RepeatHelper = function () {};
@@ -33,14 +32,17 @@
         if (arguments.length <= 1) {
             throw new Error('Repeat arguments is missing');
         }
-        if (!Lodash.isFunction(options.fn)) {
+        if (!LoDash.isFunction(options.fn)) {
             throw new Error('Repeat arguments is not an handlebars context');
         }
         count = parseFloat(count);
-        if (Lodash.isNaN(count)) {
+        if (LoDash.isNaN(count)) {
             throw new Error('Repeat arguments is not valid');
         }
-        var i, data, context, pf = '',
+
+        console.log(options);
+
+        var i, data, context,
             output = '';
         for (i = 0; i < count; i++) {
             if (options.data) {
