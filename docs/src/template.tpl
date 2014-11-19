@@ -7,6 +7,6 @@
     <style></style>
 </head>
 <body>
-    
+    <%= content %>
 </body>
 </html>

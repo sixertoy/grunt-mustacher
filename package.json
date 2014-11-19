@@ -1,7 +1,7 @@
 {
   "name": "grunt-mustacher",
   "description": "Mustache Template Helpers",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "homepage": "http://sixertoy.github.io/grunt-mustacher/",
   "author": {
     "name": "Matthieu Lassalvy",
@@ -9,7 +9,7 @@
     "url": "https://github.com/sixertoy"
   },
   "scripts": {
-    "test": "grunt --verbose"
+    "test": "grunt jasmine_node"
   },
   "repository": {
     "type": "git",

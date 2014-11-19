@@ -4,7 +4,7 @@ node_js:
 before_install:
   - npm install -g grunt-cli istanbul
 script:
-  - npm test
+  - npm test --verbose
 after_success:
   - istanbul cover jasmine-node tests/ --verbose && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 deploy:

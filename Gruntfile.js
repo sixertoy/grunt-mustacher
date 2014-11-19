@@ -10,7 +10,7 @@
  *
  */
 /*jslint plusplus: true, indent: 4 */
-/*global module */
+/*global module, require */
 module.exports = function (grunt) {
     'use strict';
     // load configs
@@ -20,6 +20,5 @@ module.exports = function (grunt) {
         }
     });
     // Tasks
-    grunt.registerTask('default', ['jshint', 'jasmine_node']);
-    grunt.registerTask('compile', ['jshint', 'mustacher:compile']);
+    grunt.loadTasks('tasks');
 };

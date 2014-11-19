@@ -1,28 +1,12 @@
-# Mustacher [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev)](https://travis-ci.org/sixertoy/grunt-mustacher)
+# Mustacher
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev)](https://travis-ci.org/sixertoy/grunt-mustacher) [![Coverage Status](https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg)](https://coveralls.io/r/sixertoy/grunt-mustacher?branch=dev)
 
 > Handlebars template (.tpl, .hbs) Helpers!
 
 ## Availables helpers
 
-### #Repeat
-```html
-<ul>
-{{#repeat 4}}
-<li class="{{@class}}">item {{@zindex}} {{@index}} of {{@of}} - {{@first}} {{@last}}</li>
-{{/repeat}}
-</ul>
-```
-
-> render
-
-```html
-<ul>
-<li class="odd first">item 0 1 of 4 - true</li>
-<li class="even">item 1 2 of 4 - false</li>
-<li class="odd">item 2 3 of 4 - false</li>
-<li class="even last">item 3 4 of 4 - true</li>
-</ul>
-```
+<a name="repear"></a>
+* Repeat
 
 ### $Timestamp
 ```html

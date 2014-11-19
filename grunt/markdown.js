@@ -8,7 +8,9 @@ module.exports = {
             dest: './docs/html/',
             flatten: true,
             ext: '.html'
+        }],
+        options: {
+            template: './docs/src/template.tpl'
         }
-      ]
     }
 };
