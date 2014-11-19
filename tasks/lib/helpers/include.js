@@ -9,7 +9,7 @@
  * @see http://handlebarsjs.com/
  *
  */
-/*jslint plusplus: true, indent: 4 */
+/*jslint indent: 4 */
 /*global module, require */
 (function () {
     'use strict';
@@ -17,7 +17,9 @@
         Path = require('path'),
         Grunt = require('grunt'),
         LoDash = require('lodash'),
-        Handlebars = require('handlebars');
+        Handlebars = require('handlebars'),
+        lf = Grunt.util.linefeed,
+        debug = Grunt.option('debug');
 
     IncludeHelper = function () {};
 
@@ -27,68 +29,53 @@
 
     IncludeHelper.prototype.render = function (path, options) {
 
+        var data, root,
+            content, // .hbs content
+            absolute, // absolute .hbs path form system root
+            relative, // relative path from cwd to .hbs
+            output = 'Unable to load file';
+
         if (arguments.length < 2) {
-            throw new Error('Include needs one parameters at least');
+            throw new Error('Include arguments is missing');
         }
 
         if (!LoDash.isString(path)) {
-            throw new Error('Include arguments is not a string');
+            throw new Error('Include arguments is not string');
         }
 
-        var data, file,
-            cwd = options.data.root.cwd;
-        if (options.data) {
-            data = Handlebars.createFrame(options.data || {});
-        }
-
-        file = Path.normalize(Path.join(cwd, path));
-        if (Grunt.file.exists(file)) {
-
-        }
-
-        // if (!LoDash.isFunction(options.data.partials)) {
+        data = Handlebars.createFrame(options.data);
+        root = data.root;
 
         /*
-        if (!LoDash.isFunction(options.fn)) {
-            throw new Error('Include arguments is not in an handlebars context');
+        if(root.hasOwnProperty('includes')){
+            root.includes = {};
+            root.includes[path] = 0;
+        }
+        root.includes[path] = (root.includes[path] + 1);
+
+        if(root.includes[path] > root.depth){
+            throw new Error('Include too much ');
         }
         */
 
+        absolute = Path.join(root.cwd, root.partials.src, path + root.partials.ext);
+        relative = Path.relative(root.cwd, absolute).split('\\').join('/');
 
-        /*
-        if( Grunt.file.exists() ){
-            console.logh
-        }
-        */
-
-        /*
-        }
-        */
-
-        /*
-        var i, data, context, pf = '',
-            output = '';
-        for (i = 0; i < count; i++) {
-            if (options.data) {
-
-                data.index = i;
-                data.first = (i === 0);
-                data.last = (i === (count - 1));
-                data.odd = ((i % 2) ? false : true); // pair
-                data.even = ((i % 2) ? true : false); // impair
-            }
-            context = {
-                of: count,
-                count: (i + 1),
-                class: (data.odd ? 'odd' : 'even') + (data.last ? ' last' : '') + (data.first ? ' first' : '')
-            };
-            output += options.fn(context, {
+        if (!Grunt.file.exists(Path.normalize(absolute))) {
+            output = output + ' ' + relative;
+            Grunt.log.error(output);
+        } else {
+            content = Grunt.file.read(Path.normalize(absolute));
+            output = Handlebars.compile(content)(absolute, {
                 data: data
-            });
+            }).trim();
         }
-        return output;
-        */
 
+        if (debug) {
+            output = '<!-- ' + relative + ' -->' + lf + output + lf + '<!-- endof ' + relative + ' -->';
+        }
+
+        return new Handlebars.SafeString(output.trim());
     };
 
     module.exports = IncludeHelper;

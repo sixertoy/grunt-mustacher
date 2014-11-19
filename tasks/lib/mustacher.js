@@ -9,7 +9,6 @@
  * @see http://handlebarsjs.com/
  *
  */
-/*jshint unused: false */
 /*jslint plusplus: true, indent: 4 */
 /*global module, require, process */
 (function () {
@@ -19,9 +18,8 @@
     /**
      * Imports
      */
-    var Mustacher, LF, Defaults,
+    var Mustacher, LF, defaultsOptions,
         Q = require('q'),
-        Path = require('path'),
         Grunt = require('grunt'),
         LoDash = require('lodash'),
         Handlebars = require('handlebars'),
@@ -32,7 +30,7 @@
      * @see http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
      */
 
-    Defaults = {
+    defaultsOptions = {
         src: null,
         dest: null,
         ext: '.html', // output/compiled file extension
@@ -42,8 +40,9 @@
         cwd: process.cwd(), // relative path to src
         //
         partials: {
+            depth: 2,
             ext: '.hbs',
-            src: 'partials'
+            src: 'partials/'
         }
     };
     LF = Grunt.util.linefeed;
@@ -56,7 +55,7 @@
      *
      */
     Mustacher.prototype.render = function (task, helpers) {
-        var opts, file, content, html, data,
+        var file, content, html, data,
             context = {},
             deferred = Q.defer();
 
@@ -65,8 +64,8 @@
         if(!requires){}
         */
 
-        opts = task.options(Defaults);
-        data = {root: opts }; // explicit root for handlebars compile
+        LoDash.merge(defaultsOptions, task.options());
+        data = {root: defaultsOptions }; // explicit root for handlebars compile
         data = Handlebars.createFrame(data);
 
         helpers.map(function (name) {
