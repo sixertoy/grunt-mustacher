@@ -14,7 +14,8 @@
 (function () {
     'use strict';
     var IncludeHelper,
-        // Grunt = require('grunt'),
+        Path = require('path'),
+        Grunt = require('grunt'),
         LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
@@ -33,9 +34,17 @@
         if (!LoDash.isString(path)) {
             throw new Error('Include arguments is not a string');
         }
-        options = null;
 
-        // console.log(options);
+        var data, file,
+            cwd = options.data.root.cwd;
+        if (options.data) {
+            data = Handlebars.createFrame(options.data || {});
+        }
+
+        file = Path.normalize(Path.join(cwd, path));
+        if (Grunt.file.exists(file)) {
+
+        }
 
         // if (!LoDash.isFunction(options.data.partials)) {
 
@@ -61,7 +70,7 @@
             output = '';
         for (i = 0; i < count; i++) {
             if (options.data) {
-                data = Handlebars.createFrame(options.data || {});
+
                 data.index = i;
                 data.first = (i === 0);
                 data.last = (i === (count - 1));

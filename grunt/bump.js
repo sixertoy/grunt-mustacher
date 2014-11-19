@@ -4,13 +4,13 @@ module.exports = {
     options: {
         files: ['package.json'],
         updateConfigs: [],
-        commit: false,
+        commit: true,
         commitMessage: 'Release v%VERSION%',
-        commitFiles: ['package.json'],
+        commitFiles: ['-a'],
         createTag: false,
         tagName: 'v%VERSION%',
         tagMessage: 'Version %VERSION%',
-        push: false,
+        push: true,
         pushTo: 'upstream',
         gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
         globalReplace: false

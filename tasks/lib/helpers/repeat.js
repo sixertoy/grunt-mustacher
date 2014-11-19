@@ -39,9 +39,6 @@
         if (LoDash.isNaN(count)) {
             throw new Error('Repeat arguments is not valid');
         }
-
-        console.log(options);
-
         var i, data, context,
             output = '';
         for (i = 0; i < count; i++) {

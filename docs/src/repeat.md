@@ -1,5 +1,7 @@
+<a name="repeat-Helper"></a>
 # Repeat Helper
 
+<a name="available-properties"></a>
 ## Available properties
 
 > locales
@@ -20,9 +22,11 @@
 {{@even}}
 ```
 
+<a name="usage"></a>
 ## Usage
 
-### Loop
+<a name="loops"></a>
+### Loops
 
 ```html
 <ul>
@@ -43,7 +47,8 @@
 </ul>
 ```
 
-### Nested loop
+<a name="nested-loop"></a>
+### Nested loops
 
 ```html
 <ul>

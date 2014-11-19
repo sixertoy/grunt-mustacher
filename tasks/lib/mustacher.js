@@ -31,33 +31,20 @@
      * Variables
      * @see http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
      */
-    /*
-    all: {
-        options:{
-            partials: 'examples/partials/'
-        },
-        files: [{
-            expand: true,
-            cwd: 'examples/templates/', // relative src path
-            src: '*.tpl',
-            dest: 'examples/html',
-            ext: '.html', // compiled file extension
-            extDot: 'first', // Extensions in filenames begin after the first dot
-            flatten: true // Remove all path parts from generated dest paths.
-        }]
-    },
-    */
+
     Defaults = {
-        cwd: '',
         src: null,
         dest: null,
-        ext: '.hbs',
+        ext: '.html', // output/compiled file extension
         expand: false,
-        flatten: false,
-        extDot: 'first',
+        flatten: false, // Remove all path parts from generated dest paths.
+        extDot: 'first', // Extensions in filenames begin after the first dot
+        cwd: process.cwd(), // relative path to src
         //
-        contexts: null,
-        partials: null,
+        partials: {
+            ext: '.hbs',
+            src: 'partials'
+        }
     };
     LF = Grunt.util.linefeed;
 
@@ -79,6 +66,8 @@
         */
 
         opts = task.options(Defaults);
+        data = {root: opts }; // explicit root for handlebars compile
+        data = Handlebars.createFrame(data);
 
         helpers.map(function (name) {
             var Helper = require('./helpers/' + name),
@@ -105,15 +94,9 @@
                         // for includes
                         var stream = Grunt.file.read(filepath),
                             // compilation du contenu
-                            template = Handlebars.compile(stream, {
-                                trackIds: false
-                            }),
+                            template = Handlebars.compile(stream, {trackIds: false}), // handlebars compile options
                             // rendu du contenu
-                            result = template(context, {
-                                data: Handlebars.createFrame({
-                                    root: opts
-                                })
-                            });
+                            result = template(context, {data: data}); // pass root context to helpers
                         result = TaskUtils.removeEmptyChars(result);
                         Grunt.file.setBase(process.cwd());
                         return new Handlebars.SafeString(result);
