@@ -7,7 +7,9 @@
     <style></style>
 </head>
 <body>
-    <h1 id="repeat-helper">Repeat Helper</h1>
+    <p><a name="repeat-Helper"></a></p>
+<h1 id="repeat-helper">Repeat Helper</h1>
+<p><a name="available-properties"></a></p>
 <h2 id="available-properties">Available properties</h2>
 <blockquote>
 <p>locales</p>
@@ -23,8 +25,10 @@
 {{@last}}
 {{@odd}}
 {{@even}}</code></pre>
+<p><a name="usage"></a></p>
 <h2 id="usage">Usage</h2>
-<h3 id="loop">Loop</h3>
+<p><a name="loops"></a></p>
+<h3 id="loops">Loops</h3>
 <pre><code class="lang-html">&lt;ul&gt;
     {{#repeat 4}}
     &lt;li class=&quot;{{class}}&quot;&gt;item {{@index}} {{count}} of {{of}} - {{@first}} {{@last}}&lt;/li&gt;
@@ -39,7 +43,8 @@
     &lt;li class=&quot;odd&quot;&gt;item 2 3 of 4 - false&lt;/li&gt;
     &lt;li class=&quot;even last&quot;&gt;item 3 4 of 4 - true&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
-<h3 id="nested-loop">Nested loop</h3>
+<p><a name="nested-loop"></a></p>
+<h3 id="nested-loops">Nested loops</h3>
 <pre><code class="lang-html">&lt;ul&gt;
     {{#repeat 2}}
     &lt;li class=&quot;{{#if @first}}default{{/if}}&quot;&gt;
