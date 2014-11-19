@@ -16,6 +16,7 @@
     'use strict';
 
     var OrHelper,
+        LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
     OrHelper = function () {};
@@ -25,18 +26,26 @@
     };
 
     OrHelper.prototype.render = function (lvalue, rvalue, options) {
+
         if (arguments.length < 3) {
             throw new Error('Or helper needs two parameters at least');
         }
 
-        var data, context = {};
+        var result, data;
+        options = arguments[arguments.length - 1];
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});
         }
-        if (lvalue !== rvalue) {
-            return options.inverse(context, { data: data });
+
+        result = LoDash.compat(arguments.slice(-1));
+        if (result.length > 0) {
+            return options.fn(arguments.slice(-1), {
+                data: data
+            });
         } else {
-            return options.fn(context, { data: data });
+            return options.inverse(arguments.slice(-1), {
+                data: data
+            });
         }
 
     };

@@ -16,6 +16,7 @@
     'use strict';
 
     var AndHelper,
+        LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
     AndHelper = function () {};
@@ -28,15 +29,24 @@
         if (arguments.length < 3) {
             throw new Error('Equal needs two parameters');
         }
-        var data, context = {};
+
+        var result, data;
+        options = arguments[arguments.length - 1];
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});
         }
-        if (lvalue !== rvalue) {
-            return options.inverse(context, { data: data });
+
+        result = LoDash.compat(arguments.slice(-1));
+        if (result.length === arguments.length) {
+            return options.fn(arguments.slice(-1), {
+                data: data
+            });
         } else {
-            return options.fn(context, { data: data });
+            return options.inverse(arguments.slice(-1), {
+                data: data
+            });
         }
+
     };
 
     module.exports = AndHelper;
