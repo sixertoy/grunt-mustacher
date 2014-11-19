@@ -1,22 +1,22 @@
 {
   "name": "grunt-mustacher",
   "description": "Mustache Template Helpers",
-  "version": "1.1.5",
-  "homepage": "http://malas34.github.io/grunt-mustacher/",
+  "version": "1.1.6",
+  "homepage": "http://sixertoy.github.io/grunt-mustacher/",
   "author": {
     "name": "Matthieu Lassalvy",
-    "email": "malas34.github@gmail.com",
-    "url": "https://github.com/malas34"
+    "email": "sixertoy.github@gmail.com",
+    "url": "https://github.com/sixertoy"
   },
   "scripts": {
-    "test": "grunt tests --verbose"
+    "test": "grunt --verbose"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/malas34/grunt-mustacher.git"
+    "url": "git://github.com/sixertoy/grunt-mustacher.git"
   },
   "bugs": {
-    "url": "https://github.com/malas34/grunt-mustacher/issues"
+    "url": "https://github.com/sixertoy/grunt-mustacher/issues"
   },
   "licenses": [
     {
@@ -36,7 +36,9 @@
     "grunt": "^0.4.5",
     "grunt-bump": "0.0.16",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jasmine-node": "git://github.com/malas34/grunt-jasmine-node"
+    "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
+    "grunt-markdown": "^0.6.1",
+    "load-grunt-config": "^0.16.0"
   },
   "keywords": [
     "handlebars",

@@ -2,10 +2,14 @@ language: node_js
 node_js:
   - "0.10"
 before_install:
-  - npm install -g grunt-cli
+  - npm install -g grunt-cli istanbul
+script:
+  - npm test
+after_success:
+  - istanbul cover jasmine-node tests/ --verbose && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
 deploy:
   provider: npm
-  email: "malas34.github@gmail.com"
+  email: "sixertoy.github@gmail.com"
   api_key: "bWFsYXMzNDojaGVsbG8kd29ybGQj"
   on:
     branch: master

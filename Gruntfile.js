@@ -11,118 +11,15 @@
  */
 /*jslint plusplus: true, indent: 4 */
 /*global module */
-(function () {
-
-
-
-
+module.exports = function (grunt) {
     'use strict';
-
-    module.exports = function (grunt) {
-
-        grunt.initConfig({
-            /** ------------------------------------
-
- JSHint task
-
- */
-            jshint: {
-                options: {
-                    jshintrc: '.jshintrc'
-                },
-                all: ['Gruntfile.js', 'tests/**/*.js', 'tasks/**/*.js']
-            },
-            /** ------------------------------------
-
- Jasmine task
-
- */
-            jasmine_node: {
-                options: {
-                    match: '.',
-                    forceExit: false,
-                    extensions: 'js',
-                    keepRunner: true,
-                    specNameMatcher: 'spec',
-                    includeStackTrace: false,
-                    jUnit: {
-                        report: true,
-                        savePath: './build/reports/jasmine/',
-                        useDotNotation: true,
-                        consolidate: true
-                    }
-                },
-                all: ['tests/']
-            },
-            bump: {
-                options: {
-                    files: ['package.json'],
-                    updateConfigs: [],
-                    commit: false,
-                    commitMessage: 'Release v%VERSION%',
-                    commitFiles: ['package.json'],
-                    createTag: false,
-                    tagName: 'v%VERSION%',
-                    tagMessage: 'Version %VERSION%',
-                    push: false,
-                    pushTo: 'upstream',
-                    gitDescribeOptions: '--tags --always --abbrev=1 --dirty=-d',
-                    globalReplace: false
-                }
-            },
-            /** ------------------------------------
-
- Mustacher task
-
- */
-            mustacher: {
-                compile: {
-                    files: [{
-                        src: 'templates/commons/head.tpl',
-                        dest: 'html/commons/head.html'
-                    }, {
-                        src: 'templates/index.tpl',
-                        dest: 'html/index.html'
-                    }]
-                }
-                /*
-                templates: {
-                    files: [{
-                        expand: true,
-                        cwd: 'output/hbs/commons/',
-                        src: '.hbs',
-                        dest: 'output/tpl/commons/',
-                        ext: '.tpl'
-                }]
-                },
-
-                html: {
-                    files: [{
-                        expand: true,
-                        cwd: 'html/tpl/',
-                        src: '*.tpl',
-                        dest: 'html/html/',
-                        ext: '.html'
-                }]
-                }
-                */
-            }
-
-        });
-        /* -----------------------------------------------------------------------------
-
- Tasks
-
------------------------------------------------------------------------------ */
-        grunt.loadTasks('tasks');
-
-        grunt.loadNpmTasks('grunt-bump');
-        grunt.loadNpmTasks('grunt-jasmine-node');
-        grunt.loadNpmTasks('grunt-contrib-jshint');
-
-        grunt.registerTask('tests', ['jshint', 'jasmine_node']);
-        grunt.registerTask('default', ['jshint', 'jasmine_node']);
-        grunt.registerTask('compile', ['jshint', 'mustacher:compile']);
-
-    };
-}());
+    // load configs
+    require('load-grunt-config')(grunt, {
+        data: {
+            banner: grunt.file.read('./grunt/banner.tpl', 'utf-8')
+        }
+    });
+    // Tasks
+    grunt.registerTask('default', ['jshint', 'jasmine_node']);
+    grunt.registerTask('compile', ['jshint', 'mustacher:compile']);
+};
