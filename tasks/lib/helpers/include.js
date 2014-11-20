@@ -47,6 +47,7 @@
         root = data.root;
 
         /*
+         * @TODO prevents loops
         if(root.hasOwnProperty('includes')){
             root.includes = {};
             root.includes[path] = 0;
