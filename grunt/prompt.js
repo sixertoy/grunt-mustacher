@@ -37,15 +37,9 @@ module.exports = function (grunt, options) {
                         return grunt.util.kindOf(value) === 'string';
                     }
                     /*jshint ignore:end */
-                }, {
-                    type: 'input',
-                    message: 'Body',
-                    config: 'bump.body',
-                    default: ''  // jshint ignore:line
                 }], then: function(results, done){
                     options.bump = {
                         type: results['bump.type'],
-                        body: results['bump.body'],
                         scope: results['bump.scope'],
                         subject: results['bump.subject']
                     };

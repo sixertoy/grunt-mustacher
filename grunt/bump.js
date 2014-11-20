@@ -6,7 +6,7 @@ module.exports = function (grunt, options) {
             files: ['package.json'],
             updateConfigs: [],
             commit: true,
-            commitMessage: '<%= bump.type %>(<%= bump.scope %>): <%= bump.subject %>\n\n<%= bump.body %>',
+            commitMessage: '<%= bump.type %>(<%= bump.scope %>): <%= bump.subject %>',
             commitFiles: ['-a'],
             createTag: false,
             tagName: 'v%VERSION%',

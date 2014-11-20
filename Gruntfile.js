@@ -23,7 +23,7 @@ module.exports = function (grunt) {
         }
     });
 
-    grunt.registerTask('commit', 'Commit with prompt changelog quesions', function () {
+    grunt.registerTask('deploy', 'Commit with prompt changelog quesions', function () {
             grunt.task.run('prompt', 'bump-commit', 'changelog');
         });
 
