@@ -15,6 +15,7 @@
     'use strict';
     var Mustacher = require('./lib/mustacher'),
         helpers = [
+            'livereload',
             'timestamp',
             'include',
             'repeat',

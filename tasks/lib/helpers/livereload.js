@@ -15,28 +15,39 @@
 
     'use strict';
 
-    var AndHelper,
+    var LivereloadHelper,
+        Grunt = require('grunt'),
         LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
-    AndHelper = function () {};
+    LivereloadHelper = function () {};
 
-    AndHelper.prototype.register = function () {
+    LivereloadHelper.prototype.register = function () {
         Handlebars.registerHelper('$livereload', this.render.bind(this));
     };
 
-    AndHelper.prototype.render = function (port, options) {
+    LivereloadHelper.prototype.render = function (port, options) {
         if (arguments.length < 1) {
             throw new Error('Unable to parse helper');
         }
 
-        if(LoDash.isObject(port) && !LoDash.isArray(options)){
+        if (LoDash.isObject(port) && !LoDash.isArray(options)) {
             options = port;
             port = 1337;
         }
 
+        var result = '',
+            template = '<script src="http://localhost:<%= port %>/livereload.js"></script>';
+        if (Grunt.option('debug')) {
+            result = Grunt.template.process(template, {
+                port: port
+            });
+        }
+
+        return result;
+
     };
 
-    module.exports = AndHelper;
+    module.exports = LivereloadHelper;
 
 }());
