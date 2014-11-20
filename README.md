@@ -4,6 +4,9 @@
 
 > Handlebars template (.tpl, .hbs) Helpers!
 
+
+
+
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
