@@ -24,12 +24,17 @@
         Handlebars.registerHelper('$timestamp', this.render.bind(this));
     };
 
-    TimestampHelper.prototype.render = function (options) {
-        var data;
+    TimestampHelper.prototype.render = function (count, options) {
+        var data, time;
+        if(arguments.length < 2){
+            options = count;
+            count = 0;
+        }
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});
         }
-        return (!Date.now) ? new Date().getTime() : Date.now();
+        time = (!Date.now) ? new Date().getTime() : Date.now();
+        return (time + count);
     };
 
     module.exports = TimestampHelper;

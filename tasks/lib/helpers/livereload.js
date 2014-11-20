@@ -37,9 +37,9 @@
         }
 
         var result = '';
-        if(Grunt.option('debug')){
+        // if(Grunt.option('debug')){
             result = '<script src="http://localhost:' + port + '/livereload.js"></script>';
-        }
+        // }
         return new Handlebars.SafeString(result);
 
     };
