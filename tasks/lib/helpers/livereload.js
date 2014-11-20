@@ -36,15 +36,11 @@
             port = 1337;
         }
 
-        var result = '',
-            template = '<script src="http://localhost:<%= port %>/livereload.js"></script>';
-        if (Grunt.option('debug')) {
-            result = Grunt.template.process(template, {
-                port: port
-            });
+        var result = '';
+        if(Grunt.option('debug')){
+            result = '<script src="http://localhost:' + port + '/livereload.js"></script>';
         }
-
-        return result;
+        return new Handlebars.SafeString(result);
 
     };
 

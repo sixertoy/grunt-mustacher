@@ -18,14 +18,18 @@ module.exports = function (grunt) {
     // load configs
     require('load-grunt-config')(grunt, {
         data: {
-            bump:{type:'', scope:'', subject:'', body:''},
+            bump: {
+                type: '',
+                scope: '',
+                subject: ''
+            },
             banner: grunt.file.read('./grunt/banner.tpl', 'utf-8')
         }
     });
 
     grunt.registerTask('deploy', 'Commit with prompt changelog quesions', function () {
-            grunt.task.run('prompt', 'bump-commit', 'changelog');
-        });
+        grunt.task.run('prompt', 'bump-commit', 'changelog');
+    });
 
     // Tasks
     grunt.loadTasks('tasks');
