@@ -16,12 +16,12 @@
     var Mustacher = require('./lib/mustacher'),
         helpers = [
             'livereload',
+            'conditions',
             'timestamp',
             'include',
             'repeat',
             'random',
-            'equal',
-            'and'
+            'equal'
         ];
 
     module.exports = function (grunt) {

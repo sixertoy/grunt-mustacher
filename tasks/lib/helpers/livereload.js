@@ -28,11 +28,11 @@
     };
 
     LivereloadHelper.prototype.render = function (port, options) {
-        if (!Utils.containsOptions(arguments) || arguments.length < 1) {
+        if (!Utils.hasOptions(arguments) || arguments.length < 1) {
             throw new Error('LivereloadHelper arguments is missing');
         }
 
-        if (lodash.isObject(port) && !lodash.isArray(options)) {
+        if (lodash.isObject(port) && arguments.length < 2) {
             options = port;
             port = 1337;
         }

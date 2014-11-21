@@ -27,7 +27,7 @@
     };
 
     EqualHelper.prototype.render = function (lvalue, rvalue, options) {
-        if (!Utils.containsOptions(arguments) || arguments.length < 3) {
+        if (!Utils.hasOptions(arguments) || arguments.length < 3) {
             throw new Error('EqualHelper parameters is missing');
         }
         var data, context = {};

@@ -18,11 +18,7 @@ module.exports = function (grunt) {
     // load configs
     require('load-grunt-config')(grunt, {
         data: {
-            bump: {
-                type: '',
-                scope: '',
-                subject: ''
-            },
+            bump: {type: '', scope: '', subject: ''},
             banner: grunt.file.read('./grunt/banner.tpl', 'utf-8')
         }
     });

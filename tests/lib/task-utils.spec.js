@@ -15,8 +15,8 @@
         beforeEach(function () {});
 
         it('contains options object', function () {
-            expect(Utils.containsOptions()).toEqual(false);
-            expect(Utils.containsOptions(args)).toEqual(true);
+            expect(Utils.hasOptions()).toEqual(false);
+            expect(Utils.hasOptions(args)).toEqual(true);
         });
 
         afterEach(function () {});

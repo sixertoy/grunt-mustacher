@@ -36,7 +36,7 @@
             relative, // relative path from cwd to .hbs
             output = 'Unable to load file';
 
-        if (!Utils.containsOptions(arguments) || arguments.length < 2) {
+        if (!Utils.hasOptions(arguments) || arguments.length < 2) {
             throw new Error('IncludeHelper parameters is missing');
         }
 

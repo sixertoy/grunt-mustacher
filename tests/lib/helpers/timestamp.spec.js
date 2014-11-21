@@ -7,6 +7,7 @@
 
     var helper, result,
         cwd = process.cwd(),
+        Handlebars = require('handlebars'),
         options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/timestamp');
 
@@ -17,7 +18,7 @@
             helper.register();
         });
 
-        it('should throw', function () {
+        xit('should throw', function () {
             expect(function () {
                 helper.render();
             }).toThrow();
@@ -35,8 +36,7 @@
             }).not.toThrow();
         });
 
-        /*
-        it('should not to be equal to now', function (done) {
+        xit('should not to be equal to now', function (done) {
             var now = Date.now();
             setTimeout(function () {
                 var result = helper.render({});
@@ -45,6 +45,7 @@
             }, 1000);
         });
 
+        /*
         it('should not to be equal to now', function (done) {
             var now = Date.now();
             setTimeout(function () {

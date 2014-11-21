@@ -17,6 +17,7 @@
 
     var TimestampHelper,
         LoDash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
     TimestampHelper = function () {};
@@ -28,7 +29,7 @@
     TimestampHelper.prototype.render = function (count, options) {
         var data, time;
 
-        if(arguments.length < 1){
+        if(!Utils.hasOptions(arguments) || arguments.length < 1){
             throw new Error('Timestamp helper missing arguments');
         }
 

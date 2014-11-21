@@ -31,7 +31,7 @@
      */
     RandomHelper.prototype.render = function (min, max, round, options) { // jshint ignore:line
 
-        if (!Utils.containsOptions(arguments)) {
+        if (!Utils.hasOptions(arguments)) {
             throw new Error('RandomHelper arguments is missing');
         }
 

@@ -24,49 +24,21 @@
      * @param args [arguments]
      *
      */
-    TaskUtils.prototype.containsOptions = function (args) {
-        /*
-        var i,
-            result = false,
-            args = lodash.toArray(args);
-        if(args.length < 1){
-            return result;
-        }
-        for (i = 0; i < array.length; i++) {
-            if (!result) {
-                if (typeof array[i] === 'object' && array[i] !== null) {
-                    if (array[i] instanceof Object && Object.prototype.toString.call(array[i]) === '[object Object]') {
-                        result = true;
-                    }
-                }
-            }
-        }
-        return result;
-        */
+    TaskUtils.prototype.hasOptions = function (args) {
         var array,
-            index = -1,
-            item = null,
-            result = false;
+            item = null;
         if (args === null || args === undefined || args.length < 1) {
-            return result;
+            return false;
         }
         array = lodash.toArray(args);
         item = array[array.length - 1];
-        if (typeof item === 'object' && item !== null) {
-            if (item instanceof Object && Object.prototype.toString.call(item) === '[object Object]') {
-                result = true;
-            }
-            if(result && item.hasOwnProperty('fn')){
-                result = true;
+        if (lodash.isPlainObject(item)) {
+            if (item.hasOwnProperty('fn')) {
+                return true;
             } else {
-                result = false;
+                return false;
             }
         }
-        return result;
-    };
-
-    TaskUtils.prototype.removeEmptyChars = function (str) {
-        return str.trim().replace(/^\s+/, '').replace(/^\t+/, '');
     };
 
     module.exports = new TaskUtils();
