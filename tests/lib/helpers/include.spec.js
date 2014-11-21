@@ -5,23 +5,16 @@
 
     'use strict';
 
-    var cwd = process.cwd(),
+    var helper,
+        cwd = process.cwd(),
+        options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/include');
 
     describe('Include helper', function () {
 
-        var helper,
-            options = {
-                fn: function () {
-                    return true;
-                },
-                inverse: function () {
-                    return false;
-                }
-            };
-
         beforeEach(function () {
             helper = new Helper();
+            helper.register();
         });
 
         describe('render with no arguments', function () {

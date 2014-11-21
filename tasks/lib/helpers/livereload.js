@@ -17,7 +17,8 @@
 
     var LivereloadHelper,
         Grunt = require('grunt'),
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
+        Utils = require('./task-utils'),
         Handlebars = require('handlebars');
 
     LivereloadHelper = function () {};
@@ -27,11 +28,11 @@
     };
 
     LivereloadHelper.prototype.render = function (port, options) {
-        if (arguments.length < 1) {
-            throw new Error('Unable to parse helper');
+        if (!Utils.containsOptions(arguments) || arguments.length < 1) {
+            throw new Error('LivereloadHelper arguments is missing');
         }
 
-        if (LoDash.isObject(port) && !LoDash.isArray(options)) {
+        if (lodash.isObject(port) && !lodash.isArray(options)) {
             options = port;
             port = 1337;
         }

@@ -15,7 +15,8 @@
     'use strict';
 
     var RepeatHelper,
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
     RepeatHelper = function () {};
@@ -29,14 +30,11 @@
      * @see htt://placehold.it
      */
     RepeatHelper.prototype.render = function (count, options) {
-        if (arguments.length <= 1) {
+        if (!Utils.containsOptions(arguments) ||arguments.length <= 1) {
             throw new Error('Repeat arguments is missing');
         }
-        if (!LoDash.isFunction(options.fn)) {
-            throw new Error('Repeat arguments is not an handlebars context');
-        }
         count = parseFloat(count);
-        if (LoDash.isNaN(count)) {
+        if (lodash.isNaN(count)) {
             throw new Error('Repeat arguments is not valid');
         }
         var i, data, context,

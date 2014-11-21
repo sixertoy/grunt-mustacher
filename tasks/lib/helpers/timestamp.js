@@ -16,6 +16,7 @@
     'use strict';
 
     var TimestampHelper,
+        LoDash = require('lodash'),
         Handlebars = require('handlebars');
 
     TimestampHelper = function () {};
@@ -26,15 +27,33 @@
 
     TimestampHelper.prototype.render = function (count, options) {
         var data, time;
-        if(arguments.length < 2){
-            options = count;
-            count = 0;
+
+        if(arguments.length < 1){
+            throw new Error('Timestamp helper missing arguments');
         }
+
+        /*
+        if(arguments.length < 2){
+            if(LoDash.isObject(count)){
+                options = count;
+                count = 0;
+            } else {
+
+            }
+        }
+        */
+
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});
         }
+
         time = (!Date.now) ? new Date().getTime() : Date.now();
         return (time + count);
+
+    };
+
+    TimestampHelper.prototype.toString = function(){
+
     };
 
     module.exports = TimestampHelper;

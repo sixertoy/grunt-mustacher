@@ -5,19 +5,17 @@
 
     'use strict';
 
-    var cwd = process.cwd(),
+    var helper,
+        cwd = process.cwd(),
         Grunt = require('grunt'),
         Handlebars = require('handlebars'),
+        options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/repeat');
 
 
     describe('Repeat helper', function () {
 
-        var helper,
-            lf = Grunt.util.linefeed,
-            options = {
-                fn: function () {}
-            };
+        var lf = Grunt.util.linefeed;
 
         beforeEach(function () {
             helper = new Helper();
@@ -29,37 +27,37 @@
             it('Should toThrow with no arguments', function () {
                 expect(function () {
                     helper.render();
-                }).toThrow(new Error('Repeat arguments is missing'));
+                }).toThrow();
             });
 
             it('Should toThrow with one argument', function () {
                 expect(function () {
                     helper.render({});
-                }).toThrow(new Error('Repeat arguments is missing'));
+                }).toThrow();
             });
 
             it('Should toThrow with a word argument', function () {
                 expect(function () {
                     helper.render('word', options);
-                }).toThrow(new Error('Repeat arguments is not valid'));
+                }).toThrow();
             });
 
             it('Should toThrow with a blank spaced string argument', function () {
                 expect(function () {
                     helper.render(' ', options);
-                }).toThrow(new Error('Repeat arguments is not valid'));
+                }).toThrow();
             });
 
             it('Should toThrow with a empty string argument', function () {
                 expect(function () {
                     helper.render('', options);
-                }).toThrow(new Error('Repeat arguments is not valid'));
+                }).toThrow();
             });
 
             it('Should toThrow with a second argument in not a handlebars context', function () {
                 expect(function () {
                     helper.render(4, 4);
-                }).toThrow(new Error('Repeat arguments is not an handlebars context'));
+                }).toThrow();
             });
 
         });

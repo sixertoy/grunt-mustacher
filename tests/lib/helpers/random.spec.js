@@ -5,38 +5,32 @@
 
     'use strict';
 
-    var cwd = process.cwd(),
+    var helper,
+        cwd = process.cwd(),
+        options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/random');
 
     describe('Random helper', function () {
 
-        var helper,
-            options = {
-                fn: function () {
-                    return true;
-                },
-                inverse: function () {
-                    return false;
-                }
-            };
-
         beforeEach(function () {
             helper = new Helper();
+            helper.register();
+
         });
 
         describe('render with no arguments', function () {
             it('Should throw with no arguments', function () {
-                expect(function(){
+                expect(function () {
                     helper.render();
-                }).toThrow('Random helper arguments is missing');
+                }).toThrow();
             });
             it('Should throw null arguments', function () {
-                expect(function(){
+                expect(function () {
                     helper.render(null);
-                }).toThrow('Random helper arguments is missing');
+                }).toThrow();
             });
             it('Should throw undefined arguments', function () {
-                expect(function(){
+                expect(function () {
                     helper.render(undefined);
                 }).toThrow();
             });
@@ -44,7 +38,7 @@
 
         describe('render with no args but options', function () {
             it('Should be 0 or 1 and not floating (false)', function () {
-                var result = helper.render({});
+                var result = helper.render(options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(2);
                 expect(result).toBeGreaterThan(-1);
@@ -55,55 +49,55 @@
 
         describe('render with two args', function () {
             it('Should be 0 or 1 and floating', function () {
-                var result = helper.render(true, {});
+                var result = helper.render(true, options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(2);
                 expect(result).toBeGreaterThan(-1);
             });
             it('Should be 0 or 10', function () {
-                var result = helper.render(10, {});
+                var result = helper.render(10, options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(11);
                 expect(result).toBeGreaterThan(-1);
             });
             it('Should throw', function () {
-                expect(function(){
-                    helper.render('10', {});
+                expect(function () {
+                    helper.render('10', options);
                 }).toThrow();
             });
             it('Should throw', function () {
-                expect(function(){
-                    helper.render('toto', {});
+                expect(function () {
+                    helper.render('toto', options);
                 }).toThrow();
             });
         });
 
         describe('render with three args', function () {
             it('Should be 0 <> 10', function () {
-                var result = helper.render(10, true, {});
+                var result = helper.render(10, true, options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(11);
                 expect(result).toBeGreaterThan(-1);
             });
             it('Should be 0 <> 10', function () {
-                var result = helper.render(10, false, {});
+                var result = helper.render(10, false, options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(11);
                 expect(result).toBeGreaterThan(-1);
             });
             it('Should be 10 <> 20', function () {
-                var result = helper.render(10, 20, {});
+                var result = helper.render(10, 20, options);
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(21);
                 expect(result).toBeGreaterThan(9);
             });
             it('Should throw', function () {
-                expect(function(){
-                    helper.render(10, '10', {});
+                expect(function () {
+                    helper.render(10, '10', options);
                 }).toThrow();
             });
             it('Should throw', function () {
-                expect(function(){
+                expect(function () {
                     helper.render(10, 'toto', {});
                 }).toThrow();
             });

@@ -19,9 +19,10 @@
             'timestamp',
             'include',
             'repeat',
-            'equal'
+            'random',
+            'equal',
+            'and'
         ];
-        /*'image', 'lorem', 'random' */
 
     module.exports = function (grunt) {
         grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
