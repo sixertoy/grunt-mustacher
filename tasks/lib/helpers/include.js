@@ -16,7 +16,8 @@
     var IncludeHelper,
         Path = require('path'),
         Grunt = require('grunt'),
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars'),
         lf = Grunt.util.linefeed,
         debug = Grunt.option('debug');
@@ -35,11 +36,11 @@
             relative, // relative path from cwd to .hbs
             output = 'Unable to load file';
 
-        if (arguments.length < 2) {
-            throw new Error('Include arguments is missing');
+        if (!Utils.containsOptions(arguments) || arguments.length < 2) {
+            throw new Error('IncludeHelper parameters is missing');
         }
 
-        if (!LoDash.isString(path)) {
+        if (!lodash.isString(path)) {
             throw new Error('Include arguments is not string');
         }
 
@@ -47,6 +48,7 @@
         root = data.root;
 
         /*
+         * @TODO prevents loops
         if(root.hasOwnProperty('includes')){
             root.includes = {};
             root.includes[path] = 0;

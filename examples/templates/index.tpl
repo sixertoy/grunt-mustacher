@@ -16,3 +16,4 @@
     </li>
     {{/repeat}}
 </ul>
+{{$livereload}}

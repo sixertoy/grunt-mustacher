@@ -16,6 +16,8 @@
     'use strict';
 
     var EqualHelper,
+        lodash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
     EqualHelper = function () {};
@@ -25,14 +27,14 @@
     };
 
     EqualHelper.prototype.render = function (lvalue, rvalue, options) {
-        if (arguments.length < 3) {
-            throw new Error('Equal needs two parameters');
+        if (!Utils.containsOptions(arguments) || arguments.length < 3) {
+            throw new Error('EqualHelper parameters is missing');
         }
         var data, context = {};
         if (options.data) {
             data = Handlebars.createFrame(options.data || {});
         }
-        if (lvalue !== rvalue) {
+        if (!lodash.isEqual(lvalue, rvalue)) {
             return options.inverse(context, { data: data });
         } else {
             return options.fn(context, { data: data });

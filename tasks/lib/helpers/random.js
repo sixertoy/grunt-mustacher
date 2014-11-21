@@ -15,7 +15,7 @@
     'use strict';
 
     var RandomHelper,
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
         Utils = require('./../task-utils'),
         Handlebars = require('handlebars');
 
@@ -32,35 +32,35 @@
     RandomHelper.prototype.render = function (min, max, round, options) { // jshint ignore:line
 
         if (!Utils.containsOptions(arguments)) {
-            throw 'Random helper arguments is missing';
+            throw new Error('RandomHelper arguments is missing');
         }
 
         if (arguments.length < 2) {
-            return LoDash.random(0, 1, false);
+            return lodash.random(0, 1, false);
         }
 
         if (arguments.length < 3) {
-            if (LoDash.isNumber(min)) {
-                return LoDash.random(0, min, false);
-            } else if (LoDash.isBoolean(min)) {
-                return LoDash.random(0, 1, min);
+            if (lodash.isNumber(min)) {
+                return lodash.random(0, min, false);
+            } else if (lodash.isBoolean(min)) {
+                return lodash.random(0, 1, min);
             } else {
-                throw 'Random helper unknow arguments';
+                throw new Error('Random helper unknow arguments');
             }
         }
 
         if (arguments.length < 4) {
-            if (LoDash.isNumber(max)) {
-                return LoDash.random(min, max, false);
-            } else if (LoDash.isBoolean(max)) {
-                return LoDash.random(0, min, max);
+            if (lodash.isNumber(max)) {
+                return lodash.random(min, max, false);
+            } else if (lodash.isBoolean(max)) {
+                return lodash.random(0, min, max);
             } else {
-                throw 'Random helper unknow arguments';
+                throw new Error('Random helper unknow arguments');
             }
         }
 
         try {
-            return LoDash.random(min, max, round);
+            return lodash.random(min, max, round);
         } catch (e) {
             throw e;
         }

@@ -16,18 +16,19 @@
     'use strict';
 
     var AndHelper,
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
     AndHelper = function () {};
 
     AndHelper.prototype.register = function () {
-        Handlebars.registerHelper('equal', this.render.bind(this));
+        Handlebars.registerHelper('and', this.render.bind(this));
     };
 
     AndHelper.prototype.render = function (lvalue, rvalue, options) {
-        if (arguments.length < 3) {
-            throw new Error('Equal needs two parameters');
+        if (!Utils.containsOptions(arguments) || arguments.length < 3) {
+            throw new Error('AndHelper parameters is missing');
         }
 
         var result, data;
@@ -36,7 +37,7 @@
             data = Handlebars.createFrame(options.data || {});
         }
 
-        result = LoDash.compat(arguments.slice(-1));
+        result = lodash.compat(arguments.slice(-1));
         if (result.length === arguments.length) {
             return options.fn(arguments.slice(-1), {
                 data: data

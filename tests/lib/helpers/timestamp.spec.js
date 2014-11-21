@@ -5,52 +5,86 @@
 
     'use strict';
 
-    var cwd = process.cwd(),
+    var helper, result,
+        cwd = process.cwd(),
+        options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/timestamp');
 
     describe('Timestamp helper', function () {
 
-        var helper;
-
         beforeEach(function () {
             helper = new Helper();
+            helper.register();
         });
 
-        describe('render', function () {
-
-            it('Should not toEqual sup to now', function (done) {
-                var now = Date.now();
-                setTimeout(function () {
-                    var result = helper.render({});
-                    expect(now).not.toEqual(result);
-                    done();
-                }, 1000);
-            });
-
-            it('Should not toBeGreaterThan sup to now', function (done) {
-                var now = Date.now();
-                setTimeout(function () {
-                    var result = helper.render({});
-                    expect(now).not.toBeGreaterThan(result);
-                    done();
-                }, 1000);
-            });
-
-            it('Should toBeGreaterThan to now', function (done) {
-                var result = helper.render({});
-                setTimeout(function () {
-                    var now = Date.now();
-                    expect(now).toBeGreaterThan(result);
-                    done();
-                }, 1000);
-            });
-
-            it('Should be a number', function () {
-                var result = helper.render({});
-                expect(result).toEqual(jasmine.any(Number));
-            });
-
+        it('should throw', function () {
+            expect(function () {
+                helper.render();
+            }).toThrow();
+            expect(function () {
+                helper.render(20);
+            }).toThrow();
         });
+
+        xit('should not throw', function () {
+            expect(function () {
+                helper.render(options);
+            }).not.toThrow();
+            expect(function () {
+                helper.render(20, options);
+            }).not.toThrow();
+        });
+
+        /*
+        it('should not to be equal to now', function (done) {
+            var now = Date.now();
+            setTimeout(function () {
+                var result = helper.render({});
+                expect(now).not.toEqual(result);
+                done();
+            }, 1000);
+        });
+
+        it('should not to be equal to now', function (done) {
+            var now = Date.now();
+            setTimeout(function () {
+                var result = helper.render({});
+                expect(now).not.toEqual(result);
+                done();
+            }, 1000);
+        });
+
+        it('should not to be greater than now', function (done) {
+            var now = Date.now();
+            setTimeout(function () {
+                var result = helper.render({});
+                expect(now).not.toBeGreaterThan(result);
+                done();
+            }, 1000);
+        });
+
+        it('should to be greater than now', function (done) {
+            var now,
+                stamp = 400,
+                result = helper.render({});
+            setTimeout(function () {
+                now = Date.now();
+                expect(now).toBeGreaterThan(result);
+            }, stamp);
+        });
+
+        it('should be a number', function () {
+            var result = helper.render({});
+            expect(result).toEqual(jasmine.any(Number));
+            var result = helper.render(20, {});
+            expect(result).toEqual(jasmine.any(Number));
+        });
+        */
+
+        afterEach(function () {
+            helper = null;
+        });
+
 
     });
 

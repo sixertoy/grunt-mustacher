@@ -1,8 +1,11 @@
 <a name="mustacher"></a>
 # Mustacher
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev)](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev) [![Coverage Status](https://coveralls.io/repos/sixertoy/grunt-mustacher/badge.png?branch=dev)](https://coveralls.io/r/sixertoy/grunt-mustacher?branch=dev)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square)](http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?&branch=dev) [![Coverage Status](http://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?style=flat-square)](http://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?branch=dev)
 
 > Handlebars template (.tpl, .hbs) Helpers!
+
+
+
 
 <a name="exposed-helpers"></a>
 ## Exposed helpers

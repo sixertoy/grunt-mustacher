@@ -17,18 +17,19 @@
 
     var OrHelper,
         LoDash = require('lodash'),
+        Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
     OrHelper = function () {};
 
     OrHelper.prototype.register = function () {
-        Handlebars.registerHelper('equal', this.render.bind(this));
+        Handlebars.registerHelper('or', this.render.bind(this));
     };
 
     OrHelper.prototype.render = function (lvalue, rvalue, options) {
 
-        if (arguments.length < 3) {
-            throw new Error('Or helper needs two parameters at least');
+        if (!Utils.containsOptions(arguments) || arguments.length < 3) {
+            throw new Error('OrHelper arguments is missing');
         }
 
         var result, data;

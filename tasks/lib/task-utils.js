@@ -15,20 +15,51 @@
 
     'use strict';
 
-    var LoDash = require('lodash');
+    var lodash = require('lodash');
 
     function TaskUtils() {}
 
+    /**
+     *
+     * @param args [arguments]
+     *
+     */
     TaskUtils.prototype.containsOptions = function (args) {
-        if(args.length < 1){
-            return false;
-        }
+        /*
         var i,
             result = false,
-            a = LoDash.toArray(args);
-        for(i = 0; i< a.length; i++){
-            if(!result){
-                result = LoDash.isPlainObject(a[i]);
+            args = lodash.toArray(args);
+        if(args.length < 1){
+            return result;
+        }
+        for (i = 0; i < array.length; i++) {
+            if (!result) {
+                if (typeof array[i] === 'object' && array[i] !== null) {
+                    if (array[i] instanceof Object && Object.prototype.toString.call(array[i]) === '[object Object]') {
+                        result = true;
+                    }
+                }
+            }
+        }
+        return result;
+        */
+        var array,
+            index = -1,
+            item = null,
+            result = false;
+        if (args === null || args === undefined || args.length < 1) {
+            return result;
+        }
+        array = lodash.toArray(args);
+        item = array[array.length - 1];
+        if (typeof item === 'object' && item !== null) {
+            if (item instanceof Object && Object.prototype.toString.call(item) === '[object Object]') {
+                result = true;
+            }
+            if(result && item.hasOwnProperty('fn')){
+                result = true;
+            } else {
+                result = false;
             }
         }
         return result;
