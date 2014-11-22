@@ -36,12 +36,8 @@
             relative, // relative path from cwd to .hbs
             output = 'Unable to load file';
 
-        if (!Utils.hasOptions(arguments) || arguments.length < 2) {
-            throw new Error('IncludeHelper parameters is missing');
-        }
-
-        if (!lodash.isString(path)) {
-            throw new Error('Include arguments is not string');
+        if (!Utils.hasOptions(arguments) || arguments.length < 2 || !lodash.isString(path)) {
+            throw new Error('IncludeHelper missing arguments');
         }
 
         data = Handlebars.createFrame(options.data);

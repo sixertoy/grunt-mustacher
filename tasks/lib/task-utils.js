@@ -25,20 +25,12 @@
      *
      */
     TaskUtils.prototype.hasOptions = function (args) {
-        var array,
-            item = null;
+        var array;
         if (args === null || args === undefined || args.length < 1) {
             return false;
         }
         array = lodash.toArray(args);
-        item = array[array.length - 1];
-        if (lodash.isPlainObject(item)) {
-            if (item.hasOwnProperty('fn')) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        return lodash.isPlainObject(array[array.length - 1]);
     };
 
     module.exports = new TaskUtils();

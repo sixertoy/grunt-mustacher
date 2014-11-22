@@ -1,60 +1,60 @@
 {
-  "name": "grunt-mustacher",
-  "description": "Mustache Template Helpers",
-  "version": "1.3.3",
-  "homepage": "http://sixertoy.github.io/grunt-mustacher/",
-  "author": {
-    "name": "Matthieu Lassalvy",
-    "email": "sixertoy.github@gmail.com",
-    "url": "https://github.com/sixertoy"
-  },
-  "scripts": {
-    "test": "grunt jasmine_node"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:sixertoy/grunt-mustacher.git"
-  },
-  "bugs": {
-    "url": "https://github.com/sixertoy/grunt-mustacher/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
+    "name": "grunt-mustacher",
+    "description": "Mustache Template Helpers",
+    "version": "1.3.3",
+    "homepage": "http://sixertoy.github.io/grunt-mustacher/",
+    "author": {
+        "name": "Matthieu Lassalvy",
+        "email": "sixertoy.github@gmail.com",
+        "url": "https://github.com/sixertoy"
+    },
+    "scripts": {
+        "test": "grunt jasmine_node"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:sixertoy/grunt-mustacher.git"
+    },
+    "bugs": {
+        "url": "https://github.com/sixertoy/grunt-mustacher/issues"
+    },
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "engines": {
-    "node": ">= 0.8.0"
-  },
-  "dependencies": {
-    "q": "^1.1.1",
-    "lodash": "^2.4.1",
-    "handlebars": "^2.0.0",
-    "smnolde": "git://github.com/sixertoy/smnolde#dev"
-  },
-  "devDependencies": {
-    "coveralls": "^2.11.2",
-    "grunt": "^0.4.5",
-    "grunt-benchmark": "^0.3.0",
-    "grunt-bump": "0.0.16",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-conventional-changelog": "^1.1.0",
-    "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
-    "grunt-markdown": "^0.6.1",
-    "grunt-prompt": "^1.3.0",
-    "load-grunt-config": "^0.16.0",
-    "underscore": "^1.7.0"
-  },
-  "keywords": [
-    "handlebars",
-    "loops",
-    "files",
-    "include",
-    "repeat",
-    "lorem ipsum",
-    "mustache",
-    "helpers",
-    "dummy"
-  ]
+    "engines": {
+        "node": ">= 0.8.0"
+    },
+    "dependencies": {
+        "q": "^1.1.1",
+        "lodash": "^2.4.1",
+        "handlebars": "^2.0.0",
+        "smnolde": "git://github.com/sixertoy/smnolde#dev"
+    },
+    "devDependencies": {
+        "coveralls": "^2.11.2",
+        "grunt": "^0.4.5",
+        "grunt-benchmark": "^0.3.0",
+        "grunt-bump": "0.0.16",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-conventional-changelog": "^1.1.0",
+        "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
+        "grunt-markdown": "^0.6.1",
+        "grunt-prompt": "^1.3.0",
+        "load-grunt-config": "^0.16.0",
+        "underscore": "^1.7.0"
+    },
+    "keywords": [
+        "handlebars",
+        "loops",
+        "files",
+        "include",
+        "repeat",
+        "lorem ipsum",
+        "mustache",
+        "helpers",
+        "dummy"
+    ]
 }

@@ -16,7 +16,7 @@
     'use strict';
 
     var TimestampHelper,
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
         Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
@@ -27,34 +27,23 @@
     };
 
     TimestampHelper.prototype.render = function (count, options) {
-        var data, time;
-
-        if(!Utils.hasOptions(arguments) || arguments.length < 1){
+        var data, plus = 0;
+        if (!Utils.hasOptions(arguments) || arguments.length < 1) {
             throw new Error('Timestamp helper missing arguments');
         }
-
-        /*
-        if(arguments.length < 2){
-            if(LoDash.isObject(count)){
-                options = count;
-                count = 0;
-            } else {
-
+        if (arguments.length < 2) {
+            options = count;
+        } else {
+            count = parseFloat(count);
+            if (lodash.isNumber(count)) {
+                plus = Math.round(count);
             }
         }
-        */
-
-        if (options.data) {
-            data = Handlebars.createFrame(options.data || {});
+        if(options.data){
+            data = Handlebars.createFrame(options.data);
+            data.time = ((!Date.now) ? new Date().getTime() : Date.now()) + plus;
         }
-
-        time = (!Date.now) ? new Date().getTime() : Date.now();
-        return (time + count);
-
-    };
-
-    TimestampHelper.prototype.toString = function(){
-
+        return data.time;
     };
 
     module.exports = TimestampHelper;

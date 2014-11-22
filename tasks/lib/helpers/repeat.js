@@ -30,7 +30,7 @@
      * @see htt://placehold.it
      */
     RepeatHelper.prototype.render = function (count, options) {
-        if (!Utils.hasOptions(arguments) ||arguments.length <= 1) {
+        if (!Utils.hasOptions(arguments) || arguments.length <= 1) {
             throw new Error('Repeat arguments is missing');
         }
         count = parseFloat(count);

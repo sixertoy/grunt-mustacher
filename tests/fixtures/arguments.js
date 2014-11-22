@@ -1,6 +1,7 @@
 /*global module */
 /*jslint indent:4 */
 (function () {
+    'use strict';
     var options = require('./options');
     module.exports = {
         '0': 'toto',

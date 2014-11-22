@@ -16,7 +16,7 @@
     'use strict';
 
     var ConditionsHelper,
-        lodash = require('lodash'),
+        // lodash = require('lodash'),
         Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
@@ -31,7 +31,7 @@
         if (!Utils.hasOptions(arguments) || arguments.length < 3) {
             throw new Error('ConditionsHelper parameters is missing');
         }
-
+        options = null;
         return '';
 
     };

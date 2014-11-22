@@ -18,7 +18,7 @@
             helper.register();
         });
 
-        xit('should throw', function () {
+        it('should throw', function () {
             expect(function () {
                 helper.render();
             }).toThrow();
@@ -27,20 +27,22 @@
             }).toThrow();
         });
 
-        xit('should not throw', function () {
+        it('should not throw', function () {
             expect(function () {
-                helper.render(options);
+                var template = Handlebars.compile('{{$timestamp}}');
+                template();
             }).not.toThrow();
             expect(function () {
-                helper.render(20, options);
+                var template = Handlebars.compile('{{$timestamp 20}}');
+                template();
             }).not.toThrow();
         });
 
-        xit('should not to be equal to now', function (done) {
+        it('should not to be equal to now', function (done) {
             var now = Date.now();
             setTimeout(function () {
-                var result = helper.render({});
-                expect(now).not.toEqual(result);
+                var template = Handlebars.compile('{{$timestamp}}');
+                expect(template()).not.toEqual(result);
                 done();
             }, 1000);
         });

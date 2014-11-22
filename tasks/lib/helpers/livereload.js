@@ -16,7 +16,6 @@
     'use strict';
 
     var LivereloadHelper,
-        Grunt = require('grunt'),
         lodash = require('lodash'),
         Utils = require('./task-utils'),
         Handlebars = require('handlebars');
