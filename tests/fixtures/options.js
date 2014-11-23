@@ -8,7 +8,7 @@
             root: {
                 cwd: process.cwd(),
                 partials: {
-                    src: 'tests/',
+                    src: './tests/',
                     ext: '.hbs/',
                 }
             }
