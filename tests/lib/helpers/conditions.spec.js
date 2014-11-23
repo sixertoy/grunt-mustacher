@@ -11,6 +11,7 @@
         options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/conditions');
 
+    // @see https://lodash.com/docs#compact
     describe('Conditions helper', function () {
 
         beforeEach(function () {
