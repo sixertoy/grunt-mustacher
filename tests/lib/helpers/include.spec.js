@@ -7,6 +7,7 @@
 
     var helper,
         cwd = process.cwd(),
+        Handlebars = require('handlebars'),
         options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/include');
 
@@ -27,8 +28,8 @@
                 }).toThrow();
             });
         });
-        xdescribe('render with two arguments', function () {
-            it('no string file should throw', function () {
+        describe('render with two arguments', function () {
+            it('no file should throw', function () {
                 expect(function () {
                     helper.render([], options);
                 }).toThrow();
@@ -55,7 +56,7 @@
             });
         });
 
-        xdescribe('render with two arguments', function () {
+        describe('render with two arguments', function () {
             it('no options object should throw', function () {
                 expect(function () {
                     helper.render('namespace/to/include', []);
@@ -80,12 +81,11 @@
             });
         });
 
-        xdescribe('render with grunt mustacher options (tpl dir)', function () {
+        describe('include a template', function () {
             it('should not throw', function () {
-                options.data = {};
-                expect(function () {
-                    helper.render('namespace/to/include', options);
-                }).not.toThrow();
+                var html = '{{$include "fixtures/include"}}',
+                    template = Handlebars.compile(html);
+                expect(template({}, options)).toEqual('<span>I am a template included</span>');
             });
         });
 

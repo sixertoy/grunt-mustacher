@@ -41,22 +41,10 @@
             throw new Error('IncludeHelper missing arguments');
         }
 
-        data = Handlebars.createFrame(options.data);
+        data = Handlebars.createFrame(options.data || {});
         root = data.root;
 
-        /*
-         * @TODO prevents loops
-        if(root.hasOwnProperty('includes')){
-            root.includes = {};
-            root.includes[path] = 0;
-        }
-        root.includes[path] = (root.includes[path] + 1);
-
-        if(root.includes[path] > root.depth){
-            throw new Error('Include too much ');
-        }
-        */
-
+        // @TODO to test file path
         absolute = Path.join(root.cwd, root.partials.src, path + root.partials.ext);
         relative = Path.relative(root.cwd, absolute).split('\\').join('/');
 

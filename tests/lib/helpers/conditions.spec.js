@@ -23,9 +23,13 @@
             expect(function () {
                 result = helper.render();
             }).toThrow();
+        });
+        if ('should throw', function () {
             expect(function () {
                 result = helper.render(options);
             }).toThrow();
+        });
+        if ('should throw', function () {
             expect(function () {
                 result = helper.render(true, options);
             }).toThrow();
