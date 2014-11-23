@@ -16,7 +16,7 @@
     'use strict';
 
     var ConditionsHelper,
-        // lodash = require('lodash'),
+        lodash = require('lodash'),
         Utils = require('../task-utils'),
         Handlebars = require('handlebars');
 
@@ -28,22 +28,20 @@
     };
 
     ConditionsHelper.prototype.render = function (options) {
-        var args = Utils.hasOptions(arguments);
+        var result, data,
+            args = Utils.hasOptions(arguments);
         if (!args || args.length < 3) {
             throw new Error('Conditions helper parameters is missing');
         }
-
         options = args[args.length - 1];
-        var name = options.name;
-
-        switch (name) {
-        case 'or':
-            break;
-        case 'and':
-            break;
+        data = Handlebars.createFrame(options.data || {});
+        args = args.slice(0, args.length - 1);
+        result = options.name === 'or' ? 1 : args.length;
+        if(lodash.compact(args).length >= result){
+            return options.fn(args, { data: data });
+        } else{
+            return options.inverse(args, { data: data });
         }
-
-        return name;
 
     };
 

@@ -37,16 +37,53 @@
         });
 
         describe('or', function () {
-            xit('should be equal or', function(){
-                html = '{{#or true true}}exact{{/or}}';
+            html = '{{#or true true}}or is exact{{else}}or is not exact{{/or}}';
+            it('should be equal', function () {
                 template = Handlebars.compile(html);
-                expect(template()).toEqual('or');
-            })
+                expect(template()).toEqual('or is exact');
+            });
+            it('should be equal', function () {
+                html = '{{#or true false}}or is exact{{else}}or is not exact{{/or}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('or is exact');
+            });
+            it('should not be equal', function () {
+                html = '{{#or false false}}or is exact{{else}}or is not exact{{/or}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('or is not exact');
+            });
         });
 
-        describe('and', function () {});
+        describe('and', function () {
+            it('should be equal', function () {
+                html = '{{#and true true}}and is exact{{else}}and is not exact{{/and}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('and is exact');
+            });
+            it('should be equal', function () {
+                html = '{{#and true true 1}}and is exact{{else}}and is not exact{{/and}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('and is exact');
+            });
+            it('should not be equal', function () {
+                html = '{{#and true true 0}}and is exact{{else}}and is not exact{{/and}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('and is not exact');
+            });
+            it('should not be equal', function () {
+                html = '{{#and true false}}and is exact{{else}}and is not exact{{/and}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('and is not exact');
+            });
+            it('should not be equal', function () {
+                html = '{{#and false false true}}and is exact{{else}}and is not exact{{/and}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('and is not exact');
+            });
+        });
 
         afterEach(function () {
+            html = '';
             helper = null;
         });
 

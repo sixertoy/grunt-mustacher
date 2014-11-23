@@ -27,14 +27,13 @@
     };
 
     EqualHelper.prototype.render = function (lvalue, rvalue, options) {
-        var args = Utils.hasOptions(arguments);
+        var data,
+            context = {},
+            args = Utils.hasOptions(arguments);
         if (!args || args.length < 3) {
             throw new Error('EqualHelper parameters is missing');
         }
-        var data, context = {};
-        if (options.data) {
-            data = Handlebars.createFrame(options.data || {});
-        }
+        data = Handlebars.createFrame(options.data || {});
         if (!lodash.isEqual(lvalue, rvalue)) {
             return options.inverse(context, { data: data });
         } else {
