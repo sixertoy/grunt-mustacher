@@ -53,6 +53,7 @@
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(2);
                 expect(result).toBeGreaterThan(-1);
+                expect('' + result).toContain('.');
             });
             it('Should be 0 or 10', function () {
                 var result = helper.render(10, options);
@@ -78,6 +79,7 @@
                 expect(result).toEqual(jasmine.any(Number));
                 expect(result).toBeLessThan(11);
                 expect(result).toBeGreaterThan(-1);
+                expect('' + result).toContain('.');
             });
             it('Should be 0 <> 10', function () {
                 var result = helper.render(10, false, options);
@@ -100,6 +102,16 @@
                 expect(function () {
                     helper.render(10, 'toto', {});
                 }).toThrow();
+            });
+        });
+
+        describe('render with three args', function () {
+            it('Should be 30 <> 40 floating', function () {
+                var result = helper.render(30, 40, true, options);
+                expect(result).toEqual(jasmine.any(Number));
+                expect(result).toBeLessThan(40);
+                expect(result).toBeGreaterThan(30);
+                expect('' + result).toContain('.');
             });
         });
 

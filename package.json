@@ -6,7 +6,10 @@
     "author": {
         "name": "Matthieu Lassalvy",
         "email": "sixertoy.github@gmail.com",
-        "url": "https://github.com/sixertoy"
+        "url": "https://github.com/sixertoy" 
+
+
+
     },
     "scripts": {
         "test": "grunt jasmine_node"

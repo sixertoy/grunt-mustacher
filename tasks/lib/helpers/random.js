@@ -59,12 +59,7 @@
             }
         }
 
-        try {
-            return lodash.random(min, max, round);
-        } catch (e) {
-            throw e;
-        }
-
+        return lodash.random(min, max, round);
     };
 
     module.exports = RandomHelper;
