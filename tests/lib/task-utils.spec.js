@@ -8,15 +8,20 @@
     var result, helper,
         cwd = process.cwd(),
         Utils = require(cwd + '/tasks/lib/task-utils'),
-        args = require(cwd + '/tests/fixtures/arguments');
+        args = require(cwd + '/tests/fixtures/arguments'),
+        array = require(cwd + '/tests/fixtures/arguments_array');
 
     describe('Taskutils', function () {
 
         beforeEach(function () {});
 
-        it('contains options object', function () {
-            expect(Utils.hasOptions()).toEqual(false);
-            expect(Utils.hasOptions(args)).toEqual(true);
+        describe('contains options object', function () {
+            it('should be false', function () {
+                expect(Utils.hasOptions()).toEqual(false);
+            });
+            it('should be true', function () {
+                expect(Utils.hasOptions(args)).toEqual(array);
+            });
         });
 
         afterEach(function () {});

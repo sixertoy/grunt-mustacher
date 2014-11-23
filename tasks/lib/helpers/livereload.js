@@ -27,18 +27,19 @@
     };
 
     LivereloadHelper.prototype.render = function (port, options) {
-        if (!Utils.hasOptions(arguments) || arguments.length < 1) {
-            throw new Error('LivereloadHelper arguments is missing');
+        var result, args = Utils.hasOptions(arguments);
+        if (!args || args.length < 1) {
+            throw new Error('Livereload Helper arguments is missing');
         }
 
-        if (lodash.isObject(port) && arguments.length < 2) {
+        if (lodash.isObject(port) && args.length < 2) {
             options = port;
             port = 1337;
         }
+        port = parseFloat(port);
 
-        var result = '';
         // if(Grunt.option('debug')){
-            result = '<script src="http://localhost:' + port + '/livereload.js"></script>';
+        result = '<script src="http://localhost:' + port + '/livereload.js"></script>';
         // }
         return new Handlebars.SafeString(result);
 

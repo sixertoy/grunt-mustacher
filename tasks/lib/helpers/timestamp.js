@@ -27,11 +27,12 @@
     };
 
     TimestampHelper.prototype.render = function (count, options) {
-        var data, plus = 0;
-        if (!Utils.hasOptions(arguments) || arguments.length < 1) {
+        var data, plus = 0,
+            args = Utils.hasOptions(arguments);
+        if (!args || args.length < 1) {
             throw new Error('Timestamp helper missing arguments');
         }
-        if (arguments.length < 2) {
+        if (args.length < 2) {
             options = count;
         } else {
             count = parseFloat(count);

@@ -25,12 +25,13 @@
      *
      */
     TaskUtils.prototype.hasOptions = function (args) {
-        var array;
+        var options, options;
         if (args === null || args === undefined || args.length < 1) {
             return false;
         }
-        array = lodash.toArray(args);
-        return lodash.isPlainObject(array[array.length - 1]);
+        args = lodash.toArray(args);
+        options = args[args.length - 1];
+        return lodash.isPlainObject(options) && options.hasOwnProperty('name') ? args : false;
     };
 
     module.exports = new TaskUtils();

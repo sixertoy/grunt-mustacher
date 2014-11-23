@@ -30,16 +30,16 @@
      * @see htt://placehold.it
      */
     RandomHelper.prototype.render = function (min, max, round, options) { // jshint ignore:line
-
-        if (!Utils.hasOptions(arguments)) {
+        var args = Utils.hasOptions(arguments);
+        if (!args) {
             throw new Error('RandomHelper arguments is missing');
         }
 
-        if (arguments.length < 2) {
+        if (args.length < 2) {
             return lodash.random(0, 1, false);
         }
 
-        if (arguments.length < 3) {
+        if (args.length < 3) {
             if (lodash.isNumber(min)) {
                 return lodash.random(0, min, false);
             } else if (lodash.isBoolean(min)) {
@@ -49,7 +49,7 @@
             }
         }
 
-        if (arguments.length < 4) {
+        if (args.length < 4) {
             if (lodash.isNumber(max)) {
                 return lodash.random(min, max, false);
             } else if (lodash.isBoolean(max)) {

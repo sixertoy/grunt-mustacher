@@ -5,12 +5,13 @@
 
     'use strict';
 
-    var result, helper,
+    var result, html, template, helper,
         cwd = process.cwd(),
+        Handlebars = require('handlebars'),
         options = require(cwd + '/tests/fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/conditions');
 
-    describe('Connditions helper', function () {
+    describe('Conditions helper', function () {
 
         beforeEach(function () {
             helper = new Helper();
@@ -29,32 +30,21 @@
             }).toThrow();
         });
 
+        if ('should not throw', function () {
+            expect(function () {
+                result = helper.render(true, true, options);
+            }).not.toThrow();
+        });
+
         describe('or', function () {
-            if ('should not throw', function () {
-                expect(function () {
-                    result = helper.render(true, true, options);
-                }).toEqual(true);
-                expect(function () {
-                    result = helper.render(true, false, options);
-                }).toEqual(true);
-                expect(function () {
-                    result = helper.render(true, 1, options);
-                }).toEqual(true);
-                expect(function () {
-                    result = helper.render(true, 0, options);
-                }).toEqual(true);
-                expect(function () {
-                    result = helper.render(true, 'string', options);
-                }).toEqual(true);
-                expect(function () {
-                    result = helper.render(false, 'string', options);
-                }).toEqual(true);
-            });
+            xit('should be equal or', function(){
+                html = '{{#or true true}}exact{{/or}}';
+                template = Handlebars.compile(html);
+                expect(template()).toEqual('or');
+            })
         });
 
-        describe('and', function () {
-
-        });
+        describe('and', function () {});
 
         afterEach(function () {
             helper = null;

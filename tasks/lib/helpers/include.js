@@ -30,13 +30,14 @@
 
     IncludeHelper.prototype.render = function (path, options) {
 
-        var data, root,
+        var args = Utils.hasOptions(arguments),
+            data, root,
             content, // .hbs content
             absolute, // absolute .hbs path form system root
             relative, // relative path from cwd to .hbs
             output = 'Unable to load file';
 
-        if (!Utils.hasOptions(arguments) || arguments.length < 2 || !lodash.isString(path)) {
+        if (!args || args.length < 2 || !lodash.isString(path)) {
             throw new Error('IncludeHelper missing arguments');
         }
 

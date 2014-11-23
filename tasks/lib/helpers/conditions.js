@@ -28,11 +28,22 @@
     };
 
     ConditionsHelper.prototype.render = function (options) {
-        if (!Utils.hasOptions(arguments) || arguments.length < 3) {
-            throw new Error('ConditionsHelper parameters is missing');
+        var args = Utils.hasOptions(arguments);
+        if (!args || args.length < 3) {
+            throw new Error('Conditions helper parameters is missing');
         }
-        options = null;
-        return '';
+
+        options = args[args.length - 1];
+        var name = options.name;
+
+        switch (name) {
+        case 'or':
+            break;
+        case 'and':
+            break;
+        }
+
+        return name;
 
     };
 
