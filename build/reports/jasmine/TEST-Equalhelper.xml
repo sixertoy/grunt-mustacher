@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Equal helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T22:24:09">
+<testsuite name="Equal helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T07:20:52">
 </testsuite>
-<testsuite name="Equal helper.render" errors="0" tests="12" failures="0" time="0.003" timestamp="2014-11-17T22:24:09">
-  <testcase classname="Equal helper.render" name="Should be false (number)" time="0.002"></testcase>
-  <testcase classname="Equal helper.render" name="Should be true (number)" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false (number)" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be true string" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false string" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be true string" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false string" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false object" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false object" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false array" time="0.001"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false array" time="0"></testcase>
-  <testcase classname="Equal helper.render" name="Should be false function" time="0"></testcase>
+<testsuite name="Equal helper.render" errors="0" tests="16" failures="0" time="0.002" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Equal helper.render" name="should throw" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false (number)" time="0.001"></testcase>
+  <testcase classname="Equal helper.render" name="should be true (number)" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false (number)" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false string" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true object" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true object" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false object" time="0.001"></testcase>
+  <testcase classname="Equal helper.render" name="should be false object" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true array" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be true array" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false array" time="0"></testcase>
+  <testcase classname="Equal helper.render" name="should be false function" time="0"></testcase>
+</testsuite>
+<testsuite name="Equal helper.compile" errors="0" tests="2" failures="0" time="0.007" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Equal helper.compile" name="Should render equal" time="0.001"></testcase>
+  <testcase classname="Equal helper.compile" name="Should render not equal" time="0.006"></testcase>
 </testsuite>
 </testsuites>

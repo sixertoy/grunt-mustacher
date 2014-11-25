@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Random helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-17T22:24:09">
+<testsuite name="Random helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T07:20:52">
 </testsuite>
-<testsuite name="Random helper.render with no arguments" errors="0" tests="3" failures="0" time="0.001" timestamp="2014-11-17T22:24:09">
-  <testcase classname="Random helper.render with no arguments" name="Should throw with no arguments" time="0.001"></testcase>
+<testsuite name="Random helper.render with no arguments" errors="0" tests="3" failures="0" time="0.001" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Random helper.render with no arguments" name="Should throw with no arguments" time="0"></testcase>
   <testcase classname="Random helper.render with no arguments" name="Should throw null arguments" time="0"></testcase>
-  <testcase classname="Random helper.render with no arguments" name="Should throw undefined arguments" time="0"></testcase>
+  <testcase classname="Random helper.render with no arguments" name="Should throw undefined arguments" time="0.001"></testcase>
 </testsuite>
-<testsuite name="Random helper.render with no args but options" errors="0" tests="1" failures="0" time="0.001" timestamp="2014-11-17T22:24:09">
-  <testcase classname="Random helper.render with no args but options" name="Should be 0 or 1 and not floating (false)" time="0.001"></testcase>
+<testsuite name="Random helper.render with no args but options" errors="0" tests="1" failures="0" time="0" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Random helper.render with no args but options" name="Should be 0 or 1 and not floating (false)" time="0"></testcase>
 </testsuite>
-<testsuite name="Random helper.render with two args" errors="0" tests="4" failures="0" time="0.001" timestamp="2014-11-17T22:24:09">
-  <testcase classname="Random helper.render with two args" name="Should be 0 or 1 and floating" time="0"></testcase>
+<testsuite name="Random helper.render with two args" errors="0" tests="4" failures="0" time="0.001" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Random helper.render with two args" name="Should be 0 or 1 and floating" time="0.001"></testcase>
   <testcase classname="Random helper.render with two args" name="Should be 0 or 10" time="0"></testcase>
   <testcase classname="Random helper.render with two args" name="Should throw" time="0"></testcase>
   <testcase classname="Random helper.render with two args" name="Should throw" time="0"></testcase>
 </testsuite>
-<testsuite name="Random helper.render with three args" errors="0" tests="5" failures="0" time="0" timestamp="2014-11-17T22:24:09">
+<testsuite name="Random helper.render with three args" errors="0" tests="5" failures="0" time="0.001" timestamp="2014-11-25T07:20:52">
   <testcase classname="Random helper.render with three args" name="Should be 0 &amp;lt;&amp;gt; 10" time="0"></testcase>
   <testcase classname="Random helper.render with three args" name="Should be 0 &amp;lt;&amp;gt; 10" time="0"></testcase>
   <testcase classname="Random helper.render with three args" name="Should be 10 &amp;lt;&amp;gt; 20" time="0"></testcase>
   <testcase classname="Random helper.render with three args" name="Should throw" time="0"></testcase>
   <testcase classname="Random helper.render with three args" name="Should throw" time="0"></testcase>
+</testsuite>
+<testsuite name="Random helper.render with three args" errors="0" tests="1" failures="0" time="0" timestamp="2014-11-25T07:20:52">
+  <testcase classname="Random helper.render with three args" name="Should be 30 &amp;lt;&amp;gt; 40 floating" time="0"></testcase>
 </testsuite>
 </testsuites>
