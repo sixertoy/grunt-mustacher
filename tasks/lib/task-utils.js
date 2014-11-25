@@ -25,7 +25,7 @@
      *
      */
     TaskUtils.prototype.hasOptions = function (args) {
-        var options, options;
+        var options;
         if (args === null || args === undefined || args.length < 1) {
             return false;
         }
