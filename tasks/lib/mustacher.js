@@ -96,7 +96,7 @@
                             template = Handlebars.compile(stream, {trackIds: false}), // handlebars compile options
                             // rendu du contenu
                             result = template(context, {data: data}); // pass root context to helpers
-                        result = TaskUtils.removeEmptyChars(result);
+                        result = result.trim();
                         Grunt.file.setBase(process.cwd());
                         return new Handlebars.SafeString(result);
                     }).join(Grunt.util.normalizelf(LF));
