@@ -33,7 +33,7 @@
         var data, root, content, // .hbs content
             absolute, // absolute .hbs path form system root
             relative, // relative path from cwd to .hbs
-            output = 'Unable to load file',
+            errorOutput = 'Unable to load file',
             args = Utils.hasOptions(arguments);
 
         if (!args || args.length < 2 || !lodash.isString(path)) {
@@ -45,15 +45,16 @@
 
         // @TODO to test file path
         absolute = Path.join(root.cwd, root.partials.src, path);
-        absolute += root.partials.ext;
+        absolute = Path.normalize(absolute + root.partials.ext);
         relative = Path.relative(root.cwd, absolute);
+        relative = Path.join('.', relative );
 
-        if (!Grunt.file.exists(Path.normalize(absolute))) {
-            output = output + ' ' + relative;
-            Grunt.log.error(output);
+        if (!Grunt.file.exists(relative)) {
+            errorOutput = errorOutput + ' ' + relative;
+            Grunt.log.error(errorOutput);
         } else {
-            content = Grunt.file.read(Path.normalize(absolute));
-            output = Handlebars.compile(content)(absolute, {
+            content = Grunt.file.read(relative);
+            errorOutput = Handlebars.compile(content)(relative, {
                 data: data
             }).trim();
         }
