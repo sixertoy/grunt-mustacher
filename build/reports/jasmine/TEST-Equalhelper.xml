@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Equal helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T07:20:52">
+<testsuite name="Equal helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T09:29:47">
 </testsuite>
-<testsuite name="Equal helper.render" errors="0" tests="16" failures="0" time="0.002" timestamp="2014-11-25T07:20:52">
+<testsuite name="Equal helper.render" errors="0" tests="16" failures="0" time="0.002" timestamp="2014-11-25T09:29:47">
   <testcase classname="Equal helper.render" name="should throw" time="0"></testcase>
   <testcase classname="Equal helper.render" name="should be false (number)" time="0.001"></testcase>
   <testcase classname="Equal helper.render" name="should be true (number)" time="0"></testcase>
@@ -20,8 +20,8 @@
   <testcase classname="Equal helper.render" name="should be false array" time="0"></testcase>
   <testcase classname="Equal helper.render" name="should be false function" time="0"></testcase>
 </testsuite>
-<testsuite name="Equal helper.compile" errors="0" tests="2" failures="0" time="0.007" timestamp="2014-11-25T07:20:52">
-  <testcase classname="Equal helper.compile" name="Should render equal" time="0.001"></testcase>
-  <testcase classname="Equal helper.compile" name="Should render not equal" time="0.006"></testcase>
+<testsuite name="Equal helper.compile" errors="0" tests="2" failures="0" time="0.001" timestamp="2014-11-25T09:29:47">
+  <testcase classname="Equal helper.compile" name="Should render equal" time="0"></testcase>
+  <testcase classname="Equal helper.compile" name="Should render not equal" time="0.001"></testcase>
 </testsuite>
 </testsuites>

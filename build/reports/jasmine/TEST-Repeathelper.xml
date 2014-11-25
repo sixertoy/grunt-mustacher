@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Repeat helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T07:20:58">
+<testsuite name="Repeat helper" errors="0" tests="0" failures="0" time="0" timestamp="2014-11-25T09:29:53">
 </testsuite>
-<testsuite name="Repeat helper.render" errors="0" tests="6" failures="0" time="0.001" timestamp="2014-11-25T07:20:52">
-  <testcase classname="Repeat helper.render" name="Should toThrow with no arguments" time="0"></testcase>
+<testsuite name="Repeat helper.render" errors="0" tests="6" failures="0" time="0.001" timestamp="2014-11-25T09:29:47">
+  <testcase classname="Repeat helper.render" name="Should toThrow with no arguments" time="0.001"></testcase>
   <testcase classname="Repeat helper.render" name="Should toThrow with one argument" time="0"></testcase>
   <testcase classname="Repeat helper.render" name="Should toThrow with a word argument" time="0"></testcase>
-  <testcase classname="Repeat helper.render" name="Should toThrow with a blank spaced string argument" time="0.001"></testcase>
+  <testcase classname="Repeat helper.render" name="Should toThrow with a blank spaced string argument" time="0"></testcase>
   <testcase classname="Repeat helper.render" name="Should toThrow with a empty string argument" time="0"></testcase>
   <testcase classname="Repeat helper.render" name="Should toThrow with a second argument in not a handlebars context" time="0"></testcase>
 </testsuite>
-<testsuite name="Repeat helper.render html string" errors="0" tests="7" failures="0" time="0.008" timestamp="2014-11-25T07:20:52">
+<testsuite name="Repeat helper.render html string" errors="0" tests="7" failures="0" time="0.01" timestamp="2014-11-25T09:29:47">
   <testcase classname="Repeat helper.render html string" name="Should be equal" time="0.001"></testcase>
-  <testcase classname="Repeat helper.render html string" name="Should be equal with index" time="0.003"></testcase>
-  <testcase classname="Repeat helper.render html string" name="Should be equal with index and first" time="0.001"></testcase>
+  <testcase classname="Repeat helper.render html string" name="Should be equal with index" time="0.001"></testcase>
+  <testcase classname="Repeat helper.render html string" name="Should be equal with index and first" time="0.005"></testcase>
   <testcase classname="Repeat helper.render html string" name="Should be equal with index and last" time="0"></testcase>
   <testcase classname="Repeat helper.render html string" name="Should be equal with index and even" time="0.001"></testcase>
-  <testcase classname="Repeat helper.render html string" name="Should be equal with index and odd" time="0.001"></testcase>
-  <testcase classname="Repeat helper.render html string" name="Should be equal with count and of" time="0.001"></testcase>
+  <testcase classname="Repeat helper.render html string" name="Should be equal with index and odd" time="0"></testcase>
+  <testcase classname="Repeat helper.render html string" name="Should be equal with count and of" time="0.002"></testcase>
 </testsuite>
-<testsuite name="Repeat helper.render html template" errors="0" tests="1" failures="0" time="2.044" timestamp="2014-11-25T07:20:52">
-  <testcase classname="Repeat helper.render html template" name="Should be equal to expected content" time="2.044"></testcase>
+<testsuite name="Repeat helper.render html template" errors="0" tests="1" failures="0" time="2.031" timestamp="2014-11-25T09:29:47">
+  <testcase classname="Repeat helper.render html template" name="Should be equal to expected content" time="2.031"></testcase>
 </testsuite>
-<testsuite name="Repeat helper.render html template nested" errors="0" tests="1" failures="0" time="2.028" timestamp="2014-11-25T07:20:54">
-  <testcase classname="Repeat helper.render html template nested" name="Should be equal to expected content" time="2.028"></testcase>
+<testsuite name="Repeat helper.render html template nested" errors="0" tests="1" failures="0" time="2.044" timestamp="2014-11-25T09:29:49">
+  <testcase classname="Repeat helper.render html template nested" name="Should be equal to expected content" time="2.044"></testcase>
 </testsuite>
-<testsuite name="Repeat helper.render html template nested if" errors="0" tests="1" failures="0" time="2.043" timestamp="2014-11-25T07:20:56">
+<testsuite name="Repeat helper.render html template nested if" errors="0" tests="1" failures="0" time="2.043" timestamp="2014-11-25T09:29:51">
   <testcase classname="Repeat helper.render html template nested if" name="Should be equal to expected content" time="2.043"></testcase>
 </testsuite>
 </testsuites>
