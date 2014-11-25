@@ -17,7 +17,7 @@
         Path = require('path'),
         Grunt = require('grunt'),
         lodash = require('lodash'),
-        Utils = require('../task-utils'),
+        Utils = require('./../task-utils'),
         Handlebars = require('handlebars'),
         lf = Grunt.util.linefeed,
         debug = Grunt.option('debug');
