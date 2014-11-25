@@ -9,11 +9,22 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
-**[Include](./include.html)**
+**[And]**
 
-**[Repeat](./repeat.html)**
+**[Equal]**
 
-**[Timestamp](./imestamp.html)**
+**[Include]**
+
+**[Livereload]**
+
+**[Or]**
+
+**[Random]**
+
+**[Repeat]**
+
+**[Timestamp]**
+
 
 <a name="the-mustacher-task"></a>
 ## The "mustacher" task
@@ -33,6 +44,12 @@ npm install mustacher --save-dev
 ```js
 grunt.initConfig({
     mustacher: {
+        options:{
+            partials:{
+                ext:'.hbs',
+                src:'partials/'
+            }
+        },
         compile: {
             files: [{
                 src: 'templates/index.tpl',
