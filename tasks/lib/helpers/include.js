@@ -30,12 +30,11 @@
 
     IncludeHelper.prototype.render = function (path, options) {
 
-        var args = Utils.hasOptions(arguments),
-            data, root,
-            content, // .hbs content
+        var data, root, output, content, // .hbs content
             absolute, // absolute .hbs path form system root
             relative, // relative path from cwd to .hbs
-            output = 'Unable to load file';
+            output = 'Unable to load file',
+            args = Utils.hasOptions(arguments);
 
         if (!args || args.length < 2 || !lodash.isString(path)) {
             throw new Error('IncludeHelper missing arguments');
@@ -45,15 +44,16 @@
         root = data.root;
 
         // @TODO to test file path
-        absolute = Path.join(root.cwd, root.partials.src, path + root.partials.ext);
-        relative = Path.relative(root.cwd, absolute).split('\\').join('/');
+        absolute = Path.join(root.cwd, root.partials.src, path);
+        absolute = Path.normalize(absolute + root.partials.ext);
+        relative = Path.relative(root.cwd, absolute);
 
-        if (!Grunt.file.exists(Path.normalize(absolute))) {
+        if (!Grunt.file.exists(relative)) {
             output = output + ' ' + relative;
             Grunt.log.error(output);
         } else {
-            content = Grunt.file.read(Path.normalize(absolute));
-            output = Handlebars.compile(content)(absolute, {
+            content = Grunt.file.read(relative);
+            output = Handlebars.compile(content)(relative, {
                 data: data
             }).trim();
         }
@@ -63,6 +63,7 @@
         }
 
         return new Handlebars.SafeString(output.trim());
+
     };
 
     module.exports = IncludeHelper;

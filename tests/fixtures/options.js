@@ -9,7 +9,7 @@
                 cwd: process.cwd(),
                 partials: {
                     src: './tests/',
-                    ext: '.hbs/',
+                    ext: '.hbs',
                 }
             }
         },
