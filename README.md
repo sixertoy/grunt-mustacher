@@ -9,21 +9,21 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
-**[And]**
+**And**
 
-**[Equal]**
+**Equal**
 
-**[Include]**
+**Include**
 
-**[Livereload]**
+**Livereload**
 
-**[Or]**
+**Or**
 
-**[Random]**
+**Random**
 
-**[Repeat]**
+**Repeat**
 
-**[Timestamp]**
+**Timestamp**
 
 
 <a name="the-mustacher-task"></a>
