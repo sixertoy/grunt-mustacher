@@ -17,7 +17,7 @@
 
     var LivereloadHelper,
         lodash = require('lodash'),
-        Utils = require('./task-utils'),
+        Utils = require('./../task-utils'),
         Handlebars = require('handlebars');
 
     LivereloadHelper = function () {};

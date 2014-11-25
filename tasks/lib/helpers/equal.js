@@ -17,7 +17,7 @@
 
     var EqualHelper,
         lodash = require('lodash'),
-        Utils = require('../task-utils'),
+        Utils = require('./../task-utils'),
         Handlebars = require('handlebars');
 
     EqualHelper = function () {};

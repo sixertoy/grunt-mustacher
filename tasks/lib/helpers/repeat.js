@@ -16,7 +16,7 @@
 
     var RepeatHelper,
         lodash = require('lodash'),
-        Utils = require('../task-utils'),
+        Utils = require('./../task-utils'),
         Handlebars = require('handlebars');
 
     RepeatHelper = function () {};
