@@ -1,10 +1,8 @@
 <a name="mustacher"></a>
 # Mustacher
-
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square)](https://travis-ci.org/sixertoy/grunt-mustacher) [![Coverage Status](https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?style=flat-square)](https://coveralls.io/r/sixertoy/grunt-mustacher)
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev)](https://travis-ci.org/sixertoy/grunt-mustacher.svg?branch=dev) [![Coverage Status](https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg)](https://coveralls.io/r/sixertoy/grunt-mustacher?branch=dev)
 
 > Handlebars template (.tpl, .hbs) Helpers!
-
 
 <a name="exposed-helpers"></a>
 ## Exposed helpers
@@ -51,11 +49,6 @@ grunt.initConfig({
 ```js
 grunt.loadNpmTasks('mustacher');
 ```
-### Lorem Ipsum
-```html
-<p>{{$lorem 'w:10'}}</p>
-```
-> <p>et laborum ullamco incididunt adipisicing excepteur sit ea et est</p>
 
 <a name="requirements"></a>
 ## Requirements

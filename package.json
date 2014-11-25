@@ -1,19 +1,25 @@
 {
     "name": "grunt-mustacher",
     "description": "Mustache Template Helpers",
-    "version": "0.1.11",
-    "homepage": "http://malas34.github.io/grunt-mustacher/",
+    "version": "1.3.6",
+    "homepage": "http://sixertoy.github.io/grunt-mustacher/",
     "author": {
         "name": "Matthieu Lassalvy",
-        "email": "malas34.github@gmail.com",
-        "url": "https://github.com/malas34"
+        "email": "sixertoy.github@gmail.com",
+        "url": "https://github.com/sixertoy"
+
+
+
+    },
+    "scripts": {
+        "test": "grunt jasmine_node"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/malas34/grunt-mustacher.git"
+        "url": "https://github.com/sixertoy/grunt-mustacher.git"
     },
     "bugs": {
-        "url": "https://github.com/malas34/grunt-mustacher/issues"
+        "url": "https://github.com/sixertoy/grunt-mustacher/issues"
     },
     "licenses": [
         {
@@ -24,26 +30,34 @@
     "engines": {
         "node": ">= 0.8.0"
     },
-    "scripts": {
-        "test": "grunt test"
-    },
-    "peerDependencies": {
-        "grunt": "~0.4.4"
-    },
     "dependencies": {
-        "twig": "~0.7.0",
-        "digits": "~0.1.4",
-        "handlebars": "~1.3.0",
-        "lorem-ipsum": "~1.0.1"
+        "q": "^1.1.1",
+        "lodash": "^2.4.1",
+        "handlebars": "^2.0.0",
+        "smnolde": "git://github.com/sixertoy/smnolde#dev"
     },
     "devDependencies": {
-        "grunt-prettify": "~0.3.4",
-        "grunt-contrib-clean": "~0.4.0",
-        "grunt-contrib-jshint": "~0.6.0",
-        "grunt-contrib-nodeunit": "~0.2.0",
-        "grunt": "~0.4.4"
+        "coveralls": "^2.11.2",
+        "grunt": "^0.4.5",
+        "grunt-benchmark": "^0.3.0",
+        "grunt-bump": "0.0.16",
+        "grunt-contrib-jshint": "^0.10.0",
+        "grunt-conventional-changelog": "^1.1.0",
+        "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
+        "grunt-markdown": "^0.6.1",
+        "grunt-prompt": "^1.3.0",
+        "load-grunt-config": "^0.16.0",
+        "underscore": "^1.7.0"
     },
     "keywords": [
-    "handlebars", "loops", "files", "include", "repeat", "lorem ipsum", "mustache", "helpers"
-  ]
+        "handlebars",
+        "loops",
+        "files",
+        "include",
+        "repeat",
+        "lorem ipsum",
+        "mustache",
+        "helpers",
+        "dummy"
+    ]
 }
