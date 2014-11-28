@@ -1,7 +1,7 @@
 <a name="mustacher"></a>
 # Mustacher
 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![Travis](http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square)](https://travis-ci.org/sixertoy/grunt-mustacher) [![Coverage Status](https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?style=flat-square)](https://coveralls.io/r/sixertoy/grunt-mustacher)
+[![Built with Grunt][grunt-img]](http://gruntjs.com/) [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
 > Handlebars template (.tpl, .hbs) Helpers!
 
@@ -9,21 +9,91 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
-**And**
+### $include
 
-**Equal**
+```html
+<div class="part">
+    {{$include 'relative/to/root/path/to/template'}}
+</div>
+```
 
-**Include**
+### #repeat
 
-**Livereload**
+```html
+<ul>
+    {{#repeat 4}}
+    <li class="{{class}}">
+        <a href="" alt="{{count}} of {{of}}">item </a>
+        <ul>
+        {{#repeat}}
+            <li class="{{#if @first}}first{{/if}}">
+                <span>sub item {{@../index}}/{{@index}}</span>
+            </li>
+        {{/repeat}}
+        </ul>
+    </li>
+    {{/repeat}}
+</ul>
+```
 
-**Or**
+### $Timestamp
 
-**Random**
+```html
+<img src="my/file.png?{{$timestamp}}" alt="" title="">
+```
 
-**Repeat**
+### $livereload
 
-**Timestamp**
+```html
+<div id="footer">
+    {{$livereload 1337}}
+</div>
+```
+
+### $random
+
+```html
+<span>
+    <b>{{$random 1 31}}</b>
+    <strong>>Juanary</strong>
+    <em>1970</em>
+</span>
+```
+
+```html
+<span>{{$random 0 1 true}}</span>
+```
+
+
+### #And
+
+```html
+{{#and true false...}}
+<span>fail</span>
+{{else}}
+<span>success</span>
+{{/and}}
+```
+
+### #Or
+
+```html
+{{#or true false ...}}
+<span>success</span>
+{{else}}
+<span>fail</span>
+{{/and}}
+```
+
+### #Equal
+
+```html
+{{#equal 'toto' 'blague'}}
+<span>fail</span>
+{{else}}
+<span>success</span>
+{{/and}}
+```
 
 
 <a name="the-mustacher-task"></a>
@@ -51,6 +121,12 @@ grunt.initConfig({
             }
         },
         compile: {
+            options:{
+                context:{
+                    any: 'to be touched by @root.context.any'
+                    inside: 'a template'
+                }
+            },
             files: [{
                 src: 'templates/index.tpl',
                 dest: 'html/index.html'
@@ -68,29 +144,40 @@ grunt.initConfig({
 ```js
 grunt.loadNpmTasks('mustacher');
 ```
-### Lorem Ipsum
-```html
-<p>{{$lorem 'w:10'}}</p>
-```
-> <p>et laborum ullamco incididunt adipisicing excepteur sit ea et est</p>
 
 <a name="requirements"></a>
 ## Requirements
 
-##### Grunt `~0.4.5`
+##### [Handlebars](http://handlebarsjs.com) `^2.0.0`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.
 
-##### [Q](http://documentup.com/kriskowal/q/) `^1.1.1`
-
-A tool for making and composing asynchronous promises in JavaScript
+Handlebars is largely compatible with Mustache templates. In most cases it is possible to swap out Mustache with Handlebars and continue using your current templates.
 
 ##### [Lo-Dash](https://lodash.com) `^2.4.1`
 
 A utility library delivering consistency, customization, performance, & extras.
 
-##### Handlebars `^2.0.0`
+##### [Q](http://documentup.com/kriskowal/q/) `^1.1.1`
 
-[Handlebars](http://handlebarsjs.com) provides the power necessary to let you build semantic templates effectively with no frustration.
+A tool for making and composing asynchronous promises in JavaScript
 
-Handlebars is largely compatible with Mustache templates. In most cases it is possible to swap out Mustache with Handlebars and continue using your current templates.
+##### [Grunt](http://gruntjs.com/) `~0.4.5`
+
+If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+
+
+[grunt-img]: https://cdn.gruntjs.com/builtwith.png
+
+[license-img]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[license-url]: LICENSE-MIT
+
+[coverall-url]: https://coveralls.io/r/sixertoy/grunt-mustacher
+[coverall-img]: https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?style=flat-square
+
+[npm-url]: https://npmjs.org/package/grunt-mustacher
+[npm-version-img]: http://img.shields.io/npm/v/grunt-mustacher.svg?style=flat-square
+[npm-downloads-img]: http://img.shields.io/npm/dm/grunt-mustacher.svg?style=flat-square
+
+[travis-url]: https://travis-ci.org/sixertoy/grunt-mustacher
+[travis-img]: http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square
