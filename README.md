@@ -3,12 +3,22 @@
 
 [![Built with Grunt][grunt-img]](http://gruntjs.com/) [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
-> Handlebars template (.tpl, .hbs) Helpers!
+> Handlebars minimal templates helpers!
 
 
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
+* [include](#include)
+* [repeat](#repeat)
+* [timestamp](#timestamp)
+* [livereload](#livereload)
+* [random](#random)
+* [and](#and)
+* [or](#or)
+* [equal](#equal)
+
+<a name="include"><a>
 ### $include
 
 ```html
@@ -17,6 +27,7 @@
 </div>
 ```
 
+<a name="repeat"><a>
 ### #repeat
 
 ```html
@@ -36,12 +47,18 @@
 </ul>
 ```
 
-### $Timestamp
+<a name="timestamp"><a>
+### $timestamp
 
 ```html
 <img src="my/file.png?{{$timestamp}}" alt="" title="">
 ```
 
+```html
+<img src="my/file.png?{{$timestamp 20}}" alt="" title="">
+```
+
+<a name="livereload"><a>
 ### $livereload
 
 ```html
@@ -50,6 +67,7 @@
 </div>
 ```
 
+<a name="random"><a>
 ### $random
 
 ```html
@@ -64,8 +82,8 @@
 <span>{{$random 0 1 true}}</span>
 ```
 
-
-### #And
+<a name="and"><a>
+### #and
 
 ```html
 {{#and true false...}}
@@ -75,7 +93,8 @@
 {{/and}}
 ```
 
-### #Or
+<a name="or"><a>
+### #or
 
 ```html
 {{#or true false ...}}
@@ -85,7 +104,8 @@
 {{/and}}
 ```
 
-### #Equal
+<a name="equal"><a>
+### #equal
 
 ```html
 {{#equal 'toto' 'blague'}}
@@ -94,7 +114,6 @@
 <span>success</span>
 {{/and}}
 ```
-
 
 <a name="the-mustacher-task"></a>
 ## The "mustacher" task
