@@ -17,6 +17,9 @@
 * [and](#and)
 * [or](#or)
 * [equal](#equal)
+* [ldim](#literals)
+* [rdim](#literals)
+* [raw](#literals)
 
 <a name="include"><a>
 ### $include
@@ -115,6 +118,28 @@
 {{/and}}
 ```
 
+<a name="literals"><a>
+### literal
+
+#### $ldim
+```html
+{{$ldim}}toto
+{{$ldim}}toto{{$rdim}}
+```
+
+#### $rdim
+```html
+toto{{$rdim}}
+{{$ldim}}toto{{$rdim}}
+```
+
+#### raw
+```html
+{{{{raw}}}}
+{{toto}}
+{{{{/raw}}}}
+```
+
 <a name="the-mustacher-task"></a>
 ## The "mustacher" task
 
@@ -137,6 +162,11 @@ grunt.initConfig({
             partials:{
                 ext:'.hbs',
                 src:'partials/'
+                delimiter: {
+                    // customs delimiter w/ $ldim and $rdim helpers
+                    ldim: '{{',
+                    rdim: '}}'
+                }
             }
         },
         compile: {

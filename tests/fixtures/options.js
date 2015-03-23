@@ -10,6 +10,10 @@
                 partials: {
                     src: './tests/',
                     ext: '.hbs',
+                },
+                literal: {
+                    ldim: '{{',
+                    rdim: '}}'
                 }
             }
         },

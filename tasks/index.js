@@ -19,6 +19,7 @@
             'conditions',
             'timestamp',
             'include',
+            'literal',
             'repeat',
             'random',
             'equal'

@@ -21,11 +21,4 @@ module.exports = function (grunt) {
             banner: grunt.file.read('./grunt/banner.tpl', 'utf-8')
         }
     });
-
-    // Tasks
-    grunt.loadTasks('tasks');
-
-    // By default, lint and run all tests.
-    grunt.registerTask('default', ['jshint', 'all']);
-
 };

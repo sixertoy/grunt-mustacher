@@ -30,7 +30,7 @@
 
     IncludeHelper.prototype.render = function (path, options) {
 
-        var data, root, output, content, // .hbs content
+        var data, root, content, // .hbs content
             absolute, // absolute .hbs path form system root
             relative, // relative path from cwd to .hbs
             output = 'Unable to load file',

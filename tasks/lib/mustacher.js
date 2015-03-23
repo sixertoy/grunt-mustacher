@@ -22,8 +22,7 @@
         Q = require('q'),
         Grunt = require('grunt'),
         LoDash = require('lodash'),
-        Handlebars = require('handlebars'),
-        TaskUtils = require('./task-utils');
+        Handlebars = require('handlebars');
 
     /**
      * Variables
@@ -38,6 +37,10 @@
         flatten: false, // Remove all path parts from generated dest paths.
         extDot: 'first', // Extensions in filenames begin after the first dot
         cwd: process.cwd(), // relative path to src
+        delimiter: {
+            ldim: '{{',
+            rdim: '}}'
+        },
         //
         partials: {
             depth: 2,
