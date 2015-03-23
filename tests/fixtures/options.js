@@ -11,7 +11,7 @@
                     src: './tests/',
                     ext: '.hbs',
                 },
-                literal: {
+                delimiter: {
                     ldim: '{{',
                     rdim: '}}'
                 }
