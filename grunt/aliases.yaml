@@ -2,11 +2,9 @@ default:
   - jshint
   - jasmine_node
   - markdown
-
 tests:
   - jshint
   - jasmine_node
-
 compile:
   - jshint
   - mustacher:compile

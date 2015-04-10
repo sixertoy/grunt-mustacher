@@ -1,48 +1,48 @@
 {
-    "name": "grunt-mustacher",
-    "description": "Mustache Template Helpers - Load templates inside templates at compile w/ Grunt",
-    "version": "1.3.14",
-    "homepage": "http://sixertoy.github.io/grunt-mustacher/",
-    "author": {
-        "name": "Matthieu Lassalvy",
-        "email": "sixertoy.github@gmail.com",
-        "url": "https://github.com/sixertoy"
-    },
-    "scripts": {
-        "test": "grunt jasmine_node"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/sixertoy/grunt-mustacher.git"
-    },
-    "bugs": {
-        "url": "https://github.com/sixertoy/grunt-mustacher/issues"
-    },
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "http://opensource.org/licenses/MIT"
+  "name": "grunt-mustacher",
+  "description": "Mustache Template Helpers - Load templates inside templates at compile w/ Grunt",
+  "version": "1.3.15",
+  "homepage": "http://sixertoy.github.io/grunt-mustacher/",
+  "author": {
+    "name": "Matthieu Lassalvy",
+    "email": "sixertoy.github@gmail.com",
+    "url": "https://github.com/sixertoy"
+  },
+  "scripts": {
+    "test": "grunt jasmine_node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sixertoy/grunt-mustacher.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sixertoy/grunt-mustacher/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
     }
   ],
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "dependencies": {
-        "handlebars": "^3.0.0",
-        "lodash": "^3.5.0",
-        "q": "^1.2.0"
-    },
-    "devDependencies": {
-        "coveralls": "^2.11.2",
-        "grunt": "^0.4.5",
-        "grunt-benchmark": "^0.3.0",
-        "grunt-bump": "0.0.16",
-        "grunt-contrib-jshint": "^0.10.0",
-        "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
-        "grunt-markdown": "^0.6.1",
-        "load-grunt-config": "^0.16.0"
-    },
-    "keywords": [
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "handlebars": "^3.0.0",
+    "lodash": "^3.5.0",
+    "q": "^1.2.0"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "grunt": "^0.4.5",
+    "grunt-benchmark": "^0.3.0",
+    "grunt-bump": "0.0.16",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-jasmine-node": "^0.3.1",
+    "grunt-markdown": "^0.6.1",
+    "load-grunt-config": "^0.16.0"
+  },
+  "keywords": [
     "handlebars",
     "loops",
     "files",
