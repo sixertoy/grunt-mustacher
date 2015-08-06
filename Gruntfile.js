@@ -1,4 +1,8 @@
+/*jslint indent: 4 */
+/*globals require, module */
 module.exports = function (grunt) {
+
+    'use strict';
 
     // Project configuration.
     grunt.initConfig({
@@ -33,11 +37,11 @@ module.exports = function (grunt) {
             },
             all: {
                 files: [{
-                    ext: '.html',
+                    ext: ".html",
                     expand: true,
                     flatten: true,
-                    src: './all_task/*.tpl',
-                    dest: './html/all_task/'
+                    src: "./all_task/*.tpl",
+                    dest: "./html/all_task/"
                 }]
             }
         },
@@ -50,7 +54,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 9000,
-                    base: 'html/'
+                    base: "html/"
                 }
             }
         },
@@ -59,19 +63,19 @@ module.exports = function (grunt) {
                 livereload: 1337
             },
             html: {
-                files: ['./src/*.tpl', './src/**/*.hbs'],
-                tasks: ['mustacher']
+                files: ["./src/*.tpl", "./src/**/*.hbs"],
+                tasks: ["mustacher"]
             }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-mustacher');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks("grunt-mustacher");
+    grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-contrib-connect");
 
     // Default task(s).
-    grunt.registerTask('serve', ['mustacher:compile', 'mustacher:src_to_dest', 'mustacher:all', 'connect:server', 'watch']);
-    grunt.registerTask('default', ['serve']);
+    grunt.registerTask("serve", ["mustacher:compile", "mustacher:src_to_dest", "mustacher:all", "connect:server", "watch"]);
+    grunt.registerTask("default", ["serve"]);
 
 };
