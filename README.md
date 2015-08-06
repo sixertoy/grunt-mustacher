@@ -26,20 +26,24 @@
 ## The "mustacher" task
 
 <a name="install"></a>
-#### Install
+## Install & Run (connect + watch)
 
 ```shell
-npm install mustacher --save-dev
+npm install -g grunt-cli
+npm install
+grunt
 ```
+
+> Open your browser at http://localhost:9000
+
+<a name="config"></a>
+## Grunt Configuration
 
 > Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```javascript
 grunt.loadNpmTasks('grunt-mustacher');
 ```
-
-<a name="task"></a>
-#### Task
 
 > In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
 
