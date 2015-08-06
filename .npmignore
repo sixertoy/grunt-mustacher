@@ -5,8 +5,10 @@ grunt/
 node_modules/
 scripts/
 spec/
+coverage/
 .editorconfig
 .gitattributes
-.jshtinrc
+.jshintrc
 .travis.yml
 Gruntfile.js
+tasks.json
