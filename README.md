@@ -9,8 +9,6 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
-> take at git 'examples' branch
-
 ###### inline
 
 * [$include](#include)
@@ -26,6 +24,8 @@
 * [and](#and)
 * [or](#or)
 * [equal](#equal)
+
+> take at git 'examples' branch for usages
 
 <a name="include"><a>
 ### $include
