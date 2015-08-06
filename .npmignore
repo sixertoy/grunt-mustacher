@@ -1,6 +1,7 @@
 benchmarks/
 build/
 docs/
+docs_deprecated/
 grunt/
 node_modules/
 scripts/
