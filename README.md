@@ -8,18 +8,19 @@
 <a name="exposed-helpers"></a>
 ### Exposed helpers
 
-> take a look inside src folder
+> take a look inside src folder for examples
 
 * $include
-* repeat
 * $timestamp
 * $livereload
+* $ldim
+* $rdim
 * $random
+
+* repeat
 * and
 * or
 * equal
-* ldim
-* rdim
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
@@ -30,7 +31,7 @@ npm install
 grunt
 ```
 
-> Open your browser at http://localhost:9000
+> Four outputs, open your browser at http://localhost:9000
 
 <a name="config"></a>
 ### Grunt Configuration
