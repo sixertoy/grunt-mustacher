@@ -6,7 +6,7 @@
 > Handlebars minimal templates helpers!
 
 <a name="exposed-helpers"></a>
-## Exposed helpers
+### Exposed helpers
 
 > take a look inside examples folder
 
@@ -22,11 +22,8 @@
 * [rdim](#literals)
 * [raw](#literals)
 
-<a name="the-mustacher-task"></a>
-## The "mustacher" task
-
 <a name="install"></a>
-## Install & Run (connect + watch)
+### Install & Run (connect + watch)
 
 ```shell
 npm install -g grunt-cli
@@ -37,13 +34,7 @@ grunt
 > Open your browser at http://localhost:9000
 
 <a name="config"></a>
-## Grunt Configuration
-
-> Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
-
-```javascript
-grunt.loadNpmTasks('grunt-mustacher');
-```
+### Grunt Configuration
 
 > In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
 
@@ -76,8 +67,14 @@ grunt.initConfig({
 });
 ```
 
+> Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```javascript
+grunt.loadNpmTasks('grunt-mustacher');
+```
+
 <a name="requirements"></a>
-## Requirements
+### Requirements
 
 - [Handlebars](http://handlebarsjs.com) ^3.0.3
 - [Lo-Dash](https://lodash.com) ^3.10.1
