@@ -8,8 +8,6 @@
 <a name="exposed-helpers"></a>
 ### Exposed helpers
 
-> take a look inside src folder for examples
-
 ###### inline
 
 * $include
@@ -25,6 +23,8 @@
 * and
 * or
 * equal
+
+> take a look inside src folder for examples
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
