@@ -1,19 +1,18 @@
-/*jslint indent: 4 */
-/*global module */
+/**
+ *
+ * Config for grunt-jasmine-node
+ *
+ */
+/*jslint indent:4 */
+/*globals module */
 module.exports = {
     options: {
         match: '.',
-        forceExit: false,
+        verbose: true,
+        matchall: false,
+        forceExit: true,
         extensions: 'js',
-        keepRunner: true,
-        specNameMatcher: 'spec',
-        includeStackTrace: false,
-        jUnit: {
-            report: true,
-            savePath: './build/reports/jasmine/',
-            useDotNotation: true,
-            consolidate: true
-        }
+        specNameMatcher: 'spec'
     },
-    all: ['tests/']
+    all: []
 };
