@@ -10,12 +10,16 @@
 
 > take a look inside src folder for examples
 
+###### inline
+
 * $include
 * $timestamp
 * $livereload
 * $ldim
 * $rdim
 * $random
+
+###### blocks
 
 * repeat
 * and
