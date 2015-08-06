@@ -1,15 +1,12 @@
 language: node_js
+branches:
+  only:
+    - master
 node_js:
-  - "0.10"
+  - "0.12.0"
 before_install:
-  - npm install -g grunt-cli istanbul
+  - npm install -g grunt-cli istanbul jasmine-node coveralls
 script:
   - npm test --verbose
 after_success:
-  - istanbul cover jasmine-node tests/ --verbose && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
-deploy:
-  provider: npm
-  email: "sixertoy.github@gmail.com"
-  api_key: "bWFsYXMzNDojaGVsbG8kd29ybGQj"
-  on:
-    branch: master
+  - cat ./coverage/lcov.info | coveralls && rm -rf ./coverage
