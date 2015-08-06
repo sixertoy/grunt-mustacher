@@ -1,7 +1,7 @@
 {
     "name": "grunt-mustacher",
     "description": "Mustache Template Helpers - Load templates inside templates at compile w/ Grunt",
-    "version": "1.3.16",
+    "version": "1.3.17",
     "homepage": "http://sixertoy.github.io/grunt-mustacher/",
     "author": {
         "name": "Matthieu Lassalvy",
@@ -9,8 +9,7 @@
         "url": "https://github.com/sixertoy"
     },
     "scripts": {
-        "test": "istanbul cover ./scripts/jasmine_node -x **/*.spec.js --captureExceptions spec",
-        "postinstall": "npm test"
+        "test": "istanbul cover ./scripts/jasmine_node -x **/*.spec.js --captureExceptions spec"
     },
     "repository": {
         "type": "git",
