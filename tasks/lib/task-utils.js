@@ -17,23 +17,16 @@
 
     var lodash = require('lodash');
 
-    function TaskUtils() {}
-
-    /**
-     *
-     * @param args [arguments]
-     *
-     */
-    TaskUtils.prototype.hasOptions = function (args) {
-        var options;
-        if (args === null || args === undefined || args.length < 1) {
-            return false;
+    module.exports = {
+        hasOptions: function (args) {
+            var options;
+            if (args === null || args === undefined || args.length < 1) {
+                return false;
+            }
+            args = lodash.toArray(args);
+            options = args[args.length - 1];
+            return lodash.isPlainObject(options) && options.hasOwnProperty('name') ? args : false;
         }
-        args = lodash.toArray(args);
-        options = args[args.length - 1];
-        return lodash.isPlainObject(options) && options.hasOwnProperty('name') ? args : false;
-    };
-
-    module.exports = new TaskUtils();
+    );
 
 }());
