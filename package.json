@@ -9,7 +9,8 @@
     "url": "https://github.com/sixertoy"
   },
   "scripts": {
-    "test": "grunt jasmine_node"
+    "test": "istanbul cover ./scripts/jasmine_node -x **/*.spec.js --captureExceptions spec/src",
+    "postinstall": "npm test"
   },
   "repository": {
     "type": "git",
@@ -18,12 +19,10 @@
   "bugs": {
     "url": "https://github.com/sixertoy/grunt-mustacher/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
+  "license": {
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  },
   "engines": {
     "node": ">= 0.8.0"
   },
@@ -38,8 +37,10 @@
     "grunt-benchmark": "^0.3.0",
     "grunt-bump": "0.0.16",
     "grunt-contrib-jshint": "^0.10.0",
-    "grunt-jasmine-node": "git://github.com/sixertoy/grunt-jasmine-node",
+    "grunt-jasmine-node": "^0.3.1",
     "grunt-markdown": "^0.6.1",
+    "istanbul": "^0.3.17",
+    "jasmine-node": "^1.14.5",
     "load-grunt-config": "^0.16.0"
   },
   "keywords": [
