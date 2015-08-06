@@ -9,7 +9,7 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
-> take a look inside examples folder
+> take at git 'examples' branch
 
 * [include](#include)
 * [repeat](#repeat)
@@ -149,7 +149,7 @@ toto{{$rdim}}
 #### Install
 
 ```shell
-npm install mustacher --save-dev
+npm install grunt-mustacher --save-dev
 ```
 
 <a name="task"></a>
@@ -160,32 +160,27 @@ npm install mustacher --save-dev
 ```javascript
 grunt.initConfig({
     mustacher: {
-        options:{
-            partials:{
-                ext:'.hbs',
-                src:'partials/'
-                delimiter: {
-                    // customs delimiter w/ $ldim and $rdim helpers
-                    // ex: with angular
-                    ldim: '{{',
-                    rdim: '}}'
-                }
+        options: {
+            partials: {
+                src: 'src/'
             }
         },
         compile: {
-            options:{
-                context:{
+            options: {
+                context: {
                     any: 'to be touched by @root.context.any',
                     inside: 'a template'
                 }
             },
             files: [{
-                src: 'templates/index.tpl',
+                src: 'src/index.tpl',
                 dest: 'html/index.html'
-            }, {
-                src: 'templates/head.tpl',
-                dest: 'html/head.html'
             }]
+        },
+        src_to_dest: {
+            files: {
+                "html/src_to_dest.html": "src/src_to_dest.tpl"
+            }
         }
     },
 });
