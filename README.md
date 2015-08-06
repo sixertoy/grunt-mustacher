@@ -11,17 +11,21 @@
 
 > take at git 'examples' branch
 
-* [include](#include)
+###### inline
+
+* [$include](#include)
+* [$timestamp](#timestamp)
+* [$livereload](#livereload)
+* [$random](#random)
+* [$ldim](#literals)
+* [$rdim](#literals)
+
+###### blocks
+
 * [repeat](#repeat)
-* [timestamp](#timestamp)
-* [livereload](#livereload)
-* [random](#random)
 * [and](#and)
 * [or](#or)
 * [equal](#equal)
-* [ldim](#literals)
-* [rdim](#literals)
-* [raw](#literals)
 
 <a name="include"><a>
 ### $include
