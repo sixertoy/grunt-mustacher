@@ -9,6 +9,8 @@
 <a name="exposed-helpers"></a>
 ## Exposed helpers
 
+> take a look inside examples folder
+
 * [include](#include)
 * [repeat](#repeat)
 * [timestamp](#timestamp)
@@ -173,7 +175,7 @@ grunt.initConfig({
         compile: {
             options:{
                 context:{
-                    any: 'to be touched by @root.context.any'
+                    any: 'to be touched by @root.context.any',
                     inside: 'a template'
                 }
             },
