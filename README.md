@@ -192,7 +192,7 @@ grunt.initConfig({
 > Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```javascript
-grunt.loadNpmTasks('mustacher');
+grunt.loadNpmTasks('grunt-mustacher');
 ```
 
 <a name="requirements"></a>

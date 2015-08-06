@@ -1,10 +1,11 @@
+jasmine:
+  - jshint
+  - jasmine_node
+build:
+  - jshint
+  - mustacher:compile
 default:
   - jshint
   - jasmine_node
+  - mustacher
   - markdown
-tests:
-  - jshint
-  - jasmine_node
-compile:
-  - jshint
-  - mustacher:compile
