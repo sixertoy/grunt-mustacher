@@ -1,0 +1,12 @@
+grunt/
+build/
+spec/
+tests/
+benchmarks/
+docs/
+.editorconfig
+.gitattributes
+.jshtinrc
+.travis.yml
+Gruntfile.js
+jasmine-node
