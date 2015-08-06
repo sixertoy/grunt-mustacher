@@ -104,7 +104,7 @@
 <span>success</span>
 {{else}}
 <span>fail</span>
-{{/and}}
+{{/or}}
 ```
 
 <a name="equal"><a>
@@ -115,7 +115,7 @@
 <span>fail</span>
 {{else}}
 <span>success</span>
-{{/and}}
+{{/equal}}
 ```
 
 <a name="literals"><a>
@@ -155,7 +155,7 @@ npm install mustacher --save-dev
 
 > In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
 
-```js
+```javascript
 grunt.initConfig({
     mustacher: {
         options:{
@@ -164,6 +164,7 @@ grunt.initConfig({
                 src:'partials/'
                 delimiter: {
                     // customs delimiter w/ $ldim and $rdim helpers
+                    // ex: with angular
                     ldim: '{{',
                     rdim: '}}'
                 }
@@ -190,7 +191,7 @@ grunt.initConfig({
 
 > Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
-```js
+```javascript
 grunt.loadNpmTasks('mustacher');
 ```
 
