@@ -1,12 +1,12 @@
-grunt/
-build/
-spec/
-tests/
 benchmarks/
+build/
 docs/
+grunt/
+node_modules/
+scripts/
+spec/
 .editorconfig
 .gitattributes
 .jshtinrc
 .travis.yml
 Gruntfile.js
-jasmine-node
