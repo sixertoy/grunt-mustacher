@@ -198,24 +198,10 @@ grunt.loadNpmTasks('mustacher');
 <a name="requirements"></a>
 ## Requirements
 
-##### [Handlebars](http://handlebarsjs.com) `^2.0.0`
-
-Handlebars provides the power necessary to let you build semantic templates effectively with no frustration.
-
-Handlebars is largely compatible with Mustache templates. In most cases it is possible to swap out Mustache with Handlebars and continue using your current templates.
-
-##### [Lo-Dash](https://lodash.com) `^2.4.1`
-
-A utility library delivering consistency, customization, performance, & extras.
-
-##### [Q](http://documentup.com/kriskowal/q/) `^1.1.1`
-
-A tool for making and composing asynchronous promises in JavaScript
-
-##### [Grunt](http://gruntjs.com/) `~0.4.5`
-
-If you haven't used Grunt before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
-
+- [Handlebars](http://handlebarsjs.com) ^3.0.3
+- [Lo-Dash](https://lodash.com) ^3.10.1
+- [Q](http://documentup.com/kriskowal/q/) ^1.4.1
+- [Grunt](http://gruntjs.com/) ~0.4.5
 
 [grunt-img]: https://cdn.gruntjs.com/builtwith.png
 
