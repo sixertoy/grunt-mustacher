@@ -37,10 +37,14 @@
         data = Handlebars.createFrame(options.data || {});
         args = args.slice(0, args.length - 1);
         result = options.name === 'or' ? 1 : args.length;
-        if(lodash.compact(args).length >= result){
-            return options.fn(args, { data: data });
-        } else{
-            return options.inverse(args, { data: data });
+        if (lodash.compact(args).length >= result) {
+            return options.fn(args, {
+                data: data
+            });
+        } else {
+            return options.inverse(args, {
+                data: data
+            });
         }
 
     };

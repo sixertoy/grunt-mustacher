@@ -30,7 +30,9 @@
      * @see htt://placehold.it
      */
     RepeatHelper.prototype.render = function (count, options) {
-        var args = Utils.hasOptions(arguments);
+        var i, data, context,
+            output = '',
+            args = Utils.hasOptions(arguments);
         if (!args || args.length <= 1) {
             throw new Error('Repeat arguments is missing');
         }
@@ -38,8 +40,6 @@
         if (lodash.isNaN(count)) {
             throw new Error('Repeat arguments is not valid');
         }
-        var i, data, context,
-            output = '';
         for (i = 0; i < count; i++) {
             if (options.data) {
                 data = Handlebars.createFrame(options.data || {});

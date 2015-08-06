@@ -21,7 +21,7 @@
     var Mustacher, LF, defaultsOptions,
         Q = require('q'),
         Grunt = require('grunt'),
-        LoDash = require('lodash'),
+        lodash = require('lodash'),
         Handlebars = require('handlebars');
 
     /**
@@ -62,12 +62,7 @@
             context = {},
             deferred = Q.defer();
 
-        /*
-        var requires = this.requiresConfig('mysqldumper.local', 'mysqldumper.local.database', 'mysqldumper.distant', 'mysqldumper.distant.database', 'mysqldumper.distant.host');
-        if(!requires){}
-        */
-
-        LoDash.merge(defaultsOptions, task.options());
+        lodash.merge(defaultsOptions, task.options());
         data = {root: defaultsOptions }; // explicit root for handlebars compile
         data = Handlebars.createFrame(data);
 

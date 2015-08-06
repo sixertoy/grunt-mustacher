@@ -10,7 +10,7 @@
  *
  */
 /*jslint plusplus: true, indent: 4 */
-/*global module */
+/*global module, require */
 (function () {
 
     'use strict';
@@ -20,13 +20,13 @@
     module.exports = {
         hasOptions: function (args) {
             var options;
-            if (args === null || args === undefined || args.length < 1) {
+            if (arguments.length < 1 || lodash.isEmpty(args) || Object.keys(args).length < 1) {
                 return false;
             }
             args = lodash.toArray(args);
             options = args[args.length - 1];
             return lodash.isPlainObject(options) && options.hasOwnProperty('name') ? args : false;
         }
-    );
+    };
 
 }());
