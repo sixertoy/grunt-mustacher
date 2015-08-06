@@ -26,12 +26,17 @@
         <section>
             <h2>Include Templates</h2>
             {{$include 'commons/conditions/or_and_equal'}}
-            <h2>Include error</h2>
+            <h2>Include With Root Variables</h2>
+            {{$include 'commons/includes/variables'}}
+            <h2>Include Error</h2>
             {{$include 'commons/non_exists'}}
         </section>
         <section>
             <h2>Timestamp Helper</h2>
-            <p>{{$timestamp}}</p>
+            <p>First timestamp is less than second by ~10ms</p>
+            <p>{{$timestamp}} < {{$timestamp 10}}</p>
+            <p>First timestamp is less than second by ~100ms</p>
+            <p>{{$timestamp}} < {{$timestamp 100}}</p>
         </section>
         <section>
             <h2>Repeat Helper Nested With Variables</h2>

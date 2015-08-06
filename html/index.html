@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Grunt Mustacher - Generated 1438846164232</title>
+    <title>Grunt Mustacher - Generated 1438847314091</title>
 </head>
 
 <body>
@@ -16,11 +16,11 @@
         <section>
             <h2>Random Helper</h2>
             <ul>
-                <li>{{$random 30}}: <b>13</b></li>
-                <li>{{$random 30}}: <b>11</b></li>
-                <li>{{$random 30}}: <b>18</b></li>
-                <li>{{$random 30 true}}: <b><span>2.1267761662602425</span></b></li>
-                <li>{{$random 10 20}}: <b>16</b></li>
+                <li>{{$random 30}}: <b>27</b></li>
+                <li>{{$random 30}}: <b>0</b></li>
+                <li>{{$random 30}}: <b>8</b></li>
+                <li>{{$random 30 true}}: <b><span>6.923162459861487</span></b></li>
+                <li>{{$random 10 20}}: <b>18</b></li>
             </ul>
         </section>
         <section>
@@ -58,12 +58,19 @@
         </li>
     </ul>
 </section>
-            <h2>Include error</h2>
+            <h2>Include With Root Variables</h2>
+            <p><b>Syntax</b> {{@root.context.any}}</p>
+<p>this is a variable <b>to be touched by @root.context.any</b></p>
+<p>in fact <b>a template</b> with globals</p>
+            <h2>Include Error</h2>
             Unable to load file src\commons\non_exists.hbs
         </section>
         <section>
             <h2>Timestamp Helper</h2>
-            <p>1438846164257</p>
+            <p>First timestamp is less than second by ~10ms</p>
+            <p>1438847314120 < 1438847314131</p>
+            <p>First timestamp is less than second by ~100ms</p>
+            <p>1438847314121 < 1438847314221</p>
         </section>
         <section>
             <h2>Repeat Helper Nested With Variables</h2>

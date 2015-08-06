@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuites>
-<testsuite name="Timestamp helper" errors="0" tests="3" failures="0" time="1.009" timestamp="2015-03-23T11:38:03">
-  <testcase classname="Timestamp helper" name="should throw" time="0.001"></testcase>
-  <testcase classname="Timestamp helper" name="should not throw" time="0.003"></testcase>
-  <testcase classname="Timestamp helper" name="should not to be equal to now" time="1.005"></testcase>
-</testsuite>
-</testsuites>
