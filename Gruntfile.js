@@ -32,19 +32,20 @@ module.exports = function (grunt) {
             },
             src_to_dest: {
                 files: {
-                    "html/src_to_dest.html": "src/src_to_dest.tpl"
+                    'html/src_to_dest.html': 'src/src_to_dest.tpl'
                 }
-            }/*,
+            },
             all: {
                 files: [{
-                    ext: ".html",
+                    cwd: '.',
+                    ext: '.html',
                     expand: true,
                     flatten: true,
-                    src: "./all_task/.tpl",
-                    dest: "./html/all_task/"
+                    filter: 'isFile',
+                    dest: 'html/all_task/',
+                    src: ['src/all_task/**/*.tpl']
                 }]
             }
-            */
         },
         /*
          *
@@ -55,7 +56,7 @@ module.exports = function (grunt) {
             server: {
                 options: {
                     port: 9000,
-                    base: "html/"
+                    base: 'html/'
                 }
             }
         },
@@ -64,19 +65,19 @@ module.exports = function (grunt) {
                 livereload: 1337
             },
             html: {
-                files: ["./src/*.tpl", "./src/**/*.hbs"],
-                tasks: ["mustacher"]
+                files: ['./src/*.tpl', './src/**/*.hbs'],
+                tasks: ['mustacher']
             }
         }
     });
 
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks("grunt-mustacher");
-    grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-contrib-connect");
+    // Load the plugin that provides the 'uglify' task.
+    grunt.loadNpmTasks('grunt-mustacher');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask("serve", ["mustacher:compile", "mustacher:src_to_dest", /*"mustacher:all",*/ "connect:server", "watch"]);
-    grunt.registerTask("default", ["serve"]);
+    grunt.registerTask('serve', ['mustacher:compile', 'mustacher:src_to_dest', 'mustacher:all', 'connect:server', 'watch']);
+    grunt.registerTask('default', ['serve']);
 
 };

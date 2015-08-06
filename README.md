@@ -66,6 +66,17 @@ grunt.initConfig({
             files: {
                 "html/src_to_dest.html": "src/src_to_dest.tpl"
             }
+        },
+        all: {
+            files: [{
+                cwd: '.',
+                ext: ".html",
+                expand: true,
+                flatten: true,
+                filter: 'isFile',
+                dest: "html/all_task/",
+                src: ['src/all_task/**/*.tpl']
+            }]
         }
     },
 });
