@@ -10,17 +10,16 @@
 
 > take a look inside examples folder
 
-* [include](#include)
-* [repeat](#repeat)
-* [timestamp](#timestamp)
-* [livereload](#livereload)
-* [random](#random)
-* [and](#and)
-* [or](#or)
-* [equal](#equal)
-* [ldim](#literals)
-* [rdim](#literals)
-* [raw](#literals)
+* $include
+* repeat
+* $timestamp
+* $livereload
+* $random
+* and
+* or
+* equal
+* ldim
+* rdim
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
