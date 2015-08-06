@@ -22,125 +22,6 @@
 * [rdim](#literals)
 * [raw](#literals)
 
-<a name="include"><a>
-### $include
-
-```html
-<div class="part">
-    {{$include 'relative/to/root/path/to/template'}}
-</div>
-```
-
-<a name="repeat"><a>
-### #repeat
-
-```html
-<ul>
-    {{#repeat 4}}
-    <li class="{{class}}">
-        <a href="" alt="{{count}} of {{of}}">item </a>
-        <ul>
-        {{#repeat}}
-            <li class="{{#if @first}}first{{/if}}">
-                <span>sub item {{@../index}}/{{@index}}</span>
-            </li>
-        {{/repeat}}
-        </ul>
-    </li>
-    {{/repeat}}
-</ul>
-```
-
-<a name="timestamp"><a>
-### $timestamp
-
-```html
-<img src="my/file.png?{{$timestamp}}" alt="" title="">
-```
-
-```html
-<img src="my/file.png?{{$timestamp 20}}" alt="" title="">
-```
-
-<a name="livereload"><a>
-### $livereload
-
-```html
-<div id="footer">
-    {{$livereload 1337}}
-</div>
-```
-
-<a name="random"><a>
-### $random
-
-```html
-<span>
-    <b>{{$random 1 31}}</b>
-    <strong>>Juanary</strong>
-    <em>1970</em>
-</span>
-```
-
-```html
-<span>{{$random 0 1 true}}</span>
-```
-
-<a name="and"><a>
-### #and
-
-```html
-{{#and true false...}}
-<span>fail</span>
-{{else}}
-<span>success</span>
-{{/and}}
-```
-
-<a name="or"><a>
-### #or
-
-```html
-{{#or true false ...}}
-<span>success</span>
-{{else}}
-<span>fail</span>
-{{/or}}
-```
-
-<a name="equal"><a>
-### #equal
-
-```html
-{{#equal 'toto' 'blague'}}
-<span>fail</span>
-{{else}}
-<span>success</span>
-{{/equal}}
-```
-
-<a name="literals"><a>
-### literal
-
-#### $ldim
-```html
-{{$ldim}}toto
-{{$ldim}}toto{{$rdim}}
-```
-
-#### $rdim
-```html
-toto{{$rdim}}
-{{$ldim}}toto{{$rdim}}
-```
-
-#### raw
-```html
-{{{{raw}}}}
-{{toto}}
-{{{{/raw}}}}
-```
-
 <a name="the-mustacher-task"></a>
 ## The "mustacher" task
 
@@ -151,6 +32,12 @@ toto{{$rdim}}
 npm install mustacher --save-dev
 ```
 
+> Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```javascript
+grunt.loadNpmTasks('grunt-mustacher');
+```
+
 <a name="task"></a>
 #### Task
 
@@ -159,41 +46,30 @@ npm install mustacher --save-dev
 ```javascript
 grunt.initConfig({
     mustacher: {
-        options:{
-            partials:{
-                ext:'.hbs',
-                src:'partials/'
-                delimiter: {
-                    // customs delimiter w/ $ldim and $rdim helpers
-                    // ex: with angular
-                    ldim: '{{',
-                    rdim: '}}'
-                }
+        options: {
+            partials: {
+                src: 'src/'
             }
         },
         compile: {
-            options:{
-                context:{
+            options: {
+                context: {
                     any: 'to be touched by @root.context.any',
                     inside: 'a template'
                 }
             },
             files: [{
-                src: 'templates/index.tpl',
+                src: 'src/index.tpl',
                 dest: 'html/index.html'
-            }, {
-                src: 'templates/head.tpl',
-                dest: 'html/head.html'
             }]
+        },
+        src_to_dest: {
+            files: {
+                "html/src_to_dest.html": "src/src_to_dest.tpl"
+            }
         }
     },
 });
-```
-
-> Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
-
-```javascript
-grunt.loadNpmTasks('grunt-mustacher');
 ```
 
 <a name="requirements"></a>

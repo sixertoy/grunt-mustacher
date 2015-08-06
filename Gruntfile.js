@@ -34,16 +34,17 @@ module.exports = function (grunt) {
                 files: {
                     "html/src_to_dest.html": "src/src_to_dest.tpl"
                 }
-            },
+            }/*,
             all: {
                 files: [{
                     ext: ".html",
                     expand: true,
                     flatten: true,
-                    src: "./all_task/*.tpl",
+                    src: "./all_task/.tpl",
                     dest: "./html/all_task/"
                 }]
             }
+            */
         },
         /*
          *
@@ -75,7 +76,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-connect");
 
     // Default task(s).
-    grunt.registerTask("serve", ["mustacher:compile", "mustacher:src_to_dest", "mustacher:all", "connect:server", "watch"]);
+    grunt.registerTask("serve", ["mustacher:compile", "mustacher:src_to_dest", /*"mustacher:all",*/ "connect:server", "watch"]);
     grunt.registerTask("default", ["serve"]);
 
 };
