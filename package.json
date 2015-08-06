@@ -42,6 +42,7 @@
         "load-grunt-config": "^0.16.0"
     },
     "keywords": [
+    "gruntplugin",
     "handlebars",
     "loops",
     "files",
@@ -50,6 +51,14 @@
     "lorem ipsum",
     "mustache",
     "helpers",
-    "dummy"
+    "dummy",
+    "htmlbars",
+    "templates",
+    "precompile",
+    "tpl",
+    "ezpublish",
+    "magento",
+    "drupal",
+    "cms"
   ]
 }
