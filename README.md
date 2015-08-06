@@ -8,7 +8,7 @@
 <a name="exposed-helpers"></a>
 ### Exposed helpers
 
-> take a look inside examples folder
+> take a look inside src folder
 
 * $include
 * repeat
