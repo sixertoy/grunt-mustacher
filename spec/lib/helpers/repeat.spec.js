@@ -9,7 +9,7 @@
         cwd = process.cwd(),
         Grunt = require('grunt'),
         Handlebars = require('handlebars'),
-        options = require(cwd + '/tests/fixtures/options'),
+        options = require('./../../fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/repeat');
 
 
@@ -113,8 +113,8 @@
         describe('render html template', function () {
 
             it('Should be equal to expected content', function (done) {
-                var expected = Grunt.file.read(cwd + '/tests/expected/repeat'),
-                    fixtures = Grunt.file.read(cwd + '/tests/fixtures/repeat');
+                var expected = Grunt.file.read(cwd + '/spec/expected/repeat'),
+                    fixtures = Grunt.file.read(cwd + '/spec/fixtures/repeat');
                 setTimeout(function () {
                     var template = Handlebars.compile(fixtures);
                     expect(template()).toEqual(expected);
@@ -127,8 +127,8 @@
         describe('render html template nested', function () {
 
             it('Should be equal to expected content', function (done) {
-                var expected = Grunt.file.read(cwd + '/tests/expected/repeat-nested'),
-                    fixtures = Grunt.file.read(cwd + '/tests/fixtures/repeat-nested');
+                var expected = Grunt.file.read(cwd + '/spec/expected/repeat-nested'),
+                    fixtures = Grunt.file.read(cwd + '/spec/fixtures/repeat-nested');
                 setTimeout(function () {
                     var template = Handlebars.compile(fixtures);
                     expect(template()).toEqual(expected);
@@ -141,8 +141,8 @@
         describe('render html template nested if', function () {
 
             it('Should be equal to expected content', function (done) {
-                var expected = Grunt.file.read(cwd + '/tests/expected/repeat-nested-if'),
-                    fixtures = Grunt.file.read(cwd + '/tests/fixtures/repeat-nested-if');
+                var expected = Grunt.file.read(cwd + '/spec/expected/repeat-nested-if'),
+                    fixtures = Grunt.file.read(cwd + '/spec/fixtures/repeat-nested-if');
                 setTimeout(function () {
                     var template = Handlebars.compile(fixtures);
                     expect(template()).toEqual(expected);

@@ -8,7 +8,7 @@
     var helper,
         cwd = process.cwd(),
         Handlebars = require('handlebars'),
-        options = require(cwd + '/tests/fixtures/options'),
+        options = require('./../../fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/include');
 
     describe('Include helper', function () {

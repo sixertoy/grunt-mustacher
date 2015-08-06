@@ -7,7 +7,7 @@
 
     var helper,
         cwd = process.cwd(),
-        options = require(cwd + '/tests/fixtures/options'),
+        options = require('./../../fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/random');
 
     describe('Random helper', function () {

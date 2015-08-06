@@ -8,8 +8,8 @@
     var result, helper,
         cwd = process.cwd(),
         Utils = require(cwd + '/tasks/lib/task-utils'),
-        args = require(cwd + '/tests/fixtures/arguments'),
-        array = require(cwd + '/tests/fixtures/arguments_array');
+        args = require(cwd + '/spec/fixtures/arguments'),
+        array = require(cwd + '/spec/fixtures/arguments_array');
 
     describe('Taskutils', function () {
 

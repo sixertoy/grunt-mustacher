@@ -9,7 +9,7 @@
     "url": "https://github.com/sixertoy"
   },
   "scripts": {
-    "test": "istanbul cover ./scripts/jasmine_node -x **/*.spec.js --captureExceptions spec/src",
+    "test": "istanbul cover ./scripts/jasmine_node -x **/*.spec.js --captureExceptions spec",
     "postinstall": "npm test"
   },
   "repository": {

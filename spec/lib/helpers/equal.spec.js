@@ -8,8 +8,8 @@
     var helper,
         cwd = process.cwd(),
         Handlebars = require('handlebars'),
-        Helper = require(cwd + '/tasks/lib/helpers/equal'),
-        options = require(cwd + '/tests/fixtures/options');
+        options = require('./../../fixtures/options'),
+        Helper = require(cwd + '/tasks/lib/helpers/equal');
 
     describe('Equal helper', function () {
 

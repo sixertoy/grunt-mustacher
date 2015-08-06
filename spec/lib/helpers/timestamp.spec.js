@@ -8,7 +8,7 @@
     var helper, result,
         cwd = process.cwd(),
         Handlebars = require('handlebars'),
-        options = require(cwd + '/tests/fixtures/options'),
+        options = require('./../../fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/timestamp');
 
     describe('Timestamp helper', function () {
