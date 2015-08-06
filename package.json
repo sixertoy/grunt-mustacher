@@ -1,7 +1,7 @@
 {
     "name": "grunt-mustacher",
     "description": "Mustache Template Helpers - Load templates inside templates at compile w/ Grunt",
-    "version": "1.3.21",
+    "version": "1.3.22",
     "homepage": "http://sixertoy.github.io/grunt-mustacher/",
     "main": "index.js",
     "author": {

@@ -181,12 +181,23 @@ grunt.initConfig({
                 dest: 'html/index.html'
             }]
         },
-        src_to_dest: {
+        compact: {
             files: {
-                "html/src_to_dest.html": "src/src_to_dest.tpl"
+                'html/index.html': 'src/index.tpl'
             }
+        },
+        all: {
+            files: [{
+                cwd: '.',
+                ext: '.html',
+                expand: true,
+                flatten: true,
+                filter: 'isFile',
+                dest: 'html/',
+                src: ['src/**/*.tpl']
+            }]
         }
-    },
+    }
 });
 ```
 
