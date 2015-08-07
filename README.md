@@ -25,7 +25,7 @@
 * [or](#or)
 * [equal](#equal)
 
-> take at git 'examples' branch for usages
+> more examples on [branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
 <a name="include"><a>
 ### $include
@@ -206,6 +206,15 @@ grunt.initConfig({
 ```javascript
 grunt.loadNpmTasks('grunt-mustacher');
 ```
+
+## Issues
+
+**not yet implemented**
+
+- Lorem Ipsum
+- Image w/ placehold.it
+
+## Changelog
 
 <a name="requirements"></a>
 ## Requirements
