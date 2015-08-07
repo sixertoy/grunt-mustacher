@@ -3,7 +3,7 @@
 
 [![Built with Grunt][grunt-img]](http://gruntjs.com/) [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
-> Provide an easy way to include handlebar's partials files inside HTML template page with a few helpers list like repeat, or, and. AngularJs compliant
+> Provide an easy way to include handlebars (mustache) partials files inside HTML template page with a few helpers list like repeat, or, and. AngularJs compliant
 
 
 <a name="exposed-helpers"></a>
