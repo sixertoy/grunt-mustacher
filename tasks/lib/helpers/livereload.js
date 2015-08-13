@@ -39,7 +39,7 @@
         port = parseFloat(port);
 
         // if(Grunt.option('debug')){
-        result = '<script src="http://localhost:' + port + '/livereload.js"></script>';
+        result = '<script src="http://localhost:' + port + '/livereload.js?snipver=1"></script>';
         // }
         return new Handlebars.SafeString(result);
 
