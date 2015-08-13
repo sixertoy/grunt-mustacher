@@ -240,7 +240,6 @@ grunt.loadNpmTasks('grunt-mustacher');
 **not yet implemented**
 
 - Lorem Ipsum
-- Image w/ placehold.it
 
 ## Changelog
 
