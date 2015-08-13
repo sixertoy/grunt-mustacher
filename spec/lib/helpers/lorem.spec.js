@@ -11,7 +11,7 @@
         options = require('./../../fixtures/options'),
         Helper = require(cwd + '/tasks/lib/helpers/lorem');
 
-    describe('Equal helper', function () {
+    describe('Lorem helper', function () {
 
         beforeEach(function () {
             helper = new Helper();
