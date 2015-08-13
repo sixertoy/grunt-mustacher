@@ -12,6 +12,7 @@
 ###### inline
 
 * [$include](#include)
+* [$image](#image)
 * [$timestamp](#timestamp)
 * [$livereload](#livereload)
 * [$random](#random)
@@ -25,6 +26,10 @@
 * [or](#or)
 * [equal](#equal)
 
+## Examples
+
+### inline
+
 > more examples on [branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
 <a name="include"><a>
@@ -36,31 +41,25 @@
 </div>
 ```
 
-<a name="repeat"><a>
-### #repeat
+<a name="image"><a>
+### $image (default width: 300)
 
 ```html
-<ul>
-    {{#repeat 4}}
-    <li class="{{class}}">
-        <a href="" alt="{{count}} of {{of}}">item </a>
-        <ul>
-        {{#repeat}}
-            <li class="{{#if @first}}first{{/if}}">
-                <span>sub item {{@../index}}/{{@index}}</span>
-            </li>
-        {{/repeat}}
-        </ul>
-    </li>
-    {{/repeat}}
-</ul>
+<div class="image">
+    {{$image}}
+</div>
 ```
 
-<a name="lorem"><a>
-### $lorem
+```html
+<div class="image">
+    {{$image 300}}
+</div>
+```
 
 ```html
-<p>{{$lorem}}</p>
+<div class="image">
+    {{$image 300 200}}
+</div>
 ```
 
 <a name="timestamp"><a>
@@ -98,6 +97,50 @@
 <span>{{$random 0 1 true}}</span>
 ```
 
+<a name="literals"><a>
+### literal
+
+#### $ldim
+```html
+{{$ldim}}toto
+{{$ldim}}toto{{$rdim}}
+```
+
+#### $rdim
+```html
+toto{{$rdim}}
+{{$ldim}}toto{{$rdim}}
+```
+
+#### raw
+```html
+{{{{raw}}}}
+{{toto}}
+{{{{/raw}}}}
+```
+
+### blocks
+
+<a name="repeat"><a>
+#### #repeat
+
+```html
+<ul>
+    {{#repeat 4}}
+    <li class="{{class}}">
+        <a href="" alt="{{count}} of {{of}}">item </a>
+        <ul>
+        {{#repeat}}
+            <li class="{{#if @first}}first{{/if}}">
+                <span>sub item {{@../index}}/{{@index}}</span>
+            </li>
+        {{/repeat}}
+        </ul>
+    </li>
+    {{/repeat}}
+</ul>
+```
+
 <a name="and"><a>
 ### #and
 
@@ -129,28 +172,6 @@
 {{else}}
 <span>success</span>
 {{/equal}}
-```
-
-<a name="literals"><a>
-### literal
-
-#### $ldim
-```html
-{{$ldim}}toto
-{{$ldim}}toto{{$rdim}}
-```
-
-#### $rdim
-```html
-toto{{$rdim}}
-{{$ldim}}toto{{$rdim}}
-```
-
-#### raw
-```html
-{{{{raw}}}}
-{{toto}}
-{{{{/raw}}}}
 ```
 
 <a name="the-mustacher-task"></a>
@@ -230,6 +251,7 @@ grunt.loadNpmTasks('grunt-mustacher');
 - [Lo-Dash](https://lodash.com) ^3.10.1
 - [Q](http://documentup.com/kriskowal/q/) ^1.4.1
 - [Grunt](http://gruntjs.com/) ~0.4.5
+- [lorem-ipsum](https://www.npmjs.com/package/lorem-ipsum) ^1.0.3
 
 [grunt-img]: https://cdn.gruntjs.com/builtwith.png
 
