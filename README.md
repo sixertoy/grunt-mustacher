@@ -56,6 +56,13 @@
 </ul>
 ```
 
+<a name="lorem"><a>
+### $lorem
+
+```html
+<p>{{$lorem}}</p>
+```
+
 <a name="timestamp"><a>
 ### $timestamp
 
