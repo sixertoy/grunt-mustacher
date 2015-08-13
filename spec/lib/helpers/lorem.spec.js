@@ -18,9 +18,54 @@
             helper.register();
         });
 
-        describe('render', function () {});
+        describe('render', function () {
+            expect(function () {
+                helper.render();
+            }).toThrow();
+            expect(function () {
+                helper.render(20);
+            }).toThrow();
+        });
 
-        describe('compile', function () {});
+        describe('compile', function () {
+
+            it('should not throw', function () {
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem}}');
+                    template();
+                }).not.toThrow();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem W}}');
+                    template();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem S}}');
+                    template();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem P}}');
+                    template();
+                }).not.toThrow();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem W 10}}');
+                    template();
+                }).not.toThrow();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem S 10}}');
+                    template();
+                }).not.toThrow();
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem P 10}}');
+                    template();
+                }).not.toThrow();
+            });
+
+            xit('should be true', function () {
+                expect(function () {
+                    var template = Handlebars.compile('{{$lorem}}');
+                    expect(template());
+                }).not.toThrow();
+            });
+
+        });
 
         afterEach(function () {
             helper = null;

@@ -22,6 +22,7 @@
             'literal',
             'repeat',
             'random',
+            'lorem',
             'image',
             'equal'
         ];

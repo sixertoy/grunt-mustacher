@@ -37,13 +37,12 @@
         Handlebars.registerHelper('$lorem', this.render.bind(this));
     };
 
-    LoremHelper.prototype.render = function (options) { // jshint ignore:line
+    LoremHelper.prototype.render = function (type, length, options) { // jshint ignore:line
 
         var args = Utils.hasOptions(arguments);
         if (!args || args.length <= 1) {
             throw new Error('LoremHelper arguments is missing');
         }
-
     };
 
     module.exports = LoremHelper;
