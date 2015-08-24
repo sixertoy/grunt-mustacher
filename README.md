@@ -7,7 +7,7 @@
 > Provide an easy way to include handlebar's partials files inside HTML template page with a few helpers list like repeat, or, and. AngularJs compliant
 
 <a name="exposed-helpers"></a>
-### Exposed helpers
+### Exposed HTML/Handlebar's helpers
 
 > [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
 
