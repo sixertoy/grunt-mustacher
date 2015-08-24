@@ -29,11 +29,12 @@
 * [or](https://github.com/sixertoy/mustacher#or)
 * [equal](https://github.com/sixertoy/mustacher#equal)
 
-[See mustacher's full documentation](https://github.com/sixertoy/mustacher)
+<a name="documentation"></a>
+## Documentation
 
-## Examples
+> [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
 
-> **[More usages at grunt-mustacher's example branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)**
+> [More usages at grunt-mustacher's example branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
 <a name="install"></a>
 ## Install
@@ -42,6 +43,7 @@
 npm install grunt-mustacher --save-dev
 ```
 
+<a name="issues"></a>
 ## Issues
 
 **not yet implemented**
