@@ -1,12 +1,12 @@
 {
-  "name": "temp",
+  "name": "Grunt Mustacher Examples",
   "version": "1.0.0",
-  "description": "Provide an easy way to include mustache/handlebar's partials files inside HTML template page with a few helpers list like repeat, or, and. AngularJs compliant",
-  "main": "index.js",
+  "description": "",
+  "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Matthieu Lassalvy",
   "license": "ISC",
   "devDependencies": {
     "grunt": "^0.4.5",
