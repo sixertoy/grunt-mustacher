@@ -11,6 +11,7 @@
 ###### inline
 
 * $include
+* $image
 * $timestamp
 * $livereload
 * $ldim
@@ -87,14 +88,6 @@ grunt.initConfig({
 ```javascript
 grunt.loadNpmTasks('grunt-mustacher');
 ```
-
-<a name="requirements"></a>
-### Requirements
-
-- [Handlebars](http://handlebarsjs.com) ^3.0.3
-- [Lo-Dash](https://lodash.com) ^3.10.1
-- [Q](http://documentup.com/kriskowal/q/) ^1.4.1
-- [Grunt](http://gruntjs.com/) ~0.4.5
 
 [grunt-img]: https://cdn.gruntjs.com/builtwith.png
 
