@@ -1,7 +1,8 @@
 {
-  "name": "Grunt Mustacher Examples",
+  "name": "grunt-mustacher",
+  "title": "Grunt Mustacher Examples",
   "version": "1.0.0",
-  "description": "",
+  "description": "Description",
   "main": "Gruntfile.js",
   "author": {
     "name": "Matthieu Lassalvy",
