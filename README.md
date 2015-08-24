@@ -3,8 +3,10 @@
 
 [![Built with Grunt][grunt-img]](http://gruntjs.com/) [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
-> Build over [Mustacher module](https://www.npmjs.com/package/mustacher)<br>
-> Designed for fit my own needs to build HTML static pages to be incorpored inside a website based on Magento, eZPublish or Drupal templates<br>
+> Build over [Mustacher module](https://www.npmjs.com/package/mustacher)
+
+> Designed for fit my own needs to build HTML static pages to be incorpored inside a website based on Magento, eZPublish or Drupal templates
+
 > It provide an easy way to **include** handlebar's partials files inside HTML template page with a few helpers list like **repeat (loop)**, **or**, **and**.
 
 <a name="exposed-helpers"></a>

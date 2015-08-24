@@ -2,7 +2,7 @@
   "name": "grunt-mustacher",
   "title": "grunt-mustacher examples",
   "version": "1.0.0",
-  "description": "Description",
+  "description": "It provide an easy way to include handlebar's partials files inside HTML template page with a few helpers list like repeat, or, and",
   "main": "Gruntfile.js",
   "author": {
     "name": "Matthieu Lassalvy",
