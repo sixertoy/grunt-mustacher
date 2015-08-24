@@ -9,24 +9,7 @@
 <a name="exposed-helpers"></a>
 ### Exposed helpers
 
-###### inline
-
-* $include
-* $image
-* $timestamp
-* $livereload
-* $ldim
-* $rdim
-* $random
-
-###### blocks
-
-* repeat
-* and
-* or
-* equal
-
-> take a look at src folder for examples
+> [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
