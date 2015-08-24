@@ -16,6 +16,8 @@
     var // variables
         defaults,
         // requires
+        merge = require('lodash.merge'),
+        // assign = require('lodash.assign'),
         mustacher = require('mustacher');
 
     /**
@@ -40,7 +42,8 @@
             depth: 2,
             ext: '.hbs',
             src: 'partials/'
-        }
+        },
+        context: {}
     };
 
     /**
@@ -50,7 +53,8 @@
      */
     module.exports = function (grunt) {
         grunt.registerMultiTask('mustacher', 'Handlebars Template Helpers.', function () {
-            var done = this.async();
+            var $this = this,
+                done = this.async();
             if (!this.files.length) {
                 done(new Error('Files argument is needed'));
             } else {
@@ -58,10 +62,20 @@
                     if (!task.src.length) {
                         done(new Error('No Mustache files parse to parse'));
                     } else {
+
+                        var options = merge({}, defaults);
+                        options = merge(options, $this.options());
+                        // console.log(options);
                         var dest, stream,
-                            content = task.src.map(function(filepath){
+                            content = task.src.map(function (filepath) {
                                 stream = grunt.file.read(filepath);
-                                return mustacher(stream, {});
+                                if (stream) {
+                                    return mustacher(stream, {}, {
+                                        root: options
+                                    });
+                                } else {
+                                    return '';
+                                }
                             }).join(grunt.util.normalizelf(grunt.util.linefeed));
                         dest = task.dest;
                         grunt.file.write(dest, content);
@@ -70,18 +84,6 @@
                     }
                 });
             }
-
-            /*
-            var file, content, html, data,
-                context = {},
-                deferred = Q.defer();
-            lodash.merge(defaultsOptions, task.options());
-            data = {
-                root: defaultsOptions
-            }; // explicit root for handlebars compile
-            data = Handlebars.createFrame(data);
-            */
-
         });
     };
 

@@ -32,6 +32,18 @@
             expect(expected).to.deep.equal(actual);
         });
 
+        it('load empty.html empty file', function(){
+            var actual = read('spec/tmp/empty.html').trim(),
+                expected = read('spec/expected/empty.html').trim();
+            expect(expected).to.deep.equal(actual);
+        });
+
+        it('load include.html', function(){
+            var actual = read('spec/tmp/include.html').trim(),
+                expected = read('spec/expected/include.html').trim();
+            expect(expected).to.deep.equal(actual);
+        });
+
     });
 
 }());
