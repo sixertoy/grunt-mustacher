@@ -3,7 +3,7 @@ branches:
   only:
     - master
 node_js:
-  - "0.12.0"
+  - "0.12"
 before_install:
   - npm install -g grunt-cli istanbul
 script:
