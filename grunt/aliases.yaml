@@ -1,7 +1,2 @@
-jasmine:
-  - jshint
-  - jasmine_node
 default:
   - jshint
-  - jasmine_node
-#- markdown
