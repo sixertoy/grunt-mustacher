@@ -30,11 +30,11 @@
 * [equal](https://github.com/sixertoy/mustacher#equal)
 
 <a name="documentation"></a>
-## Documentation
+## Documentation & examples
 
 > [Grunt examples in repository's sub branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
-> [See mustacher's for a full documentation](https://github.com/sixertoy/mustacher)
+> [Take a look at mustacher module for a full documentation](https://www.npmjs.com/package/mustacher)
 
 
 <a name="install"></a>
