@@ -12,8 +12,6 @@
 <a name="exposed-helpers"></a>
 ### Exposed HTML/Handlebar's helpers
 
-> **[See mustacher's full documentation](https://github.com/sixertoy/mustacher)**
-
 ###### inline
 
 * [$include](https://github.com/sixertoy/mustacher#include)
@@ -30,6 +28,8 @@
 * [and](https://github.com/sixertoy/mustacher#and)
 * [or](https://github.com/sixertoy/mustacher#or)
 * [equal](https://github.com/sixertoy/mustacher#equal)
+
+[See mustacher's full documentation](https://github.com/sixertoy/mustacher)
 
 ## Examples
 
