@@ -34,7 +34,7 @@
 
 > [Grunt examples in repository's sub branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
-> [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
+> [See mustacher's for a full documentation](https://github.com/sixertoy/mustacher)
 
 
 <a name="install"></a>
