@@ -145,3 +145,10 @@ build/Release
 node_modules
 npm-debug.log
 tmp
+
+# ############################
+#
+# Custom
+#
+# ############################
+build
