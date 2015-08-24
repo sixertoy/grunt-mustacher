@@ -15,14 +15,14 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     </div>
-    <div class="">{{$image 300}}</div>
-    <div class="after-body">
+    <div class="">
         <ul>
         {{#repeat 4}}
-            <li>Index {{index}}</li>
+            <li>Index {{@index}} | count: {{count}} of {{of}}</li>
         {{/repeat}}
         </ul>
     </div>
+    <div class="after-body"></div>
 </body>
 
 </html>

@@ -20,6 +20,18 @@
             expect(expected).to.deep.equal(actual);
         });
 
+        it('load index.html', function(){
+            var actual = read('spec/tmp/index.html').trim(),
+                expected = read('spec/expected/index.html').trim();
+            expect(expected).to.deep.equal(actual);
+        });
+
+        it('load page.html', function(){
+            var actual = read('spec/tmp/page.html').trim(),
+                expected = read('spec/expected/page.html').trim();
+            expect(expected).to.deep.equal(actual);
+        });
+
     });
 
 }());

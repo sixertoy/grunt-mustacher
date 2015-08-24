@@ -11,7 +11,7 @@
   },
   "scripts": {
     "pretest": "grunt",
-    "test": "istanbul cover -x *.spec.js node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./spec/tasks/*.spec.js"
+    "test": "istanbul test -x *.spec.js node_modules/mocha/bin/_mocha --report lcovonly -- -R spec ./spec/tasks/*.spec.js"
   },
   "repository": {
     "type": "git",
