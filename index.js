@@ -1,9 +1,9 @@
 /*jslint indent: 4, nomen: true, plusplus: true */
 /*globals require, module */
-(function(){
+(function () {
 
     'use strict';
 
-    module.exports = require('./tasks');
+    module.exports = require('./tasks/mustacher');
 
 }());

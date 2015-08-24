@@ -1,2 +1,4 @@
 default:
+  - clean
   - jshint
+  - mustacher
