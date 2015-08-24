@@ -1,13 +1,13 @@
-<a name="mustacher"></a>
-# Mustacher examples page
+<a name="description"></a>
+# Grunt Mustacher examples page
 
 [![Built with Grunt][grunt-img]](http://gruntjs.com/) [![MIT License][license-img]][license-url] [![NPM version][npm-version-img]][npm-url] [![NPM downloads][npm-downloads-img]][npm-url] [![Build Status][travis-img]][travis-url] [![Coverage Status][coverall-img]][coverall-url]
 
-> **Build over [Mustacher module](https://www.npmjs.com/package/mustacher)**
+> **Grunt task build over [Mustacher module](https://www.npmjs.com/package/mustacher)**
 
-> Designed for fit my own needs to build HTML static pages to be incorpored inside a website based on Magento, eZPublish or Drupal templates
+> Designed for fit my own needs to build HTML static pages. Perfect for templating eZPublish, Magento, Drupal... CMS models
 
-> It provide an easy way to **include** handlebar's partials files inside HTML template page with a few helpers list like **repeat (loop)**, **or**, **and**.
+> It provide an easy way to **include** handlebar's partials files inside HTML template page with a minimal list of helpers like **repeat (loop)**, **or**, **and**.
 
 <a name="exposed-helpers"></a>
 ### Exposed HTML/Handlebar's helpers
@@ -84,12 +84,12 @@ grunt.loadNpmTasks('grunt-mustacher');
 [license-img]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE-MIT
 
-[coverall-url]: https://coveralls.io/r/sixertoy/grunt-mustacher
-[coverall-img]: https://img.shields.io/coveralls/sixertoy/grunt-mustacher.svg?style=flat-square
+[coverall-url]: https://coveralls.io/r/sixertoy/mustacher
+[coverall-img]: https://img.shields.io/coveralls/sixertoy/mustacher.svg?style=flat-square
 
-[npm-url]: https://npmjs.org/package/grunt-mustacher
-[npm-version-img]: http://img.shields.io/npm/v/grunt-mustacher.svg?style=flat-square
-[npm-downloads-img]: http://img.shields.io/npm/dm/grunt-mustacher.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/mustacher
+[npm-version-img]: http://img.shields.io/npm/v/mustacher.svg?style=flat-square
+[npm-downloads-img]: http://img.shields.io/npm/dm/mustacher.svg?style=flat-square
 
-[travis-url]: https://travis-ci.org/sixertoy/grunt-mustacher
-[travis-img]: http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square
+[travis-url]: https://travis-ci.org/sixertoy/mustacher
+[travis-img]: http://img.shields.io/travis/sixertoy/mustacher.svg?style=flat-square
