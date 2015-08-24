@@ -32,9 +32,10 @@
 <a name="documentation"></a>
 ## Documentation
 
+> [Grunt examples in repository sub branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
+
 > [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
 
-> [More usages at grunt-mustacher's example branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
 
 <a name="install"></a>
 ## Install
