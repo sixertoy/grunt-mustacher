@@ -12,7 +12,7 @@
 <a name="exposed-helpers"></a>
 ### Exposed HTML/Handlebar's helpers
 
-> [See mustacher's full documentation](https://github.com/sixertoy/mustacher)
+> **[See mustacher's full documentation](https://github.com/sixertoy/mustacher)**
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
