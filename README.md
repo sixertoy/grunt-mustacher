@@ -87,9 +87,9 @@ grunt.loadNpmTasks('grunt-mustacher');
 [coverall-url]: https://coveralls.io/r/sixertoy/mustacher
 [coverall-img]: https://img.shields.io/coveralls/sixertoy/mustacher.svg?style=flat-square
 
-[npm-url]: https://npmjs.org/package/mustacher
-[npm-version-img]: http://img.shields.io/npm/v/mustacher.svg?style=flat-square
-[npm-downloads-img]: http://img.shields.io/npm/dm/mustacher.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/grunt-mustacher
+[npm-version-img]: http://img.shields.io/npm/v/grunt-mustacher.svg?style=flat-square
+[npm-downloads-img]: http://img.shields.io/npm/dm/grunt-mustacher.svg?style=flat-square
 
 [travis-url]: https://travis-ci.org/sixertoy/mustacher
 [travis-img]: http://img.shields.io/travis/sixertoy/mustacher.svg?style=flat-square
