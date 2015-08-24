@@ -16,24 +16,24 @@
 
 ###### inline
 
-* [$include](#include)
-* [$image](#image)
-* [$timestamp](#timestamp)
-* [$livereload](#livereload)
-* [$random](#random)
-* [$ldim](#literals)
-* [$rdim](#literals)
+* [$include](https://github.com/sixertoy/mustacher#include)
+* [$image](https://github.com/sixertoy/mustacher#image)
+* [$timestamp](https://github.com/sixertoy/mustacher#timestamp)
+* [$livereload](https://github.com/sixertoy/mustacher#livereload)
+* [$random](https://github.com/sixertoy/mustacher#random)
+* [$ldim](https://github.com/sixertoy/mustacher#literals)
+* [$rdim](https://github.com/sixertoy/mustacher#literals)
 
 ###### blocks
 
-* [repeat](#repeat)
-* [and](#and)
-* [or](#or)
-* [equal](#equal)
+* [repeat](https://github.com/sixertoy/mustacher#repeat)
+* [and](https://github.com/sixertoy/mustacher#and)
+* [or](https://github.com/sixertoy/mustacher#or)
+* [equal](https://github.com/sixertoy/mustacher#equal)
 
 ## Examples
 
-> [More usage at grunt-mustacher's example branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)
+> **[More usages at grunt-mustacher's example branch](https://github.com/sixertoy/grunt-mustacher/tree/examples)**
 
 <a name="install"></a>
 ## Install
