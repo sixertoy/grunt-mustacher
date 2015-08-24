@@ -18,6 +18,13 @@ module.exports = function (grunt) {
                     src: 'src/'
                 }
             },
+            /* compile a single file */
+            src_to_dest: {
+                files: {
+                    'html/src_to_dest.html': 'src/src_to_dest.tpl'
+                }
+            },
+            /* compile with a user defined root context */
             compile: {
                 options: {
                     context: {
@@ -30,11 +37,7 @@ module.exports = function (grunt) {
                     dest: 'html/index.html'
                 }]
             },
-            src_to_dest: {
-                files: {
-                    'html/src_to_dest.html': 'src/src_to_dest.tpl'
-                }
-            },
+            /* compile all files in all_task folder */
             all: {
                 files: [{
                     cwd: '.',
@@ -77,7 +80,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
 
     // Default task(s).
-    grunt.registerTask('serve', ['mustacher:compile', 'mustacher:src_to_dest', 'mustacher:all', 'connect:server', 'watch']);
+    grunt.registerTask('build', ['mustacher:compile', 'mustacher:src_to_dest', 'mustacher:all']);
+    grunt.registerTask('serve', ['build', 'connect:server', 'watch']);
     grunt.registerTask('default', ['serve']);
 
 };

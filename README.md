@@ -25,7 +25,7 @@
 * or
 * equal
 
-> take a look inside src folder for examples
+> take a look at src folder for examples
 
 <a name="install"></a>
 ### Install & Run (connect + watch)
@@ -36,14 +36,14 @@ npm install
 grunt
 ```
 
-> Four outputs, open your browser at http://localhost:9000
+> Open your browser at http://localhost:9000
 
 <a name="config"></a>
 ### Grunt Configuration
 
 > In your project's Gruntfile, add a section named `mustacher` to the data object passed into `grunt.initConfig()`.
 
-```javascript
+```js
 grunt.initConfig({
     mustacher: {
         options: {
@@ -51,6 +51,13 @@ grunt.initConfig({
                 src: 'src/'
             }
         },
+        /* compile a single file */
+        src_to_dest: {
+            files: {
+                'html/src_to_dest.html': 'src/src_to_dest.tpl'
+            }
+        },
+        /* compile with an user defined root context */
         compile: {
             options: {
                 context: {
@@ -63,19 +70,15 @@ grunt.initConfig({
                 dest: 'html/index.html'
             }]
         },
-        src_to_dest: {
-            files: {
-                "html/src_to_dest.html": "src/src_to_dest.tpl"
-            }
-        },
+        /* compile all files in all_task folder */
         all: {
             files: [{
                 cwd: '.',
-                ext: ".html",
+                ext: '.html',
                 expand: true,
                 flatten: true,
                 filter: 'isFile',
-                dest: "html/all_task/",
+                dest: 'html/all_task/',
                 src: ['src/all_task/**/*.tpl']
             }]
         }
@@ -85,7 +88,7 @@ grunt.initConfig({
 
 > Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
-```javascript
+```js
 grunt.loadNpmTasks('grunt-mustacher');
 ```
 
