@@ -63,5 +63,5 @@ npm install grunt-mustacher --save-dev
 [npm-version-img]: http://img.shields.io/npm/v/grunt-mustacher.svg?style=flat-square
 [npm-downloads-img]: http://img.shields.io/npm/dm/grunt-mustacher.svg?style=flat-square
 
-[travis-url]: https://travis-ci.org/sixertoy/grunt-mustacher
-[travis-img]: http://img.shields.io/travis/sixertoy/grunt-mustacher.svg?style=flat-square
+[travis-url]: https://travis-ci.org/sixertoy/mustacher
+[travis-img]: http://img.shields.io/travis/sixertoy/mustacher.svg?style=flat-square
