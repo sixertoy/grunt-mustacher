@@ -10,7 +10,8 @@ module.exports = {
         options: {
             context: {
                 any: 'to be touched by @root.context.any',
-                inside: 'a template'
+                inside: 'a template',
+                and: 'at first level'
             }
         },
         files: [{

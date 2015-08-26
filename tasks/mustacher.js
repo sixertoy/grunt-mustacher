@@ -36,7 +36,6 @@
                     if (!task.src.length) {
                         done(new Error('No Mustache files parse to parse'));
                     } else {
-                        
                         context = $this.options().context || {};
                         options = merge(_options, {
                             cwd: process.cwd(),

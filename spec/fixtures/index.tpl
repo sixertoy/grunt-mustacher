@@ -16,6 +16,8 @@
     <![endif]-->
     </div>
     <div class="">
+        <h1>local {{./and}}</h1>
+        <h2>global {{@root.and}}</h2>
         <ul>
         {{#repeat 4}}
             <li>
