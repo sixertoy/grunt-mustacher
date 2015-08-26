@@ -14,31 +14,37 @@
 
     describe('grunt-mustacher', function () {
 
-        it('load compact.html', function(){
+        it('load compact.html', function () {
             var actual = read('spec/tmp/compact.html').trim(),
                 expected = read('spec/expected/compact.html').trim();
             expect(expected).to.deep.equal(actual);
         });
 
-        it('load index.html', function(){
+        it('load index.html', function () {
             var actual = read('spec/tmp/index.html').trim(),
                 expected = read('spec/expected/index.html').trim();
             expect(expected).to.deep.equal(actual);
         });
 
-        it('load page.html', function(){
+        it('load exotic.html', function () {
+            var actual = read('spec/tmp/exotic.html').trim(),
+                expected = read('spec/expected/exotic.html').trim();
+            expect(expected).to.deep.equal(actual);
+        });
+
+        it('load page.html', function () {
             var actual = read('spec/tmp/page.html').trim(),
                 expected = read('spec/expected/page.html').trim();
             expect(expected).to.deep.equal(actual);
         });
 
-        it('load empty.html empty file', function(){
+        it('load empty.html empty file', function () {
             var actual = read('spec/tmp/empty.html').trim(),
                 expected = read('spec/expected/empty.html').trim();
             expect(expected).to.deep.equal(actual);
         });
 
-        it('load include.html', function(){
+        it('load include.html', function () {
             var actual = read('spec/tmp/include.html').trim(),
                 expected = read('spec/expected/include.html').trim();
             expect(expected).to.deep.equal(actual);

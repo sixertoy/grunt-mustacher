@@ -21,8 +21,24 @@ module.exports = {
             dest: './spec/tmp/page.html'
         }]
     },
+    
+    exotic: {
+        options: {
+            delimiter: {
+                ldim: '[*',
+                rdim: '*]'
+            }
+        },
+        files: {
+            './spec/tmp/exotic.html': './spec/fixtures/exotic.tpl'
+        }
+    },
     all: {
         options: {
+            delimiter: {
+                ldim: '{{',
+                rdim: '}}'
+            },
             partials: {
                 src: './spec/fixtures/partials/'
             },
@@ -37,7 +53,7 @@ module.exports = {
             flatten: true,
             filter: 'isFile',
             dest: './spec/tmp/',
-            src: ['./spec/fixtures/**/*.tpl', '!./spec/fixtures/index.tpl', '!./spec/fixtures/page.tpl', '!./spec/fixtures/compact.tpl']
+            src: ['./spec/fixtures/**/*.tpl', '!./spec/fixtures/index.tpl', '!./spec/fixtures/page.tpl', '!./spec/fixtures/compact.tpl', '!./spec/fixtures/exotic.tpl']
         }]
     }
 };

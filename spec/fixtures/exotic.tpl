@@ -15,18 +15,7 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     </div>
-    <div class="">
-        <ul>
-        {{#repeat 4}}
-            <li>
-                <a href="">Index {{@index}} | count: {{count}} of {{of}}</a>
-                {{#repeat 2}}
-                <span>{{@index}}/{{@../index}}</span>
-                {{/repeat}}
-            </li>
-        {{/repeat}}
-        </ul>
-    </div>
+    <div class="">{{$ldim}}specials{{$rdim}}</div>
     <div class="after-body"></div>
 </body>
 
