@@ -11,6 +11,7 @@ spec
 .gitattributes
 .jshintrc
 .travis.yml
+gulpfile.js
 Gruntfile.js
 tasks.json
 npm-debug.log

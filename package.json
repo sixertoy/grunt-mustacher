@@ -1,7 +1,7 @@
 {
   "name": "grunt-mustacher",
   "description": "Provide an easy way to include handlebars (mustache) partials files inside HTML template page with a few helpers list like repeat, or, and. AngularJs compliant",
-  "version": "1.3.28",
+  "version": "1.3.32",
   "homepage": "http://github.com/sixertoy/grunt-mustacher/",
   "main": "index.js",
   "author": {
@@ -28,16 +28,16 @@
     "grunt": ">= 0.4.5"
   },
   "dependencies": {
-    "lodash.assign": "^3.2.0",
     "lodash.merge": "^3.3.2",
     "mustacher": "*"
   },
   "devDependencies": {
     "chai": "^3.2.0",
     "grunt": "^0.4.5",
-    "grunt-bump": "^0.3.2",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-jshint": "^0.11.2",
+    "gulp": "^3.9.0",
+    "gulp-bump": "^0.3.1",
     "load-grunt-config": "^0.17.2",
     "mocha": "^2.2.5",
     "sinon": "^1.16.1"
